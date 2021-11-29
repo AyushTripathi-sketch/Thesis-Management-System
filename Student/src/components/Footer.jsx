@@ -1,21 +1,14 @@
 import React from 'react'
+import { Layout} from 'antd';
+import "../index.css";
+import "antd/dist/antd.css"
 
-function Footer(){
+const {Footer} = Layout;
+
+function Footerr(){
     return(
-        <footer>
-            <div style={{
-                position:"fixed",
-                bottom:"0",
-                width:"100%",
-                height:"5.5rem",
-                backgroundColor:"#A2A2A2",
-                textAlign:"center",
-                paddingTop:"40px",
-                }}>
-                <p>Copyright © IIT(ISM)</p>
-            </div>
-        </footer>
+        <Footer style={{ textAlign: 'center' }}>Copyright © IIT(ISM)</Footer>
     )
 }
 
-export default Footer
+export default Footerr
