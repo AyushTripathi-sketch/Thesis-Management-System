@@ -1,13 +1,12 @@
 import React from 'react'
 import ReactDOM from 'react-dom';
-import { Profile } from './components';
-
+import { Home } from './components';
 
 class SiderDemo extends React.Component {
 
   render() {
     return (
-      <Profile/>
+      <Home/>
     );
   }
 }
