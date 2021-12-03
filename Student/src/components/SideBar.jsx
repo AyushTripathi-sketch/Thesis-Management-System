@@ -1,12 +1,12 @@
 import React from 'react'
 import { Layout, Menu} from 'antd';
 import mainlogo from '../images/scholar.png'
+import { Link } from 'react-router-dom';
 import {
   DesktopOutlined,
   PieChartOutlined,
   FileOutlined,
   AppstoreOutlined,
-  UserOutlined,
   HomeOutlined,
 } from '@ant-design/icons';
 import "../index.css";
@@ -36,17 +36,25 @@ class SideBar extends React.Component {
             </span>
           </div>
           <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
-          <Menu.Item key="1" icon={<HomeOutlined />}>
-              Home
+            <Menu.Item key="1" icon={<HomeOutlined />}>
+              <Link to="/">
+                Home
+              </Link>
             </Menu.Item>
             <Menu.Item key="2" icon={<DesktopOutlined />}>
-              My Profile
+              <Link to="/profile">
+                My Profile
+              </Link>
             </Menu.Item>
             <Menu.Item key="3" icon={<DesktopOutlined />}>
-              Courses
+              <Link to="#">
+                Courses
+              </Link>
             </Menu.Item>
             <Menu.Item key="4" icon={<PieChartOutlined />}>
-              Progress Report
+              <Link to="#">
+                Progress Report
+              </Link>
             </Menu.Item>
             <SubMenu key="sub2" icon={<FileOutlined />} title="Thesis">
               <Menu.Item key="5">New</Menu.Item>
@@ -55,7 +63,11 @@ class SideBar extends React.Component {
             </SubMenu>
             <SubMenu key="sub3" icon={<AppstoreOutlined />} title="More">
               <Menu.Item key="8">Forms</Menu.Item>
-              <Menu.Item key="9">XYZ</Menu.Item>
+              <Menu.Item key="9">
+                <Link to="course-waiver">
+                  Course Waiver
+                </Link>
+              </Menu.Item>
             </SubMenu>
           </Menu>
         </Sider>
