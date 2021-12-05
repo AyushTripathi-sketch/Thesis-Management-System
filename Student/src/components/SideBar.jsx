@@ -52,7 +52,7 @@ class SideBar extends React.Component {
               </Link>
             </Menu.Item>
             <Menu.Item key="4" icon={<PieChartOutlined />}>
-              <Link to="#">
+              <Link to="/progress-report">
                 Progress Report
               </Link>
             </Menu.Item>

@@ -1,11 +1,16 @@
 import React, { Component } from "react";
-import StepProgressComponent from "./StepProgressComponent";
-import TableComp from "./TableComp";
+import StepProgressComponent from "../components/StepProgressComponent";
+import TableComp from "../components/TableComp";
+import { Layout} from 'antd';
+import "../index.css";
+import "antd/dist/antd.css";
+const { Content } = Layout;
 
 export class ProgressReport extends Component {
   render() {
     return (
-      <div>
+      <Content style={{ margin: '25px 25px'}}>
+        <div>
         <StepProgressComponent
           steps={[
             "CE",
@@ -46,6 +51,7 @@ export class ProgressReport extends Component {
           ]}
         />
       </div>
+      </Content>
     );
   }
 }

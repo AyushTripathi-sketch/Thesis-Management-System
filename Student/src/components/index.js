@@ -5,3 +5,4 @@ export { default as Profile } from "../pages/Profile";
 export { default as Home } from "../pages/Home";
 export { default as CourseWaiver } from "../pages/Course_Waiver";
 export { default as Courses } from "../pages/Courses";
+export { default as ProgressReport } from "../pages/Progress_Report"

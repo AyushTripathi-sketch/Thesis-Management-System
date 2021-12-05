@@ -1,5 +1,5 @@
 import React from "react";
-import "../css/ProgStyle.css";
+import "./ProgStyle.css";
 
 // This React Functional Component takes two properties:
 // 1) steps: an array of the labels of the steps involved

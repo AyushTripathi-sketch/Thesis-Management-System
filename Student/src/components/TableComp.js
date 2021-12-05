@@ -1,11 +1,12 @@
 import MaterialTable from "material-table";
-import FileDownloadIcon from "@mui/icons-material/FileDownload";
+import {
+  DownloadOutlined
+} from '@ant-design/icons';
 import React from "react";
-import { blue } from "@material-ui/core/colors";
 
 function TableComp(props) {
   return (
-    <div className="table" style={{ float:"left", marginLeft:"20%", width:"60%", marginTop:"5%"}}>
+    <div className="table" style={{ float:"left", marginLeft:"10%", width:"80%", marginTop:"5%"}}>
       <MaterialTable
         options={{
           toolbar: false,
@@ -23,11 +24,11 @@ function TableComp(props) {
         localization={{ header: { actions: "Report" } }}
         actions={[
           (rowData) => ({
-            icon: FileDownloadIcon,
+            icon: DownloadOutlined,
             tooltip: "Download Report",
             onClick: (event, rowData) =>
               alert(`${rowData.type} Report Downloaded`),
-            disabled: rowData.status != "S" && rowData.status != "SRF",
+            disabled: rowData.status !== "S" && rowData.status !== "SRF",
           }),
         ]}
         columns={[
