@@ -11,6 +11,7 @@ export class ProgressReport extends Component {
     return (
       <Content style={{ margin: '25px 25px'}}>
         <div>
+        <div className="site-layout-backgroundm" style={{position:"relative", display:"flex", flexDirection:"column", minWidth:"0", backgroundColor:"white", padding:"5%", paddingTop:"0"}}>
         <StepProgressComponent
           steps={[
             "CE",
@@ -23,6 +24,9 @@ export class ProgressReport extends Component {
           ]}
           accomplished={3}
         />
+        <br/>
+        <br/>
+        <br/>
         <TableComp
           progData={[
             {
@@ -50,6 +54,7 @@ export class ProgressReport extends Component {
             },
           ]}
         />
+        </div>
       </div>
       </Content>
     );

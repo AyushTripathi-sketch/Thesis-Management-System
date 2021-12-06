@@ -1,7 +1,6 @@
 .container {
-    width: 60%;
-    margin-top: 5%;
-    margin-left: 19%;
+    width: 100%;
+    margin-top: 48px;
 }
 
 .progressBar {
@@ -18,11 +17,11 @@
 
 .progressBar li::before {
     content: "\2022";
+    position: relative;
     counter-increment: step;
-    width: 40px;
-    height: 40px;
-    line-height: 40px;
-    border: 1px solid #666;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
     display: block;
     text-align: center;
     margin: 0 auto 10px auto;
@@ -30,7 +29,8 @@
     background-color: #666;
     color: white;
     font-weight: bold;
-    font-size: x-large;
+    font-size: large;
+    z-index: 2;
 }
 
 .progressBar li::after {
@@ -39,9 +39,9 @@
     width: 100%;
     height: 5px;
     background-color: #ddd;
-    top: 20px;
+    top: 15px;
     left: -50%;
-    z-index: -1;
+    z-index: 1;
 }
 
 .progressBar li:first-child:after {

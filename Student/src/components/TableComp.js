@@ -6,14 +6,14 @@ import React from "react";
 
 function TableComp(props) {
   return (
-    <div className="table" style={{ float:"left", marginLeft:"10%", width:"80%", marginTop:"5%"}}>
+    <div className="table" style={{marginTop:"4%"}}>
       <MaterialTable
         options={{
           toolbar: false,
           paging: false,
           search: false,
           headerStyle: {
-            backgroundColor: "#0000FF",
+            backgroundColor: "#002140",
             color: "#FFFFFF",
             fontWeight: "bold",
           },
