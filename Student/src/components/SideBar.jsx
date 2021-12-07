@@ -51,19 +51,24 @@ class SideBar extends React.Component {
                 Courses
               </Link>
             </Menu.Item>
-            <Menu.Item key="4" icon={<PieChartOutlined />}>
+            <Menu.Item key="4" icon={<DesktopOutlined />}>
+              <Link to="/myprojectOverview">
+                My Project
+              </Link>
+            </Menu.Item>
+            <Menu.Item key="5" icon={<PieChartOutlined />}>
               <Link to="/progress-report">
                 Progress Report
               </Link>
             </Menu.Item>
             <SubMenu key="sub2" icon={<FileOutlined />} title="Thesis">
-              <Menu.Item key="5">New</Menu.Item>
-              <Menu.Item key="6">Pending</Menu.Item>
-              <Menu.Item key="7">Completed</Menu.Item>
+              <Menu.Item key="6">New</Menu.Item>
+              <Menu.Item key="7">Pending</Menu.Item>
+              <Menu.Item key="8">Completed</Menu.Item>
             </SubMenu>
             <SubMenu key="sub3" icon={<AppstoreOutlined />} title="More">
-              <Menu.Item key="8">Forms</Menu.Item>
-              <Menu.Item key="9">
+              <Menu.Item key="9">Forms</Menu.Item>
+              <Menu.Item key="10">
                 <Link to="course-waiver">
                   Course Waiver
                 </Link>
