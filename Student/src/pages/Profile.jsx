@@ -15,7 +15,7 @@ function Profile(){
             <div className="container">
               <div className="row">
                 <div className="col-lg-4">
-                  <div className="card shadow-sm">
+                  <div className="card shadow-sm" style={{marginBottom: '20px'}}>
                     <div className="card-header bg-transparent text-center">
                       <img className="profile_img" src={scholar} alt="student dp" />
                       <h3>Name</h3>
