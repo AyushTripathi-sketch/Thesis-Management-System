@@ -67,10 +67,19 @@ class SideBar extends React.Component {
               <Menu.Item key="8">Completed</Menu.Item>
             </SubMenu>
             <SubMenu key="sub3" icon={<AppstoreOutlined />} title="More">
-              <Menu.Item key="9">Forms</Menu.Item>
+              <Menu.Item key="9">
+                <Link to="/forms">
+                  Forms
+                </Link>
+              </Menu.Item>
               <Menu.Item key="10">
                 <Link to="course-waiver">
                   Course Waiver
+                </Link>
+              </Menu.Item>
+              <Menu.Item key="11">
+                <Link to="/supervisor-selection">
+                  Supervisor selection
                 </Link>
               </Menu.Item>
             </SubMenu>
