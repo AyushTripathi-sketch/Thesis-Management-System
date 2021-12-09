@@ -1,16 +1,22 @@
 import React from 'react'
 import { Layout} from 'antd';
 import "antd/dist/antd.css";
-import { MyProjectNav } from '../../components';
+import { SideBar, Headerr, Footerr, MyProjectNav } from '../../components';
 const {Content} = Layout;
 
 function Final(){
     return (
-          <Content style={{ margin: '25px 25px'}}>
-          <MyProjectNav />
-          <div>
-          </div>
+        <Layout style={{ minHeight: "100vh" }}>
+        <SideBar />
+        <Layout className="site-layout">
+          <Headerr />
+          <Content style={{ margin: "25px 25px" }}>
+            <MyProjectNav />
+            <div></div>
           </Content>
+          <Footerr />
+        </Layout>
+      </Layout>
     )
 }
 

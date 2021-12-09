@@ -8,6 +8,7 @@ import {
   FileOutlined,
   AppstoreOutlined,
   HomeOutlined,
+  UserOutlined
 } from '@ant-design/icons';
 import "../index.css";
 import "antd/dist/antd.css"
@@ -37,11 +38,11 @@ class SideBar extends React.Component {
           </div>
           <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
             <Menu.Item key="1" icon={<HomeOutlined />}>
-              <Link to="/">
+              <Link to="/home">
                 Home
               </Link>
             </Menu.Item>
-            <Menu.Item key="2" icon={<DesktopOutlined />}>
+            <Menu.Item key="2" icon={<UserOutlined />}>
               <Link to="/profile">
                 My Profile
               </Link>
@@ -73,7 +74,7 @@ class SideBar extends React.Component {
                 </Link>
               </Menu.Item>
               <Menu.Item key="10">
-                <Link to="course-waiver">
+                <Link to="/course-waiver">
                   Course Waiver
                 </Link>
               </Menu.Item>

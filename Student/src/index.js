@@ -1,26 +1,21 @@
 import React from 'react'
 import ReactDOM from 'react-dom';
-import { Layout} from 'antd'
-import { SideBar,Headerr,Footerr,
+import {
         Home,Profile,Courses, 
         CourseWaiver, ProgressReport,Overview, 
         ActivityPlan, Forums, Final,
-        Supervisor, Forms} from './components';
+        Supervisor, Forms, Login} from './components';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import reportWebVitals from './reportWebVitals';
 
 
-class SiderDemo extends React.Component {
+function Student() {
 
-  render() {
     return (
       <Router>
-        <Layout style={{ minHeight: '100vh' }}>
-          <SideBar/>  
-          <Layout className="site-layout">
-            <Headerr />
             <Routes>
-              <Route path='/' element={<Home/>} />
+              <Route path='/' element={<Login/>} />
+              <Route path='/home' element={<Home/>} />
               <Route path='/courses' element={<Courses/>} />
               <Route path='/profile' element={<Profile/>} />
               <Route path='/forms' element={<Forms/>}/>
@@ -32,13 +27,9 @@ class SiderDemo extends React.Component {
               <Route path='/myprojectForums' element={<Forums />}/>
               <Route path='/myprojectFinal' element={<Final />}/>
             </Routes>
-            <Footerr />
-          </Layout>
-        </Layout>
       </Router>
     );
-  }
 }
 reportWebVitals();
 
-ReactDOM.render(<SiderDemo />, document.getElementById("root"));
+ReactDOM.render(<Student />, document.getElementById("root"));

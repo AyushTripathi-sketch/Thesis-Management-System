@@ -1,5 +1,6 @@
 import React,{useState} from 'react';
 import { Button, Layout, Modal} from "antd";
+import { SideBar, Headerr, Footerr } from "../components";
 import { Selector } from '../components';
 import '../index.css';
 import "antd/dist/antd.css"
@@ -40,6 +41,7 @@ function Supervisor(){
     }
 
     function handleChange(props){
+      // eslint-disable-next-line array-callback-return
       const index = priorityList.findIndex((o, i) => {
           if (o.id === props.id) {
               o.value = props.value;
@@ -74,69 +76,100 @@ function Supervisor(){
         <Selector id={rowData.key} list={names} onChange={handleChange}></Selector>
       )}
     ]
-    return(
-        <Content style={{margin: '25px 25px'}}>
-            <div className="site-layout-background text-center" style={{ padding: 24, minHeight: 400 }}>
-
-            {/* display when submitted is false */}
-            <div className="container-fluid" style={{display: submitted ? "none" : "inherit"}}>
-                <p style={{textAlign:'left',fontSize:"1.1rem"}}><b>NOTE: </b>The DPGC convener in consultation with 
-                                scholars and faculty member will assign Supervisor and co-supervisor (if any) to all eligible scholars 
-                                of the department.
-                </p>
-                <br/>
-                <br/>
-              <MaterialTable columns={col} data={rows} style={{margin:"0.5% 20%"}}
-                options={{
-                        toolbar:false , paging:false,
-                        draggable:false,
-                        sorting:false,
-                        headerStyle: {
-                            backgroundColor: "#002140",
-                            color: "#FFFFFF",
-                            fontWeight: "bold",
-                            fontFamily:"Open Sans"
-                        }}}
-              />
-              <br/>
-              <br/>
-              <Button type="primary" size="large" onClick={showUploadDialog}>
-                Submit
-              </Button>
-            </div>
-            <Modal
-              title="Confirm Supervisor Selection"
-              visible={isModalVisible}
-              okText="Confirm"
-              onOk={handleOk}
-              onCancel={handleCancel}
-              centered={true}
+    return (
+      <Layout style={{ minHeight: "100vh" }}>
+        <SideBar />
+        <Layout className="site-layout">
+          <Headerr />
+          <Content style={{ margin: "25px 25px" }}>
+            <div
+              className="site-layout-background text-center"
+              style={{ padding: 24, minHeight: 400 }}
             >
-              <div className="container-fluid" style={{textAlign: "center"}}>
-                <h4 style={{color:"#1890FF"}}>Selected List</h4>
-                <MaterialTable cloumns={columns} data={data} 
+              {/* display when submitted is false */}
+              <div
+                className="container-fluid"
+                style={{ display: submitted ? "none" : "inherit" }}
+              >
+                <p style={{ textAlign: "left", fontSize: "1.1rem" }}>
+                  <b>NOTE: </b>The DPGC convener in consultation with scholars
+                  and faculty member will assign Supervisor and co-supervisor
+                  (if any) to all eligible scholars of the department.
+                </p>
+                <br />
+                <br />
+                <MaterialTable
+                  columns={col}
+                  data={rows}
+                  style={{ margin: "0.5% 20%" }}
                   options={{
-                      toolbar:false , paging:false,
-                      draggable:false,
-                      sorting:false,
-                      headerStyle: {
-                          backgroundColor: "#002140",
-                          color: "#FFFFFF",
-                          fontWeight: "bold",
-                          fontFamily:"Open Sans"
-                      }
-                      }}>
-                </MaterialTable>
+                    toolbar: false,
+                    paging: false,
+                    draggable: false,
+                    sorting: false,
+                    headerStyle: {
+                      backgroundColor: "#002140",
+                      color: "#FFFFFF",
+                      fontWeight: "bold",
+                      fontFamily: "Open Sans",
+                    },
+                  }}
+                />
+                <br />
+                <br />
+                <Button type="primary" size="large" onClick={showUploadDialog}>
+                  Submit
+                </Button>
               </div>
-            </Modal>
+              <Modal
+                title="Confirm Supervisor Selection"
+                visible={isModalVisible}
+                okText="Confirm"
+                onOk={handleOk}
+                onCancel={handleCancel}
+                centered={true}
+              >
+                <div
+                  className="container-fluid"
+                  style={{ textAlign: "center" }}
+                >
+                  <h4 style={{ color: "#1890FF" }}>Selected List</h4>
+                  <MaterialTable
+                    cloumns={columns}
+                    data={data}
+                    options={{
+                      toolbar: false,
+                      paging: false,
+                      draggable: false,
+                      sorting: false,
+                      headerStyle: {
+                        backgroundColor: "#002140",
+                        color: "#FFFFFF",
+                        fontWeight: "bold",
+                        fontFamily: "Open Sans",
+                      },
+                    }}
+                  ></MaterialTable>
+                </div>
+              </Modal>
 
-            {/* display when submitted is true */}
-            <div className="container-fluid" style={{marginTop:"15%",textAlign:"center",display:submitted?"inherit":"none"}}>
-              <h3>Response Submitted!</h3>
+              {/* display when submitted is true */}
+              <div
+                className="container-fluid"
+                style={{
+                  marginTop: "15%",
+                  textAlign: "center",
+                  display: submitted ? "inherit" : "none",
+                }}
+              >
+                <h3>Response Submitted!</h3>
+              </div>
             </div>
-          </div>
-        </Content>
-    )
+          </Content>
+          <Footerr />
+        </Layout>
+      </Layout>
+    );
 }
 
 export default Supervisor;
