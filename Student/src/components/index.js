@@ -15,3 +15,5 @@ export { default as Overview } from "../pages/MyProject/Overview";
 export { default as Forums } from "../pages/MyProject/Forums";
 export { default as ActivityPlan } from "../pages/MyProject/ActivityPlan";
 export { default as Final } from "../pages/MyProject/Final";
+export { default as Submission } from "../pages/Thesis/Submission";
+export { default as Confirmation } from "../pages/Thesis/Confirmation";

@@ -4,7 +4,7 @@ import {
         Home,Profile,Courses, 
         CourseWaiver, ProgressReport,Overview, 
         ActivityPlan, Forums, Final,
-        Supervisor, Forms, Login} from './components';
+        Supervisor, Forms, Login, Submission, Confirmation} from './components';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import reportWebVitals from './reportWebVitals';
 
@@ -26,6 +26,8 @@ function Student() {
               <Route path='/myprojectActivityPlan' element={<ActivityPlan />}/>
               <Route path='/myprojectForums' element={<Forums />}/>
               <Route path='/myprojectFinal' element={<Final />}/>
+              <Route path='/thesis-submission' element={<Submission />}/>
+              <Route path='/thesis-sub-confirmation' element={<Confirmation />}/>
             </Routes>
       </Router>
     );

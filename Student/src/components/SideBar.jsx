@@ -63,22 +63,25 @@ class SideBar extends React.Component {
               </Link>
             </Menu.Item>
             <SubMenu key="sub2" icon={<FileOutlined />} title="Thesis">
-              <Menu.Item key="6">New</Menu.Item>
-              <Menu.Item key="7">Pending</Menu.Item>
-              <Menu.Item key="8">Completed</Menu.Item>
+              <Menu.Item key="6">
+                <Link to="/thesis-submission">
+                  Submission
+                </Link>
+              </Menu.Item>
+              <Menu.Item key="7">Completed</Menu.Item>
             </SubMenu>
             <SubMenu key="sub3" icon={<AppstoreOutlined />} title="More">
-              <Menu.Item key="9">
+              <Menu.Item key="8">
                 <Link to="/forms">
                   Forms
                 </Link>
               </Menu.Item>
-              <Menu.Item key="10">
+              <Menu.Item key="9">
                 <Link to="/course-waiver">
                   Course Waiver
                 </Link>
               </Menu.Item>
-              <Menu.Item key="11">
+              <Menu.Item key="10">
                 <Link to="/supervisor-selection">
                   Supervisor selection
                 </Link>
