@@ -11,7 +11,7 @@ const {Content} = Layout;
 function Supervisor(){
     const [submitted, setSubmit] = useState(false);
     const [isModalVisible,setModalVisible] = useState(false);
-    const priorityList=[];
+    const [priorityList, setPriorityList] = useState([])
     const noOfSupervisor = 5;
     const rows=[];
     const data=[
@@ -32,7 +32,7 @@ function Supervisor(){
     ]
     const columns=[
       {title:"Priority Order",field:"sno",sorting:true},
-      {title:"Supervisor",field:"name",type:"string",sorting:false}
+      {title:"Supervisor",field:"name",sorting:false}
     ]
     for(var i=1;i<=noOfSupervisor;i++){
       rows.push({
@@ -41,20 +41,23 @@ function Supervisor(){
     }
 
     function handleChange(props){
-      // eslint-disable-next-line array-callback-return
       const index = priorityList.findIndex((o, i) => {
-          if (o.id === props.id) {
-              o.value = props.value;
+          if (o.sno === `${props.id}`) {
+              o.name = props.value;
               return true;
           }
       });
+      console.log(index);
       if(index===-1){
           priorityList.push({
-              sno:props.id,
+              sno: `${props.id}`,
               name:props.value
           })
       }
-      console.log(priorityList);
+
+      priorityList.sort((o1, o2) => o1.sno>o2.sno);
+
+      setPriorityList(priorityList);
     }
 
     function showUploadDialog() {
@@ -135,8 +138,8 @@ function Supervisor(){
                 >
                   <h4 style={{ color: "#1890FF" }}>Selected List</h4>
                   <MaterialTable
-                    cloumns={columns}
-                    data={data}
+                    columns={columns}
+                    data={priorityList}
                     options={{
                       toolbar: false,
                       paging: false,
