@@ -3,7 +3,7 @@ import { Button,Layout,notification} from 'antd';
 import "../index.css";
 import "antd/dist/antd.css"
 import {
-  NotificationOutlined
+  BellTwoTone
 } from '@ant-design/icons';
 
 const { Header } = Layout;
@@ -25,14 +25,13 @@ function Headerr(){
     }
     window.addEventListener('resize', handleResize)
   })
-  console.log("Window",size);
   if(size < 767){
     return(
         <Header className="site-layout-background" style={{ padding: 0,height:"fit-content"}}>
           <span><img src="https://moodle.iitism.ac.in/pluginfile.php/1/core_admin/logo/0x150/1633851416/IIT_ISM_Logo.png" alt="Indian Institute of Technology (ISM) Dhanbad" style={{height:"65px",display:"inline",marginLeft:"20px"}}/>
           <h3 style={{color:"#396EB0",display:"inline"}}>IIT (ISM) Dhanbad</h3></span>
           <div style={{float: 'right', margin: '10px',width:'130px',height:'35px'}}>
-        <Button onClick={openNotification}><NotificationOutlined /></Button>
+        <Button onClick={openNotification} style={{float: 'right',marginTop:'15px'}}><BellTwoTone /></Button>
         <Button type="primary" danger style={{float: 'right',marginTop:'15px'}}>
             <a href='/'>Log Out</a>
         </Button>
@@ -44,8 +43,8 @@ function Headerr(){
       <Header className="site-layout-background" style={{ padding: 0}}>
         <span><img src="https://moodle.iitism.ac.in/pluginfile.php/1/core_admin/logo/0x150/1633851416/IIT_ISM_Logo.png" alt="Indian Institute of Technology (ISM) Dhanbad" style={{height:"65px",display:"inline",marginLeft:"20px"}}/>
         <h3 style={{color:"#396EB0",display:"inline"}}>Indian Institute of Technology (ISM), Dhanbad</h3></span>
-        <div style={{float: 'right', margin: '10px',width:'130px',height:'35px'}}>
-        <Button onClick={openNotification}><NotificationOutlined /></Button>
+        <div style={{float: 'right', margin: '10px',width:'fit-Content',height:'auto'}}>
+        <Button spin="true" onClick={openNotification} style={{margin:'0 15px'}}><BellTwoTone /></Button>
         <Button type="primary" danger style={{float: 'right',marginTop:'15px'}}>
             <a href='/'>Log Out</a>
         </Button>
