@@ -139,7 +139,7 @@ export class Courses extends Component {
                   display: this.state.isSubmitted ? "inherit" : "none",
                 }}
               >
-                <h3>You have submitted your response!</h3>
+                <h3>File Submitted!</h3>
               </div>
             </div>
           </Content>

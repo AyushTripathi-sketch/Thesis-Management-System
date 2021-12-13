@@ -73,7 +73,7 @@ function Supervisor(){
       {title:"Priority Order", field:"key"},
       {title:"Supervisor",
       render: (rowData)=>(
-        <Selector id={rowData.key} list={names} onChange={handleChange}></Selector>
+        <Selector id={rowData.key} list={names} placeholder="Supervisor" style={{width:"200px", height:"40px"}} onChange={handleChange}></Selector>
       )}
     ]
     return (
