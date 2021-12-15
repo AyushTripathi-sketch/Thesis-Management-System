@@ -27,7 +27,7 @@ const columns = [
 
 function MyProjectNav() {
   return (
-    <div style={{marginBottom:'20px'}}>
+    <div>
     <Space style={{marginBottom: '10px'}}>
       <Button type="primary">
         <Link to='/st/myprojectOverview'>

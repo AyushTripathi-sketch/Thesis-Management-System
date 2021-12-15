@@ -1,15 +1,11 @@
 import React from 'react'
 import { Layout, Progress} from 'antd';
 import "antd/dist/antd.css";
-import { SideBar, Headerr, Footerr, MyProjectNav, LineGraph } from '../../components'
+import { MyProjectNav, LineGraph } from '../../components'
 const {Content} = Layout;
 
 function Overview(){
     return (
-        <Layout style={{ minHeight: "100vh" }}>
-        <SideBar />
-        <Layout className="site-layout">
-          <Headerr />
           <Content style={{ margin: "25px 25px" }}>
             <MyProjectNav />
             <div className='row site-layout-background' style={{marginLeft:'0px', padding:'10px'}}>
@@ -48,9 +44,6 @@ function Overview(){
               </div>
             </div>
           </Content>
-          <Footerr />
-        </Layout>
-      </Layout>
     )
 }
 

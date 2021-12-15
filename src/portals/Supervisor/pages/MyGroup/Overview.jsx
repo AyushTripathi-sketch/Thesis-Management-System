@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import { Layout } from "antd";
+import { tableIcons,Session } from "../../../../CommonComponents";
 import "../../SupervisorApp.css";
-import "antd/dist/antd.css";
-import { SideBar, Headerr, Footerr,Session,tableIcons } from "../../components";
 import MaterialTable from "material-table";
 const { Content } = Layout;
 
@@ -26,10 +25,6 @@ function Overview() {
     setShowSession(false);
   }
   return (
-    <Layout style={{ minHeight: "100vh" }}>
-      <SideBar />
-      <Layout className="site-layout">
-        <Headerr />
         <Content style={{ margin: "25px 25px" }}>
           <div
             className="site-layout-background"
@@ -56,9 +51,6 @@ function Overview() {
             </div>
           </div>
         </Content>
-        <Footerr />
-      </Layout>
-    </Layout>
   );
 }
 

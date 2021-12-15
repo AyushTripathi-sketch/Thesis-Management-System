@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Layout } from "antd";
+import { Headerr } from "../CommonComponents";
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -21,7 +22,8 @@ export default function Login() {
   return (
     <Layout style={{ minHeight: "100vh" }}>
       <Layout className="site-layout">
-        <section style={{ backgroundColor: "#002140" }}>
+      <Headerr/>
+        <section style={{ backgroundColor: "#177ddc" }}>
           <div className="container-fluid">
             <div
               className="card"

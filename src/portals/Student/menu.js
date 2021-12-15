@@ -1,0 +1,87 @@
+import {
+    DesktopOutlined,
+    PieChartOutlined,
+    FileOutlined,
+    AppstoreOutlined,
+    HomeOutlined,
+    UserOutlined
+  } from '@ant-design/icons';
+
+const menu =[
+    {
+        key:"/st/home",
+        path:"/st/home",
+        icon:<HomeOutlined />,
+        name:"Home",
+        children:null,
+    },
+    {
+        key:"/st/profile",
+        path:"/st/profile",
+        icon:<UserOutlined />,
+        name:"My profile",
+        children:null,
+    },
+    {
+        key:"/st/courses",
+        path:"/st/courses",
+        icon:<DesktopOutlined />,
+        name:"Courses",
+        children:null,
+    },
+    {
+        key:"/st/progress-report",
+        path:"/st/progress-report",
+        icon:<PieChartOutlined />,
+        name:"Progress report",
+        children:null,
+    },
+    {
+        key:"/st/myprojectOverview",
+        path:"/st/myprojectOverview",
+        icon:<DesktopOutlined />,
+        name:"My Project",
+        children:null,
+    },
+    {
+        key:"sub1",
+        icon:<FileOutlined/>,
+        name:"Thesis",
+        children:[
+            {
+                key:"/st/thesis-submission",
+                path:"/st/thesis-submission",
+                name:"Submission",
+            },
+            {
+                key:"#",
+                path:"#",
+                name:"Completed",
+            }
+        ]
+    },
+    {
+        key:"sub2",
+        icon:<AppstoreOutlined/>,
+        name:"More",
+        children:[
+            {
+                key:"/st/forms",
+                path:"/st/forms",
+                name:"Forms",
+            },
+            {
+                key:"/st/course-waiver",
+                path:"/st/course-waiver",
+                name:"Course Waiver",
+            },
+            {
+                key:"/st/supervisor-selection",
+                path:"/st/supervisor-selection",
+                name:"Supervisor Selection",
+            }
+        ]
+    }
+]
+
+export default menu;

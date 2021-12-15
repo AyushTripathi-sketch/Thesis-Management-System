@@ -1,30 +1,51 @@
-import React from 'react'
+import React from "react";
+import { Layout } from "antd";
+import { Navbar, Headerr, SideBar, Footerr } from "../../CommonComponents";
 import {
-        Home,Profile,Courses, 
-        CourseWaiver, ProgressReport,Overview, 
-        ActivityPlan, Forums, Final,
-        Supervisor, Forms,Submission, Confirmation} from './components';
-import { Routes, Route } from 'react-router-dom';
-
+  Home,
+  Profile,
+  Courses,
+  CourseWaiver,
+  ProgressReport,
+  Overview,
+  ActivityPlan,
+  Forums,
+  Final,
+  Supervisor,
+  Forms,
+  Submission,
+  Confirmation,
+} from "./components";
+import { Routes, Route } from "react-router-dom";
+import menu from "./menu";
 
 function Student() {
-
-    return (
-            <Routes>
-              <Route path='/home' element={<Home/>} />
-              <Route path='/courses' element={<Courses/>} />
-              <Route path='/profile' element={<Profile/>} />
-              <Route path='/forms' element={<Forms/>}/>
-              <Route path='/course-waiver' element={<CourseWaiver/>}/>
-              <Route path='/supervisor-selection' element={<Supervisor/>}/>
-              <Route path='/progress-report' element={<ProgressReport/>}/>
-              <Route path='/myprojectOverview' element={<Overview />}/>
-              <Route path='/myprojectActivityPlan' element={<ActivityPlan />}/>
-              <Route path='/myprojectForums' element={<Forums />}/>
-              <Route path='/myprojectFinal' element={<Final />}/>
-              <Route path='/thesis-submission' element={<Submission />}/>
-              <Route path='/thesis-sub-confirmation' element={<Confirmation />}/>
-            </Routes>
-    );
+  return (
+    <>
+      <Navbar menu={menu}/>
+      <Layout style={{ minHeight: "100vh" }}>
+        <SideBar menu={menu} />
+        <Layout className="site-layout">
+          <Headerr />
+          <Routes>
+            <Route path="/home" element={<Home />} />
+            <Route path="/courses" element={<Courses />} />
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/forms" element={<Forms />} />
+            <Route path="/course-waiver" element={<CourseWaiver />} />
+            <Route path="/supervisor-selection" element={<Supervisor />} />
+            <Route path="/progress-report" element={<ProgressReport />} />
+            <Route path="/myprojectOverview" element={<Overview />} />
+            <Route path="/myprojectActivityPlan" element={<ActivityPlan />} />
+            <Route path="/myprojectForums" element={<Forums />} />
+            <Route path="/myprojectFinal" element={<Final />} />
+            <Route path="/thesis-submission" element={<Submission />} />
+            <Route path="/thesis-sub-confirmation" element={<Confirmation />} />
+          </Routes>
+          <Footerr />
+        </Layout>
+      </Layout>
+    </>
+  );
 }
 export default Student;

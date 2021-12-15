@@ -1,8 +1,6 @@
 import React from "react";
 import { Layout } from "antd";
-import { SideBar, Headerr, Footerr } from "../components";
 import "../StudentApp.css";
-import "antd/dist/antd.css";
 import MaterialTable from "material-table";
 
 const { Content } = Layout;
@@ -100,37 +98,30 @@ const columns = [
 ];
 function Forms() {
   return (
-    <Layout style={{ minHeight: "100vh" }}>
-      <SideBar />
-      <Layout className="site-layout">
-        <Headerr />
-        <Content style={{ margin: "25px 25px" }}>
-          <div
-            className="site-layout-background text-center"
-            style={{ padding: 24, minHeight: 400 }}
-          >
-            <MaterialTable
-              title=""
-              columns={columns}
-              data={data}
-              options={{
-                toolbar: false,
-                paging: false,
-                draggable: false,
-                sorting: false,
-                headerStyle: {
-                  backgroundColor: "#002140",
-                  color: "#FFFFFF",
-                  fontWeight: "bold",
-                  fontFamily: "Open Sans",
-                },
-              }}
-            />
-          </div>
-        </Content>
-        <Footerr />
-      </Layout>
-    </Layout>
+    <Content style={{ margin: "25px 25px" }}>
+      <div
+        className="site-layout-background text-center"
+        style={{ padding: 24, minHeight: 400 }}
+      >
+        <MaterialTable
+          title=""
+          columns={columns}
+          data={data}
+          options={{
+            toolbar: false,
+            paging: false,
+            draggable: false,
+            sorting: false,
+            headerStyle: {
+              backgroundColor: "#002140",
+              color: "#FFFFFF",
+              fontWeight: "bold",
+              fontFamily: "Open Sans",
+            },
+          }}
+        />
+      </div>
+    </Content>
   );
 }
 export default Forms;

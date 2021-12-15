@@ -1,17 +1,11 @@
 import React from "react";
 import { Layout } from "antd";
-import { SideBar, Headerr, Footerr } from "../components";
 import "../SupervisorApp.css";
-import "antd/dist/antd.css";
 import scholar from "../images/scholar.png";
 const { Content } = Layout;
 
 function Profile() {
   return (
-    <Layout style={{ minHeight: "100vh" }}>
-      <SideBar />
-      <Layout className="site-layout">
-        <Headerr />
         <Content style={{ margin: "25px 25px" }}>
           <div className="student-profile py-4">
             <div className="container">
@@ -181,9 +175,6 @@ function Profile() {
             </div>
           </div>
         </Content>
-        <Footerr />
-      </Layout>
-    </Layout>
   );
 }
 
