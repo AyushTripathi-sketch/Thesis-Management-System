@@ -8,6 +8,7 @@ export {default as ThesisDetails} from "../pages/Thesis/ThesisDetails";
 export {default as MyProject} from "../pages/MyProject/MyProject";
 export {default as MyProjectOverview} from "../pages/MyProject/MyProjectOverview";
 export {default as MyProjectForums} from "../pages/MyProject/MyProjectForums";
+export {default as MyProjectForumsDetails} from "../pages/MyProject/MyProjectForumsDetails";
 export {default as MyProjectActivityPlan} from "../pages/MyProject/MyProjectActivityPlan";
 export {default as MyProjectFinal} from "../pages/MyProject/MyProjectFinal";
 export {default as RPS} from "../pages/RPS";

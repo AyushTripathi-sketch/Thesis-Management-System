@@ -22,7 +22,7 @@ const validateMessages = {
 const data = [
   {
     sr: "1",
-    title: "Doubt",
+    title: <a href='/st/myprojectForums/thread_title_id'>Doubt</a>,
     desc: "XYZ ABC POI MJK",
     by: "Aditya Mishra",
     date: "07/12/2021",
