@@ -27,25 +27,30 @@ const columns = [
 
 function MyProjectNav() {
   return (
-    <div style={{marginBottom:'20px'}}>
+    <div style={{marginBottom: '20px'}}>
     <Space style={{marginBottom: '10px'}}>
+    <Button type="primary">
+        <Link to='/sp/myproject'>
+          Back
+        </Link>
+      </Button>
       <Button type="primary">
-        <Link to='/st/myprojectOverview'>
+        <Link to='/sp/myproject/project_id'>
           Overview
         </Link>
       </Button>
       <Button type="primary">
-        <Link to='/st/myprojectActivityPlan'>
+        <Link to='/sp/myproject/project_id/activityplan'>
           Activity Plan
         </Link>
       </Button>
       <Button type="primary">
-        <Link to='/st/myprojectForums'>
+        <Link to='/sp/myproject/project_id/forums'>
           Forums
         </Link>
       </Button>
       <Button type="primary">
-        <Link to='/st/myprojectFinal'>
+        <Link to='/sp/myproject/project_id/final'>
          Final Seminar
         </Link>
       </Button>

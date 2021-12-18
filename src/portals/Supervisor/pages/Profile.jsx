@@ -25,7 +25,7 @@ function Profile() {
                     </div>
                     <div className="card-body">
                       <p className="mb-0">
-                        <strong className="pr-1">Scholar ID : </strong>19DRXXXX
+                        <strong className="pr-1">ID : </strong>XYZ
                       </p>
                       <p className="mb-0">
                         <strong className="pr-1">Department : </strong>XYZ
@@ -57,12 +57,12 @@ function Profile() {
                             <td>98745XXXXX</td>
                           </tr>
                           <tr>
-                            <th width="30%">Registration Status</th>
+                            <th width="30%">Address</th>
                             <td width="2%">:</td>
                             <td>XYZ</td>
                           </tr>
                           <tr>
-                            <th width="30%">Qualify Degree</th>
+                            <th width="30%">XYZ</th>
                             <td width="2%">:</td>
                             <td>XYZ</td>
                           </tr>
@@ -75,62 +75,7 @@ function Profile() {
                       </table>
                     </div>
                   </div>
-                  <div style={{ height: "26px" }}></div>
-                  <div className="card shadow-sm">
-                    <div className="card-header bg-transparent border-0">
-                      <h3 className="mb-0">
-                        <i className="far fa-clone pr-1"></i>DSC Details
-                      </h3>
-                    </div>
-                    <div className="card-body pt-0">
-                      <table className="table table-bordered">
-                        <tbody>
-                          <tr>
-                            <th width="30%">Name (Chairman)</th>
-                            <td width="2%">:</td>
-                            <td>XYZ</td>
-                          </tr>
-                          <tr>
-                            <th width="30%">Designation (Chairman)</th>
-                            <td width="2%">:</td>
-                            <td>98745XXXXX</td>
-                          </tr>
-                          <tr>
-                            <th width="30%">
-                              Area of Specialization (Chairmain)
-                            </th>
-                            <td width="2%">:</td>
-                            <td>XYZ</td>
-                          </tr>
-                          <tr>
-                            <th width="30%">Member Department</th>
-                            <td width="2%">:</td>
-                            <td>XYZ</td>
-                          </tr>
-                          <tr>
-                            <th width="30%">Sister Department</th>
-                            <td width="2%">:</td>
-                            <td>XYZ</td>
-                          </tr>
-                          <tr>
-                            <th width="30%">Supervisor</th>
-                            <td width="2%">:</td>
-                            <td>XYZ</td>
-                          </tr>
-                          <tr>
-                            <th width="30%">Co-Supervisor (Internal)</th>
-                            <td width="2%">:</td>
-                            <td>XYZ</td>
-                          </tr>
-                          <tr>
-                            <th width="30%">Co-Supervisor (External)</th>
-                            <td width="2%">:</td>
-                            <td>XYZ</td>
-                          </tr>
-                        </tbody>
-                      </table>
-                    </div>
-                  </div>
+                  
                   <div style={{ height: "26px" }}></div>
                   <div className="card shadow-sm">
                     <div className="card-header bg-transparent border-0">
@@ -142,7 +87,7 @@ function Profile() {
                       <table className="table table-bordered">
                         <tbody>
                           <tr>
-                            <th width="30%">Supervisor</th>
+                            <th width="30%">XYZ</th>
                             <td width="2%">:</td>
                             <td>XYZ</td>
                           </tr>

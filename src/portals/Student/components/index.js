@@ -1,5 +1,4 @@
 export { default as Supervisor } from "../pages/Supervisor_Selection"
-export { default as LineGraph } from "./LineGraph"
 export {default as MyProjectNav } from "./MyProjectNav";
 export { default as Profile } from "../pages/Profile";
 export { default as Home } from "../pages/Home";

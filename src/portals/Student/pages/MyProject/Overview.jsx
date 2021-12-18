@@ -1,7 +1,8 @@
 import React from 'react'
 import { Layout, Progress} from 'antd';
 import "antd/dist/antd.css";
-import { MyProjectNav, LineGraph } from '../../components'
+import { MyProjectNav } from '../../components';
+import { LineGraph } from "../../../../CommonComponents";
 const {Content} = Layout;
 
 function Overview(){

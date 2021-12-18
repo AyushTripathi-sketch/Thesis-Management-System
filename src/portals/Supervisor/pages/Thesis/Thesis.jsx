@@ -1,7 +1,7 @@
 import React from "react";
 import { Layout } from "antd";
-import "../SupervisorApp.css";
-import { tableIcons } from "../../../CommonComponents";
+import "../../SupervisorApp.css";
+import { tableIcons } from "../../../../CommonComponents";
 import MaterialTable from "material-table";
 const { Content } = Layout;
 
@@ -23,21 +23,21 @@ function Overview() {
       title: "Translational Data Analytics and Decision Science",
       name: "Ayush Tripathi",
       date: "12/12/2021",
-      url: "/st/profile",
+      url: "/sp/thesis/Adm_No",
     },
     {
       id: "2",
       title: "Resilient, Sustainable and Global Food Security for Health",
       name: "Mrinal Pathak",
       date: "12/12/2021",
-      url: "/st/profile",
+      url: "/sp/thesis/Adm_No",
     },
     {
       id: "3",
       title: "Prevention and Treatment of Chronic Brain Injury",
       name: "Aditya Mishra",
       date: "12/12/2021",
-      url: "/st/profile",
+      url: "/sp/thesis/Adm_No",
     },
     {
       id: "4",
@@ -45,7 +45,7 @@ function Overview() {
         "Personalized Food and Nutritional Metabolic Profiling to Improve Health.",
       name: "Pattewar Darshan",
       date: "12/12/2021",
-      url: "/st/profile",
+      url: "/sp/thesis/Adm_No",
     },
   ];
   return (

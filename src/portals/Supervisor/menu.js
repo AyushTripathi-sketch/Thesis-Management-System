@@ -3,7 +3,8 @@ import {
     TeamOutlined,
     AppstoreOutlined,
     HomeOutlined,
-    UserOutlined
+    UserOutlined,
+    DesktopOutlined
   } from '@ant-design/icons';
 
 const menu =[
@@ -26,6 +27,13 @@ const menu =[
         path:"/sp/mygroupoverview",
         icon:<TeamOutlined />,
         name:"My Group",
+        children:null,
+    },
+    {
+        key:"/sp/myproject",
+        path:"/sp/myproject",
+        icon:<DesktopOutlined />,
+        name:"My Project",
         children:null,
     },
     {

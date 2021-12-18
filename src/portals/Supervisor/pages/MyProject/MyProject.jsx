@@ -1,38 +1,41 @@
 import React, { useState } from "react";
 import { Layout } from "antd";
-import { tableIcons,Session } from "../../../../CommonComponents";
+import { tableIcons } from "../../../../CommonComponents";
 import "../../SupervisorApp.css";
 import MaterialTable from "material-table";
 const { Content } = Layout;
 
-function Overview() {
+function MyProject() {
   const [showSession,setShowSession]=useState(true);
   const columns=[
-    {title:"Admission No.",field:"id"},
-    {title:"Name",field:"name"},
-    {title:"Department",field:"department"},
+    {title:"Title",field:"title",filed:"url"},
+    {title:"Group Members",field:"gm"},
+    {title:"DSC Chairman",field:"dsc"},
+    {title:"Co-Supervisor",field:"cos"},
+    {title:"Start date",field:"sd"},
+    {title:"Examination",field:"ex"},
     {title:"Details",filed:"url",render:(rowData)=>(
       <a href={rowData.url}>View</a>
     )},
   ];
   const data=[
-    {id:"19JE0215",name:"Ayush Tripathi",department:"Mathematics & Computing",url:"/sp/mygroupoverview/Adm_No"},
-    {id:"19JE0215",name:"Mrinal Pathak",department:"Applied Physics",url:"/sp/mygroupoverview/Adm_No"},
-    {id:"19JE0215",name:"Aditya Mishra",department:"Electrical",url:"/sp/mygroupoverview/Adm_No"},
-    {id:"19JE0215",name:"Pattewar Darshan",department:"Mathematics & Computing",url:"/sp/mygroupoverview/Adm_No"}
-  ]
-  function handleClick(props){
-    setShowSession(false);
-  }
+    {title:'XYZ',
+    gm:'A,B,C,D',
+    dsc:'xyz',
+    cos:'abc',
+    sd:'date',
+    ex:'date',
+    url:'/sp/myproject/project_id'
+  }]
+  
   return (
         <Content style={{ margin: "25px 25px" }}>
           <div
             className="site-layout-background"
             style={{ padding: 24, minHeight: 400 }}
           >
-            <Session onClick={handleClick} style={{display:showSession?"inherit":"none"}}/>
-            <div className="container-fluid" style={{display:showSession?"none":"inherit"}} >
-            <MaterialTable title="Scholars" columns={columns} data={data}
+            <div className="container-fluid" >
+            <MaterialTable title="My Project" columns={columns} data={data}
               icons={tableIcons}
               options={{
                     // toolbar: false,
@@ -54,4 +57,4 @@ function Overview() {
   );
 }
 
-export default Overview;
+export default MyProject;
