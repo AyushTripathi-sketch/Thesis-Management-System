@@ -9,10 +9,8 @@ const { Content } = Layout;
 function Overview() {
   const props = {
     name: "file",
-    action: "https://www.mocky.io/v2/5cc8019d300000980a055e76",
-    headers: {
-      authorization: "authorization-text",
-    },
+    action: "https://run.mocky.io/v3/47d903b5-36e6-49ab-af80-ed864af71c16",
+    
     onChange(info) {
       if (info.file.status !== "uploading") {
         console.log(info.file, info.fileList);

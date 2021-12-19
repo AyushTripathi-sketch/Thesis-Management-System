@@ -30,7 +30,7 @@ function Overview() {
             className="site-layout-background"
             style={{ padding: 24, minHeight: 400 }}
           >
-            <Session onClick={handleClick} style={{display:showSession?"inherit":"none"}}/>
+            <Session onClick={handleClick} style={{display:showSession?"inherit":"none",marginTop:"5%"}}/>
             <div className="container-fluid" style={{display:showSession?"none":"inherit"}} >
             <MaterialTable title="Scholars" columns={columns} data={data}
               icons={tableIcons}

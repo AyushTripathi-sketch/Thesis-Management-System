@@ -24,7 +24,7 @@ function Session(props) {
   }
   const style = props.style;
   return (
-    <div className="container-fluid text-center" style={style}>
+    <div className="container-fluid" style={style}>
       <Form
         name="basic"
         labelCol={{ span: 8 }}
@@ -84,7 +84,7 @@ function Session(props) {
             }}
           />
         </Form.Item>
-        <Form.Item>
+        <Form.Item style={{textAlign:"center"}}>
           <Button type="primary" htmlType="submit" onClick={handleClick}>
             Show
           </Button>
