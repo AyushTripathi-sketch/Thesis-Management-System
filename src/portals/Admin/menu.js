@@ -11,6 +11,13 @@ import {
 
 const menu =[
     {
+        key:"/ad/home",
+        path:"/ad/home",
+        icon:<HomeOutlined />,
+        name:"Home",
+        children:null,
+    },
+    {
         key:"/ad/dashboard",
         path:"/ad/dashboard",
         icon:<DashboardOutlined />,
@@ -18,10 +25,10 @@ const menu =[
         children:null,
     },
     {
-        key:"/ad/home",
-        path:"/ad/home",
-        icon:<HomeOutlined />,
-        name:"Home",
+        key:"/ad/details",
+        path:"/ad/details",
+        icon:<DashboardOutlined />,
+        name:"Details",
         children:null,
     },
     {
@@ -63,21 +70,21 @@ const menu =[
         key:"/ad/create-new",
         path:"/ad/create-new",
         icon:<PlusCircleOutlined />,
-        name:"Create New",
+        name:"Add New",
         children:[
             {
-                key:"/ad/addscholar",
-                path:"/ad/addscholar",
+                key:"/ad/add_new/scholar",
+                path:"/ad/add_new/scholar",
                 name:"Add Scholar",
             },
             {
-                key:"/ad/addsupervisor",
-                path:"/ad/addsupervisor",
+                key:"/ad/add_new/supervisor",
+                path:"/ad/add_new/supervisor",
                 name:"Add Supervisor",
             },
             {
-                key:"/ad/addexaminer",
-                path:"/ad/addexaminer",
+                key:"/ad/add_new/examiner",
+                path:"/ad/add_new/examiner",
                 name:"Add Examiner",
             }
         ]
