@@ -70,6 +70,45 @@ function Details() {
   </Link>
   </Col>
   
+  <Col span={6}>
+  <Link to={'/ad/details/dsc'}>
+  <Card
+      hoverable
+      className="rounded"
+    style={{ maxWidth: 200, textAlign: 'center', margin:"10px" }}
+    cover={
+      <img
+        alt="example"
+        src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
+      />
+    }
+  >
+    <Meta
+      title="DSC"
+    />
+  </Card>
+  </Link>
+  </Col>
+
+  <Col span={6}>
+  <Link to={'/ad/details/thesis'}>
+  <Card
+      hoverable
+      className="rounded"
+    style={{ maxWidth: 200, textAlign: 'center', margin:"10px" }}
+    cover={
+      <img
+        alt="example"
+        src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
+      />
+    }
+  >
+    <Meta
+      title="Thesis"
+    />
+  </Card>
+  </Link>
+  </Col>
     </Row>
     </Content>
   );

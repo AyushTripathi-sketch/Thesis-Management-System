@@ -2,7 +2,6 @@ import {
     UnorderedListOutlined,
     CalendarOutlined,
     FolderViewOutlined,
-    HomeOutlined,
     UserOutlined,
     MailOutlined,
     PlusCircleOutlined,
@@ -11,13 +10,6 @@ import {
 
 const menu =[
     {
-        key:"/ad/home",
-        path:"/ad/home",
-        icon:<HomeOutlined />,
-        name:"Home",
-        children:null,
-    },
-    {
         key:"/ad/dashboard",
         path:"/ad/dashboard",
         icon:<DashboardOutlined />,
@@ -25,17 +17,17 @@ const menu =[
         children:null,
     },
     {
+        key:"/ad/profile",
+        path:"/ad/profile",
+        icon:<UserOutlined />,
+        name:"My Profile",
+        children:null,
+    },
+    {
         key:"/ad/details",
         path:"/ad/details",
         icon:<DashboardOutlined />,
         name:"Details",
-        children:null,
-    },
-    {
-        key:"/ad/profile",
-        path:"/ad/profile",
-        icon:<UserOutlined />,
-        name:"Profile",
         children:null,
     },
     {

@@ -1,5 +1,4 @@
 export { default as Dashboard} from "../pages/Dashboard";
-export { default as Home} from "../pages/Home";
 export { default as AddScholar} from "../pages/AddNew/AddScholar";
 export { default as AddSupervisor} from "../pages/AddNew/AddSupervisor";
 export { default as AddExaminer} from "../pages/AddNew/AddExaminer";
