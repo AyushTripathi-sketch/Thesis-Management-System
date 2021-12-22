@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Layout, Menu } from "antd";
 import mainlogo from "../images/scholar.png";
 import { Link } from "react-router-dom";
@@ -9,8 +9,7 @@ const { SubMenu } = Menu;
 
 function SideBar(props) {
   const [collapsed, setCollapsed] = useState(false);
-  const [selectedKey, setSelectedKey] = useState([props.menu[0].path]);
-
+  const [selectedKey, setSelectedKey] = useState(props.menu[0].path);
   const menuItems = [];
   let childrens;
 
@@ -19,10 +18,9 @@ function SideBar(props) {
     setCollapsed(collapsed);
   }
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  useEffect(() => {
-    setSelectedKey(window.location.pathname);
-  });
+  function handleClick(event){
+    setSelectedKey(event.key);
+  }
 
   props.menu.forEach((item) => {
     if (item.children === null) {
@@ -60,6 +58,7 @@ function SideBar(props) {
         defaultSelectedKeys={[props.menu[0].path]}
         selectedKeys={[selectedKey]}
         mode="inline"
+        onClick={handleClick}
       >
         {menuItems}
       </Menu>
