@@ -1,9 +1,10 @@
 /* eslint-disable no-template-curly-in-string */
-import React from "react";
-import { Layout } from "antd";
+import React, {useState} from "react";
+import { Layout,Modal } from "antd";
 import { Form, Input, Button } from "antd";
 import MaterialTable from "material-table";
 import { MyProjectNav } from "../../components";
+import TextArea from "antd/lib/input/TextArea";
 const { Content } = Layout;
 
 const layout = {
@@ -42,6 +43,26 @@ const columns = [
 ];
 
 function Forums() {
+  const [isModalVisible, setModalVisible] = useState(false);
+  function showUploadDialog() {
+    setModalVisible(true);
+  }
+  function handleOk() {
+    setModalVisible(false);
+  }
+  function handleCancel() {
+    setModalVisible(false);
+  }
+  const columns = [
+    { title: "Sr. No.", field: "sr" },
+    { title: "Thread Title", field: "title" },
+    { title: "Description", field: "desc" },
+    { title: "Posted By", field: "by" },
+    { title: "Date", field: "date" },
+    { title: "Replies", field: "replies" },
+    { title: "Upvote", field: "vote" },
+    {render:(rowData)=>(<Button onClick={showUploadDialog}type="link">Reply</Button>)}
+  ];
   return (
     <Content style={{ margin: "25px 25px" }}>
       <MyProjectNav />
@@ -102,6 +123,18 @@ function Forums() {
             style={{ boxShadow: "none" }}
           />
         </div>
+        <Modal
+          title="Forum Reply"
+          visible={isModalVisible}
+          okText="Submit"
+          onOk={handleOk}
+          onCancel={handleCancel}
+          centered={true}
+          width="40%"
+          style={{ minWidth: "500px", maxWidth: "900px" }}
+        >
+          <TextArea autoSize={{ minRows: 5, maxRows: 6 }} placeholder="Type your reply.."></TextArea>
+        </Modal>
       </div>
     </Content>
   );
