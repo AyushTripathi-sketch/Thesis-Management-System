@@ -3,13 +3,15 @@ import { Layout } from "antd";
 import "antd/dist/antd.css";
 import MaterialTable from "material-table";
 import { MyProjectNav } from "../../components";
+import { tableIcons } from "../../../../CommonComponents";
+import Save from '@material-ui/icons/Save';
 const { Content } = Layout;
 
 const columns = [
-  { title: "Sr No", field: "sr" },
-  { title: "Action", field: "action" },
-  { title: "Status", field: "status" },
-  { title: "Due Date", field: "date" },
+  { title: "Sr No", field: "sr",editable: 'never'},
+  { title: "Action", field: "action",editable: 'never'},
+  { title: "Due Date", field: "date",editable: 'never'},
+  { title: "Status", field: "status", lookup: {0: 'Incomplete',1:'Complete'}},
 ];
 
 //Phase 1
@@ -17,32 +19,32 @@ const data1 = [
   {
     sr: "1",
     action: "First meeting: Basics, agreements and getting ready",
-    status: "Completed",
+    status: 1,
     date: "XX/XX/XXXX",
   },
   {
     sr: "2",
     action: "Peer Review - Project Plan",
-    status: "Incomplete",
+    status: 0,
     date: "XX/XX/XXXX",
   },
   {
     sr: "3",
     action: "Submit Project Plan",
-    status: "Incomplete",
+    status: 0,
     date: "XX/XX/XXXX",
   },
   {
     sr: "4",
     action: "Approval of Project Plan",
-    status: "Incomplete",
+    status: 0,
     date: "XX/XX/XXXX",
   },
   {
     sr: "5",
     action:
       "Thesis text including: Research problem, aim and question(s) method",
-    status: "Incomplete",
+    status: 0,
     date: "XX/XX/XXXX",
   },
 ];
@@ -52,7 +54,7 @@ const data2 = [
   {
     sr: "1",
     action: "Data Collection",
-    status: "Incomplete",
+    status: 0,
     date: "XX/XX/XXXX",
   },
 ];
@@ -62,7 +64,7 @@ const data3 = [
   {
     sr: "1",
     action: "Thesis text including: results, discussion and conclusions",
-    status: "Incomplete",
+    status: 0,
     date: "XX/XX/XXXX",
   },
 ];
@@ -72,26 +74,26 @@ const data4 = [
   {
     sr: "1",
     action: "Submit Final Seminar Thesis",
-    status: "Incomplete",
+    status: 0,
     date: "XX/XX/XXXX",
   },
   {
     sr: "2",
     action: "Final Seminar",
-    status: "Incomplete",
+    status: 0,
     date: "XX/XX/XXXX",
   },
   {
     sr: "3",
     action: "Final Thesis - Revised version",
-    status: "Incomplete",
+    status: 0,
     date: "XX/XX/XXXX",
   },
 ];
 
 //Phase 5
 const data5 = [
-  { sr: "1", action: "Grading", status: "Incomplete", date: "XX/XX/XXXX" },
+  { sr: "1", action: "Grading", status: 0, date: "XX/XX/XXXX" },
 ];
 
 function ActivityPlan() {
@@ -124,11 +126,28 @@ function ActivityPlan() {
             title=""
             columns={columns}
             data={data1}
+            icons={tableIcons} 
+            actions={[
+          {
+          icon: Save,
+          tooltip: 'Save Status',
+          onClick: (event, rowData) => alert("You saved the status")
+          }
+          ]}
             options={{
               toolbar: false,
               paging: false,
+            actionsColumnIndex: -1
             }}
             style={{ boxShadow: "none" }}
+            cellEditable={{
+          onCellEditApproved: (newValue) => {
+          return new Promise((resolve) => {
+            console.log('newValue: ' + newValue);
+            setTimeout(resolve, 1000);
+          });
+        }
+      }}
           />
         </div>
         <div>
@@ -142,15 +161,33 @@ function ActivityPlan() {
           >
             Phase 2: Implementation
           </h4>
+          
           <MaterialTable
             title=""
             columns={columns}
             data={data2}
+            icons={tableIcons} 
+            actions={[
+          {
+          icon: Save,
+          tooltip: 'Save Status',
+          onClick: (event, rowData) => alert("You saved the status")
+          }
+          ]}
             options={{
               toolbar: false,
               paging: false,
+            actionsColumnIndex: -1
             }}
             style={{ boxShadow: "none" }}
+            cellEditable={{
+          onCellEditApproved: (newValue) => {
+          return new Promise((resolve) => {
+            console.log('newValue: ' + newValue);
+            setTimeout(resolve, 1000);
+          });
+        }
+      }}
           />
         </div>
         <div>
@@ -164,15 +201,33 @@ function ActivityPlan() {
           >
             Phase 3: Result discussing and Conclusion
           </h4>
+          
           <MaterialTable
             title=""
             columns={columns}
             data={data3}
+            icons={tableIcons} 
+            actions={[
+          {
+          icon: Save,
+          tooltip: 'Save Status',
+          onClick: (event, rowData) => alert("You saved the status")
+          }
+          ]}
             options={{
               toolbar: false,
               paging: false,
+            actionsColumnIndex: -1
             }}
             style={{ boxShadow: "none" }}
+            cellEditable={{
+          onCellEditApproved: (newValue) => {
+          return new Promise((resolve) => {
+            console.log('newValue: ' + newValue);
+            setTimeout(resolve, 1000);
+          });
+        }
+      }}
           />
         </div>
         <div>
@@ -186,15 +241,33 @@ function ActivityPlan() {
           >
             Phase 4: Final Seminar
           </h4>
+          
           <MaterialTable
             title=""
             columns={columns}
             data={data4}
+            icons={tableIcons} 
+            actions={[
+          {
+          icon: Save,
+          tooltip: 'Save Status',
+          onClick: (event, rowData) => alert("You saved the status")
+          }
+          ]}
             options={{
               toolbar: false,
               paging: false,
+            actionsColumnIndex: -1
             }}
             style={{ boxShadow: "none" }}
+            cellEditable={{
+          onCellEditApproved: (newValue) => {
+          return new Promise((resolve) => {
+            console.log('newValue: ' + newValue);
+            setTimeout(resolve, 1000);
+          });
+        }
+      }}
           />
         </div>
         <div>
@@ -208,15 +281,33 @@ function ActivityPlan() {
           >
             Phase 5: Grading
           </h4>
+          
           <MaterialTable
             title=""
             columns={columns}
             data={data5}
+            icons={tableIcons} 
+            actions={[
+          {
+          icon: Save,
+          tooltip: 'Save Status',
+          onClick: (event, rowData) => alert("You saved the status")
+          }
+          ]}
             options={{
               toolbar: false,
               paging: false,
+            actionsColumnIndex: -1
             }}
             style={{ boxShadow: "none" }}
+            cellEditable={{
+          onCellEditApproved: (newValue) => {
+          return new Promise((resolve) => {
+            console.log('newValue: ' + newValue);
+            setTimeout(resolve, 1000);
+          });
+        }
+      }}
           />
         </div>
       </div>

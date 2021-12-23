@@ -29,14 +29,14 @@ function Final() {
               <br />
               N/A
             </p>
-            <p>
+            {/* <p>
               <b>Max Participants:</b>
               <br />2
             </p>
             <p>
               <b>Min Opponents:</b>
               <br />1
-            </p>
+            </p> */}
           </div>
           <div
             className="border border-2 rounded"
@@ -97,7 +97,7 @@ function Final() {
               <br />
             </div>
           </div>
-          <div
+          {/* <div
             className="site-layout-background"
             style={{ marginBottom: "10px" }}
           >
@@ -159,7 +159,7 @@ function Final() {
               </ul>
               <br />
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </Content>
