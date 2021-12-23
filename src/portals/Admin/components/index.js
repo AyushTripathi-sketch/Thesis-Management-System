@@ -7,6 +7,7 @@ export { default as Details} from "../pages/Details/Details";
 export { default as Scholar} from "../pages/Details/Scholar";
 export { default as Supervisor} from "../pages/Details/Supervisor";
 export { default as Examiner} from "../pages/Details/Examiner";
-export { default as Thesis} from "../pages/Details/Thesis";
+export { default as Thesis} from "../pages/Details/Thesis/Thesis";
+export { default as ThesisDetails} from "../pages/Details/Thesis/ThesisDetails";
 export { default as ColumnGraph} from "./ColumnGraph";
 export { default as PieGraph} from "./PieGraph";

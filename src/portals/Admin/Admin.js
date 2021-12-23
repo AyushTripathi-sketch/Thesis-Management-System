@@ -1,7 +1,7 @@
 import React from "react";
 import { Layout } from "antd";
 import { Headerr, Footerr,SideBar, Navbar} from "../../CommonComponents";
-import { AddScholar,AddSupervisor,AddExaminer,Dashboard,AddNew, Details, Scholar,Supervisor,Examiner, Thesis} from "./components";
+import { AddScholar,AddSupervisor,AddExaminer,Dashboard,AddNew, Details, Scholar,Supervisor,Examiner, Thesis, ThesisDetails} from "./components";
 import { Routes, Route } from "react-router-dom";
 import menu from "./menu";
 
@@ -20,6 +20,7 @@ function Admin() {
         <Route path="/details/supervisor" element={<Supervisor/>}/>
         <Route path="/details/examiner" element={<Examiner/>}/>
         <Route path="/details/thesis" element={<Thesis/>}/>
+        <Route path="/details/thesis/thesis_id" element={<ThesisDetails/>}/>
         <Route path="/add_new" element={<AddNew />} />
         <Route path="/add_new/scholar" element={<AddScholar />} />
         <Route path="/add_new/supervisor" element={<AddSupervisor />} />
