@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component,useState } from "react";
 import StepProgressComponent from "../components/StepProgressComponent";
 import TableComp from "../components/TableComp";
 import { Button, Layout, Modal } from "antd";
@@ -6,46 +6,43 @@ import bytesToSize from "../../../utils/Utility_Conversions";
 import "../StudentApp.css";
 const { Content } = Layout;
 
-export class ProgressReport extends Component {
-  constructor(props) {
-    super(props);
+function ProgressReport(){
+  const [applyPSSEnabled] = useState(true);
+  const [fileInputButton] = useState(React.createRef());
+  const [state,setState] = useState(
+                      {
+                        
+                          isModalVisible: false,
+                          file: null,
+                      }
+  );
 
-    this.applyPSSEnabled = true;
-    this.fileInputButton = React.createRef();
+    function onFileSelect(e){
+      setState({ file: e.target.files[0] });
+    }
 
-    this.state = {
-      isModalVisible: false,
-      file: null,
-    };
-  }
+    function onBrowseClick(){
+      fileInputButton.current.click();
+    }
+    
+    function showUploadDialog(){
+      setState({
+        isModalVisible: true,
+      });
+    }
 
-  onFileSelect(event) {
-    this.setState({ file: event.target.files[0] });
-  }
+    function handleOk() {
+      setState({
+        isModalVisible: false,
+      });
+    }
 
-  onBrowseClick() {
-    this.fileInputButton.current.click();
-  }
+    function handleCancel() {
+      setState({
+        isModalVisible: false,
+      });
+    }
 
-  showUploadDialog() {
-    this.setState({
-      isModalVisible: true,
-    });
-  }
-
-  handleOk() {
-    this.setState({
-      isModalVisible: false,
-    });
-  }
-
-  handleCancel() {
-    this.setState({
-      isModalVisible: false,
-    });
-  }
-
-  render() {
     return (
       <Content style={{ margin: "25px 25px" }}>
         <div>
@@ -111,18 +108,18 @@ export class ProgressReport extends Component {
                 justifyContent: "center",
                 alignItems: "center",
                 // eslint-disable-next-line no-dupe-keys
-                display: this.applyPSSEnabled ? "inherit" : "none",
+                display:applyPSSEnabled ? "inherit" : "none",
               }}
             >
-              <Button type="primary" onClick={() => this.showUploadDialog()}>
+              <Button type="primary" onClick={() => showUploadDialog()}>
                 Apply for Pre Submission Seminar
               </Button>
               <Modal
                 title="Submit PSS Application"
-                visible={this.state.isModalVisible}
+                visible={state.isModalVisible}
                 okText="Submit"
-                onOk={() => this.handleOk()}
-                onCancel={() => this.handleCancel()}
+                onOk={() => handleOk()}
+                onCancel={() => handleCancel()}
                 centered={true}
                 width="40%"
                 style={{ minWidth: "500px", maxWidth: "900px" }}
@@ -153,20 +150,20 @@ export class ProgressReport extends Component {
                     <p style={{ fontSize: "large" }}>
                       Upload Filled Application:
                     </p>
-                    <Button type="primary" onClick={() => this.onBrowseClick()}>
+                    <Button type="primary" onClick={() => onBrowseClick()}>
                       Choose File
                     </Button>
                     <input
                       type="file"
                       name="file"
-                      onChange={(event) => this.onFileSelect(event)}
+                      onChange={(event) => onFileSelect(event)}
                       style={{ display: "none" }}
-                      ref={this.fileInputButton}
+                      ref={fileInputButton}
                     />
                     <p style={{ paddingTop: "4px" }}>
-                      {this.state.file
-                        ? `${this.state.file.name} (${bytesToSize(
-                            this.state.file.size
+                      {state.file
+                        ? `${state.file.name} (${bytesToSize(
+                            state.file.size
                           )})`
                         : `No file chosen!`}
                     </p>
@@ -179,6 +176,5 @@ export class ProgressReport extends Component {
       </Content>
     );
   }
-}
 
 export default ProgressReport;
