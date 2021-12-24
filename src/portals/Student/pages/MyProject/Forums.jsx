@@ -27,8 +27,7 @@ const data = [
     desc: "XYZ ABC POI MJK",
     by: "Aditya Mishra",
     date: "07/12/2021",
-    replies: "2",
-    vote: "21",
+    replies: "2"
   },
 ];
 
@@ -50,7 +49,6 @@ function Forums() {
     { title: "Posted By", field: "by" },
     { title: "Date", field: "date" },
     { title: "Replies", field: "replies" },
-    { title: "Upvote", field: "vote" },
     {render:(rowData)=>(<Button onClick={showUploadDialog}type="link">Reply</Button>)}
   ];
   return (
