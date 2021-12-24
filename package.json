@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "@ant-design/charts": "^1.3.2",
-    "@ant-design/pro-form": "^1.50.1",
+    "@ant-design/pro-form": "^1.52.3",
     "@material-ui/core": "^4.12.3",
     "@material-ui/icons": "^4.11.2",
     "@testing-library/jest-dom": "^5.15.0",

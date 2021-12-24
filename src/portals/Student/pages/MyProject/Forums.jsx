@@ -1,7 +1,7 @@
 /* eslint-disable no-template-curly-in-string */
 import React, {useState} from "react";
-import { Layout,Modal } from "antd";
-import { Form, Input, Button } from "antd";
+import { Layout,Button,Modal } from "antd";
+import { Form, Input,} from "antd";
 import MaterialTable from "material-table";
 import { MyProjectNav } from "../../components";
 import TextArea from "antd/lib/input/TextArea";
@@ -27,21 +27,32 @@ const data = [
     desc: "XYZ ABC POI MJK",
     by: "Aditya Mishra",
     date: "07/12/2021",
-    replies: "2"
+    replies: "2",
+    vote: "21",
   },
 ];
 
 function Forums() {
-  const [isModalVisible, setModalVisible] = useState(false);
-  function showUploadDialog() {
-    setModalVisible(true);
+  
+  const [form] = Form.useForm()
+    const [isModalVisible, setIsModalVisible] = useState(false)
+function showUploadDialog() {
+    setIsModalVisible(true);
   }
-  function handleOk() {
-    setModalVisible(false);
-  }
-  function handleCancel() {
-    setModalVisible(false);
-  }
+
+    const handleCancel = () => {
+        setIsModalVisible(false)
+        form.resetFields()
+    }
+
+    const handleOk = () => {
+        form.submit()
+    }
+
+    const onFinish = (values) => {
+        console.log(values)
+        setIsModalVisible(false)
+    }
   const columns = [
     { title: "Sr. No.", field: "sr" },
     { title: "Thread Title", field: "title" },
@@ -112,17 +123,25 @@ function Forums() {
           />
         </div>
         <Modal
-          title="Forum Reply"
-          visible={isModalVisible}
-          okText="Submit"
-          onOk={handleOk}
-          onCancel={handleCancel}
-          centered={true}
-          width="40%"
-          style={{ minWidth: "500px", maxWidth: "900px" }}
-        >
-          <TextArea autoSize={{ minRows: 5, maxRows: 6 }} placeholder="Type your reply.."></TextArea>
-        </Modal>
+                title="Forum Reply"
+                visible={isModalVisible}
+                onOk={handleOk}
+                onCancel={handleCancel}
+                footer={[
+                    <Button key="back" onClick={handleCancel}>
+                        Cancel
+                    </Button>,
+                    <Button key="submit" type="primary" onClick={handleOk}>
+                        Submit
+                    </Button>,
+                ]}
+            >
+                <Form form={form} onFinish={onFinish} scrollToFirstError>
+                    <Form.Item name="Reply">
+                        <TextArea autoSize={{minRows:5}}/>
+                    </Form.Item>
+                </Form>
+            </Modal>
       </div>
     </Content>
   );
