@@ -31,17 +31,17 @@ const menu =[
         children:null,
     },
     {
-        key:"/ad/calendar",
-        path:"/ad/calendar",
+        key:"/ad/events",
+        path:"/ad/events",
         icon:<CalendarOutlined />,
-        name:"Calendar",
+        name:"Events",
         children:null,
     },
     {
-        key:"/ad/email",
-        path:"/ad/email",
+        key:"/ad/inbox",
+        path:"/ad/inbox",
         icon:<MailOutlined />,
-        name:"Email",
+        name:"Inbox",
         children:null,
     },
     {
