@@ -20,7 +20,10 @@ import {
   Forms,
   Files,
   ScholarDetails,
-  Tasks
+  Tasks,
+  CE,
+  PSS,
+  RPS
 } from "./components";
 import { Routes, Route } from "react-router-dom";
 import menu from "./menu";
@@ -53,6 +56,9 @@ function Admin() {
             <Route path="/add_new/supervisor" element={<AddSupervisor />} />
             <Route path="/add_new/examiner" element={<AddExaminer />} />
             <Route path="/tasks" element={<Tasks />} />
+            <Route path="/tasks/ce" element={<CE />} />
+            <Route path="/tasks/pss" element={<PSS />} />
+            <Route path="/tasks/rps" element={<RPS />} />
           </Routes>
           <Footerr />
         </Layout>

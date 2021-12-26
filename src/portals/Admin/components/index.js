@@ -18,5 +18,8 @@ export { default as Thesis} from "../pages/Details/Thesis/Thesis";
 export { default as Forms} from "../pages/Details/Forms";
 export { default as ThesisDetails} from "../pages/Details/Thesis/ThesisDetails";
 export { default as Tasks} from "../pages/Tasks/Tasks";
+export { default as CE} from "../pages/Tasks/CE";
+export { default as PSS} from "../pages/Tasks/PSS";
+export { default as RPS} from "../pages/Tasks/RPS";
 export { default as ColumnGraph} from "./ColumnGraph";
 export { default as PieGraph} from "./PieGraph";

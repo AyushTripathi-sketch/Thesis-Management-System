@@ -32,7 +32,7 @@ function Tasks() {
   </Col>
   
   <Col span={6}>
-  <Link to={'/ad/add_new/supervisor'}>
+  <Link to={'/ad/tasks/ce'}>
   <Card
       hoverable
       className="rounded"
@@ -45,14 +45,14 @@ function Tasks() {
     }
   >
     <Meta
-      title="Supervisor"
+      title="Comprehensive Examination Eligibility list"
     />
   </Card>
   </Link>
   </Col>
   
   <Col span={6}>
-  <Link to={'/ad/add_new/examiner'}>
+  <Link to={'/ad/tasks/rps'}>
   <Card
       hoverable
       className="rounded"
@@ -65,12 +65,32 @@ function Tasks() {
     }
   >
     <Meta
-      title="Examiner"
+      title="Research Proposal Seminar Eligibility list"
     />
   </Card>
   </Link>
   </Col>
   
+  <Col span={6}>
+  <Link to={'/ad/tasks/pss'}>
+  <Card
+      hoverable
+      className="rounded"
+    style={{ maxWidth: 200, textAlign: 'center', margin:"10px" }}
+    cover={
+      <img
+        alt="example"
+        src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
+      />
+    }
+  >
+    <Meta
+      title="Pre-Submission Seminar Eligibility list"
+    />
+  </Card>
+  </Link>
+  </Col>
+
     </Row>
     </Content>
   );
