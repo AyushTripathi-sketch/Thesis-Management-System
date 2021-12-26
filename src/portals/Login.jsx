@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Layout } from "antd";
-import { Headerr } from "../CommonComponents";
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -20,14 +19,12 @@ export default function Login() {
   }
 
   return (
-    <Layout style={{ minHeight: "100vh" }}>
+    <Layout style={{ minHeight: "80vh"}}>
       <Layout className="site-layout">
-      <Headerr/>
-        <section style={{ backgroundColor: "#177ddc" }}>
-          <div className="container-fluid">
+          <div className="container-fluid" style={{backgroundColor:"#001529"}}>
             <div
               className="card"
-              style={{ margin: "10% 10%", borderRadius: "1rem" }}
+              style={{ margin: "5% 10%", borderRadius: "1rem" }}
             >
               <div className="card-body">
                 <div class="row">
@@ -55,7 +52,7 @@ export default function Login() {
                       </div>
                       <div class="card-body">
                         <form>
-                          <div class="form-group" style={{ margin: "10%" }}>
+                          <div class="form-group" style={{ margin: "8%" }}>
                             <input
                               name="AdmNo"
                               onChange={handleChange}
@@ -63,7 +60,7 @@ export default function Login() {
                               placeholder="Enter Admission Number"
                             />
                           </div>
-                          <div class="form-group" style={{ margin: "10%" }}>
+                          <div class="form-group" style={{ margin: "8%" }}>
                             <input
                               type="password"
                               name="password"
@@ -71,7 +68,7 @@ export default function Login() {
                               placeholder="Password"
                             />
                           </div>
-                          <div class="form-group" style={{ margin: "10%" }}>
+                          <div class="form-group" style={{ margin: "8%" }}>
                             <div
                               class="g-recaptcha"
                               data-sitekey="6LfTVI0dAAAAABKWPpH9gvbfMcPhMsnnPPlTlmJK"
@@ -79,7 +76,7 @@ export default function Login() {
                           </div>
                             <button
                               type="submit"
-                              style={{ width: "100%", marginTop: "5%" }}
+                              style={{ width: "80%", marginTop: "3%" }}
                               class="btn btn-primary"
                               onClick={handleSubmit}
                             >
@@ -93,7 +90,6 @@ export default function Login() {
               </div>
             </div>
           </div>
-        </section>
       </Layout>
     </Layout>
   );
