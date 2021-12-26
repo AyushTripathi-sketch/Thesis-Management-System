@@ -19,7 +19,8 @@ import {
   Compose,
   Forms,
   Files,
-  ScholarDetails
+  ScholarDetails,
+  Tasks
 } from "./components";
 import { Routes, Route } from "react-router-dom";
 import menu from "./menu";
@@ -51,6 +52,7 @@ function Admin() {
             <Route path="/add_new/scholar" element={<AddScholar />} />
             <Route path="/add_new/supervisor" element={<AddSupervisor />} />
             <Route path="/add_new/examiner" element={<AddExaminer />} />
+            <Route path="/tasks" element={<Tasks />} />
           </Routes>
           <Footerr />
         </Layout>

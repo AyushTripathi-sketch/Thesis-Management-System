@@ -40,6 +40,7 @@ function ScholarDetails(){
                 </h3>
               </div>
               <div className="card-body pt-0">
+              <p>CGPA: X</p>
                 <table className="table table-bordered">
                   <tbody>
                     <tr>
