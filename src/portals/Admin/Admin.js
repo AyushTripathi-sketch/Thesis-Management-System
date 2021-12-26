@@ -18,7 +18,8 @@ import {
   Email,
   Compose,
   Forms,
-  Files
+  Files,
+  ScholarDetails
 } from "./components";
 import { Routes, Route } from "react-router-dom";
 import menu from "./menu";
@@ -40,6 +41,7 @@ function Admin() {
             <Route path="/inbox/email" element={<Email />} />
             <Route path="/inbox/compose" element={<Compose />} />
             <Route path="/details/scholar" element={<Scholar />} />
+            <Route path="/details/scholar/Adm_No" element={<ScholarDetails />} />
             <Route path="/details/supervisor" element={<Supervisor />} />
             <Route path="/details/examiner" element={<Examiner />} />
             <Route path="/details/thesis" element={<Thesis />} />

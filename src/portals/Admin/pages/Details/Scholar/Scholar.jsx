@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Layout } from "antd";
-import { tableIcons,Session } from "../../../../CommonComponents";
-import "../../AdminApp.css";
+import { tableIcons,Session } from "../../../../../CommonComponents";
+import "../../../AdminApp.css";
 import MaterialTable from "material-table";
 import { useNavigate } from "react-router-dom";
 const { Content } = Layout;
@@ -18,10 +18,10 @@ function Scholar() {
     )},
   ];
   const data=[
-    {id:"19JE0215",name:"Ayush Tripathi",department:"Mathematics & Computing",url:"/sp/mygroupoverview/Adm_No"},
-    {id:"19JE0215",name:"Mrinal Pathak",department:"Applied Physics",url:"/sp/mygroupoverview/Adm_No"},
-    {id:"19JE0215",name:"Aditya Mishra",department:"Electrical",url:"/sp/mygroupoverview/Adm_No"},
-    {id:"19JE0215",name:"Pattewar Darshan",department:"Mathematics & Computing",url:"/sp/mygroupoverview/Adm_No"}
+    {id:"19JE0215",name:"Ayush Tripathi",department:"Mathematics & Computing",url:"/ad/details/scholar/Adm_No"},
+    {id:"19JE0215",name:"Mrinal Pathak",department:"Applied Physics",url:"//ad/details/scholar/Adm_No"},
+    {id:"19JE0215",name:"Aditya Mishra",department:"Electrical",url:"/ad/details/scholar/Adm_No"},
+    {id:"19JE0215",name:"Pattewar Darshan",department:"Mathematics & Computing",url:"/ad/details/scholar/Adm_No"}
   ]
   function handleClick(props){
     setShowSession(false);
