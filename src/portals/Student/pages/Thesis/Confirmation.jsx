@@ -11,7 +11,7 @@ function Confirmation() {
         style={{ padding: "10px", height: "100%" }}
       >
       <div className="text-center">
-      <h2>Thesis Submission</h2>
+      <h2>Thesis Review and Submission</h2>
       </div>
         <Divider />
         <div className="student-profile py-4">
