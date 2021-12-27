@@ -1,188 +1,172 @@
-import React, { Component } from "react";
-import { Layout, Button } from "antd";
+import React from "react";
+import { Layout, Button, Form, Upload } from "antd";
 import "../../SupervisorApp.css";
-import bytesToSize from "../../../../utils/Utility_Conversions";
 import scholar from "../../images/scholar.png";
 import { LineGraph } from "../../../../CommonComponents";
 import { UploadOutlined } from "@ant-design/icons";
 const { Content } = Layout;
 
-export class ScholarDetails extends Component {
-  constructor(props) {
-    super(props);
+function ScholarDetails() {
+  const [form] = Form.useForm();
 
-    this.fileInputButton = React.createRef();
-
-    this.state = {
-      file: null,
-      isSubmitted: false,
-    };
+  function onFinish(fileList) {
+    console.log(fileList);
   }
-
-  onFileSelect(event) {
-    this.setState({ file: event.target.files[0] });
+  function onFinishFailed(errorInfo) {
+    console.log(errorInfo);
   }
-
-  onBrowseClick() {
-    this.fileInputButton.current.click();
-  }
-
-  onSubmitClick() {
-    this.setState({
-      isSubmitted: true,
-    });
-  }
-  render() {
   return (
     <Content style={{ margin: "25px 25px" }}>
-    <div className="student-profile py-4">
-      <div className="container">
-        <div className="row">
-          <div className="col-lg-4">
-            <div className="card shadow-sm" style={{ marginBottom: "20px" }}>
-              <div className="card-header bg-transparent text-center">
-                <img className="profile_img" src={scholar} alt="student dp" />
-                <h3>Name</h3>
-              </div>
-              <div className="card-body">
-                <p className="mb-0">
-                  <strong className="pr-1">Scholar ID : </strong>19DRXXXX
-                </p>
-                <p className="mb-0">
-                  <strong className="pr-1">Department : </strong>XYZ
-                </p>
-                <p className="mb-0">
-                  <strong className="pr-1">Branch : </strong>XYZ
-                </p>
-              </div>
-            </div>
-          </div>
-          <div className="col-lg-8">
-            <div className="card shadow-sm">
-              <div className="card-header bg-transparent border-0">
-                <h3 className="mb-0">
-                  <i className="far fa-clone pr-1"></i>General Information
-                </h3>
-              </div>
-              <div className="card-body pt-0">
-                <table className="table table-bordered">
-                  <tbody>
-                    <tr>
-                      <th width="30%">Email</th>
-                      <td width="2%">:</td>
-                      <td>XYZ</td>
-                    </tr>
-                    <tr>
-                      <th width="30%">Contact</th>
-                      <td width="2%">:</td>
-                      <td>98745XXXXX</td>
-                    </tr>
-                    <tr>
-                      <th width="30%">Registration Status</th>
-                      <td width="2%">:</td>
-                      <td>XYZ</td>
-                    </tr>
-                    <tr>
-                      <th width="30%">Qualify Degree</th>
-                      <td width="2%">:</td>
-                      <td>XYZ</td>
-                    </tr>
-                    <tr>
-                      <th width="30%">XYZ</th>
-                      <td width="2%">:</td>
-                      <td>XYZ</td>
-                    </tr>
-                  </tbody>
-                </table>
+      <div className="student-profile py-4">
+        <div className="container">
+          <div className="row">
+            <div className="col-lg-4">
+              <div className="card shadow-sm" style={{ marginBottom: "20px" }}>
+                <div className="card-header bg-transparent text-center">
+                  <img className="profile_img" src={scholar} alt="student dp" />
+                  <h3>Name</h3>
+                </div>
+                <div className="card-body">
+                  <p className="mb-0">
+                    <strong className="pr-1">Scholar ID : </strong>19DRXXXX
+                  </p>
+                  <p className="mb-0">
+                    <strong className="pr-1">Department : </strong>XYZ
+                  </p>
+                  <p className="mb-0">
+                    <strong className="pr-1">Branch : </strong>XYZ
+                  </p>
+                </div>
               </div>
             </div>
-            <div style={{ height: "26px" }}></div>
-            <div className="card shadow-sm">
-              <div className="card-header bg-transparent border-0">
-                <h3 className="mb-0">
-                  <i className="far fa-clone pr-1"></i>Other Information
-                </h3>
+            <div className="col-lg-8">
+              <div className="card shadow-sm">
+                <div className="card-header bg-transparent border-0">
+                  <h3 className="mb-0">
+                    <i className="far fa-clone pr-1"></i>General Information
+                  </h3>
+                </div>
+                <div className="card-body pt-0">
+                  <table className="table table-bordered">
+                    <tbody>
+                      <tr>
+                        <th width="30%">Email</th>
+                        <td width="2%">:</td>
+                        <td>XYZ</td>
+                      </tr>
+                      <tr>
+                        <th width="30%">Contact</th>
+                        <td width="2%">:</td>
+                        <td>98745XXXXX</td>
+                      </tr>
+                      <tr>
+                        <th width="30%">Registration Status</th>
+                        <td width="2%">:</td>
+                        <td>XYZ</td>
+                      </tr>
+                      <tr>
+                        <th width="30%">Qualify Degree</th>
+                        <td width="2%">:</td>
+                        <td>XYZ</td>
+                      </tr>
+                      <tr>
+                        <th width="30%">XYZ</th>
+                        <td width="2%">:</td>
+                        <td>XYZ</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
               </div>
-              <div className="card-body pt-0">
-                <table className="table table-bordered">
-                  <tbody>
-                    <tr>
-                      <th width="30%">Supervisor</th>
-                      <td width="2%">:</td>
-                      <td>XYZ</td>
-                    </tr>
-                    <tr>
-                      <th width="30%">Date of Joining</th>
-                      <td width="2%">:</td>
-                      <td>dd-mm-yyyy</td>
-                    </tr>
-                    <tr>
-                      <th width="30%">XYZ</th>
-                      <td width="2%">:</td>
-                      <td>XYZ</td>
-                    </tr>
-                    <tr>
-                      <th width="30%">XYZ</th>
-                      <td width="2%">:</td>
-                      <td>XYZ</td>
-                    </tr>
-                    <tr>
-                      <th width="30%">XYZ</th>
-                      <td width="2%">:</td>
-                      <td>XYZ</td>
-                    </tr>
-                  </tbody>
-                </table>
+              <div style={{ height: "26px" }}></div>
+              <div className="card shadow-sm">
+                <div className="card-header bg-transparent border-0">
+                  <h3 className="mb-0">
+                    <i className="far fa-clone pr-1"></i>Other Information
+                  </h3>
+                </div>
+                <div className="card-body pt-0">
+                  <table className="table table-bordered">
+                    <tbody>
+                      <tr>
+                        <th width="30%">Supervisor</th>
+                        <td width="2%">:</td>
+                        <td>XYZ</td>
+                      </tr>
+                      <tr>
+                        <th width="30%">Date of Joining</th>
+                        <td width="2%">:</td>
+                        <td>dd-mm-yyyy</td>
+                      </tr>
+                      <tr>
+                        <th width="30%">XYZ</th>
+                        <td width="2%">:</td>
+                        <td>XYZ</td>
+                      </tr>
+                      <tr>
+                        <th width="30%">XYZ</th>
+                        <td width="2%">:</td>
+                        <td>XYZ</td>
+                      </tr>
+                      <tr>
+                        <th width="30%">XYZ</th>
+                        <td width="2%">:</td>
+                        <td>XYZ</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
               </div>
-            </div>
-            <div style={{ height: "26px" }}></div>
-            <div className="card shadow-sm">
-              <div className="card-header bg-transparent border-0">
-                <h3 className="mb-0">
-                  <i className="far fa-clone pr-1"></i>Project Details
-                </h3>
+              <div style={{ height: "26px" }}></div>
+              <div className="card shadow-sm">
+                <div className="card-header bg-transparent border-0">
+                  <h3 className="mb-0">
+                    <i className="far fa-clone pr-1"></i>Project Details
+                  </h3>
+                </div>
+                <div className="card-body pt-0">
+                  <table className="table table-bordered">
+                    <tbody>
+                      <tr>
+                        <th width="30%">Title</th>
+                        <td width="2%">:</td>
+                        <td>XYZ</td>
+                      </tr>
+                      <tr>
+                        <th width="30%">Start Date</th>
+                        <td width="2%">:</td>
+                        <td>98745XXXXX</td>
+                      </tr>
+                      <tr>
+                        <th width="30%">Group Members</th>
+                        <td width="2%">:</td>
+                        <td>XYZ</td>
+                      </tr>
+                      <tr>
+                        <th width="30%">DSC Chairman</th>
+                        <td width="2%">:</td>
+                        <td>XYZ</td>
+                      </tr>
+                      <tr>
+                        <th width="30%">Co-Supervisor</th>
+                        <td width="2%">:</td>
+                        <td>XYZ</td>
+                      </tr>
+                      <tr>
+                        <th width="30%">Examination</th>
+                        <td width="2%">:</td>
+                        <td>XYZ</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <h5>
+                    <u>Progress</u>
+                  </h5>
+                  <LineGraph />
+                </div>
               </div>
-              <div className="card-body pt-0">
-                <table className="table table-bordered">
-                  <tbody>
-                    <tr>
-                      <th width="30%">Title</th>
-                      <td width="2%">:</td>
-                      <td>XYZ</td>
-                    </tr>
-                    <tr>
-                      <th width="30%">Start Date</th>
-                      <td width="2%">:</td>
-                      <td>98745XXXXX</td>
-                    </tr>
-                    <tr>
-                      <th width="30%">Group Members</th>
-                      <td width="2%">:</td>
-                      <td>XYZ</td>
-                    </tr>
-                    <tr>
-                      <th width="30%">DSC Chairman</th>
-                      <td width="2%">:</td>
-                      <td>XYZ</td>
-                    </tr>
-                    <tr>
-                      <th width="30%">Co-Supervisor</th>
-                      <td width="2%">:</td>
-                      <td>XYZ</td>
-                    </tr>
-                    <tr>
-                      <th width="30%">Examination</th>
-                      <td width="2%">:</td>
-                      <td>XYZ</td>
-                    </tr>
-                  </tbody>
-                </table>
-                <h5><u>Progress</u></h5>
-                <LineGraph />
-              </div>
-            </div>
 
-            <div style={{ height: "26px" }}></div>
+              <div style={{ height: "26px" }}></div>
               <div className="card shadow-sm">
                 <div className="card-header bg-transparent border-0">
                   <h3 className="mb-0">
@@ -190,43 +174,87 @@ export class ScholarDetails extends Component {
                   </h3>
                 </div>
                 <div className="card-body pt-0">
-                <p>
-                <a href="https://www.iitism.ac.in/~academics/assets/acad_forms/ph2.pdf">
-                <b>PH2</b>
-              </a>{" "} NEEDS TO BE SUBMITTED FOR THE CONSTITUTION OF DOCTORAL SCRUTINY COMMITTEE (DSC)
-            </p>
-            <Button
-              type="primary"
-              onClick={() => this.onBrowseClick()}
-              icon={<UploadOutlined />}
-            >
-              FORM
-            </Button>
-            <input
-              type="file"
-              name="file"
-              onChange={(event) => this.onFileSelect(event)}
-              style={{ display: "none" }}
-              ref={this.fileInputButton}
-            />
-            <p style={{ paddingTop: "4px" }}>
-              {this.state.file
-                ? `${this.state.file.name} (${bytesToSize(
-                    this.state.file.size
-                  )})`
-                : `No file chosen!`}
-            </p>
-            <Button
-              type="primary"
-              disabled={this.state.file ? false : true}
-              onClick={() => this.onSubmitClick()}
-            >
-              Submit
-            </Button>
+                  <p>
+                    <a href="https://www.iitism.ac.in/~academics/assets/acad_forms/ph2.pdf">
+                      <b>PH2</b>
+                    </a>{" "}
+                    NEEDS TO BE SUBMITTED FOR THE CONSTITUTION OF DOCTORAL
+                    SCRUTINY COMMITTEE (DSC)
+                  </p>
+                  <Form
+                    form={form}
+                    onFinish={onFinish}
+                    onFinishFailed={onFinishFailed}
+                  >
+                    <Form.Item
+                      name="PH2form"
+                      label="Upload Form"
+                      max={1}
+                      fieldProps={{
+                        name: "file",
+                      }}
+                      action="/upload.do"
+                    >
+                      <Upload>
+                        <Button icon={<UploadOutlined />}>
+                          Click to Upload!
+                        </Button>
+                      </Upload>
+                    </Form.Item>
+                    <Form.Item>
+                      <Button type="primary" htmlType="submit">
+                        Submit
+                      </Button>
+                    </Form.Item>
+                  </Form>
                 </div>
               </div>
 
-          <div style={{ height: "26px" }}></div>
+              <div style={{ height: "26px" }}></div>
+              <div className="card shadow-sm">
+                <div className="card-header bg-transparent border-0">
+                  <h3 className="mb-0">
+                    <i className="far fa-clone pr-1"></i>PROPOSE COURSES
+                  </h3>
+                </div>
+                <div className="card-body pt-0">
+                  <p>
+                    
+                    SUBMIT
+                    <a href="https://www.iitism.ac.in/~academics/assets/acad_forms/ph3.pdf">
+                      <b> PH3</b>
+                    </a>{" "} TO  PROPOSE COURSES FOR 2nd SEMESTER.
+                  </p>
+                  <Form
+                    form={form}
+                    onFinish={onFinish}
+                    onFinishFailed={onFinishFailed}
+                  >
+                    <Form.Item
+                      name="PH3form"
+                      label="Upload Form"
+                      max={1}
+                      fieldProps={{
+                        name: "file",
+                      }}
+                      action="/upload.do"
+                    >
+                      <Upload>
+                        <Button icon={<UploadOutlined />}>
+                          Click to Upload!
+                        </Button>
+                      </Upload>
+                    </Form.Item>
+                    <Form.Item>
+                      <Button type="primary" htmlType="submit">
+                        Submit
+                      </Button>
+                    </Form.Item>
+                  </Form>
+                </div>
+              </div>
+
+              <div style={{ height: "26px" }}></div>
               <div className="card shadow-sm">
                 <div className="card-header bg-transparent border-0">
                   <h3 className="mb-0">
@@ -280,14 +308,12 @@ export class ScholarDetails extends Component {
                   </table>
                 </div>
               </div>
-              
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </Content>
+    </Content>
   );
-}
 }
 
 export default ScholarDetails;

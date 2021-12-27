@@ -1,6 +1,7 @@
 import React from "react";
 import { Button, Layout, Upload, message } from "antd";
 import "../SupervisorApp.css";
+import "antd/dist/antd.css";
 import { tableIcons } from "../../../CommonComponents";
 import MaterialTable from "material-table";
 const { Content } = Layout;
@@ -8,10 +9,8 @@ const { Content } = Layout;
 function Overview() {
   const props = {
     name: "file",
-    action: "https://www.mocky.io/v2/5cc8019d300000980a055e76",
-    headers: {
-      authorization: "authorization-text",
-    },
+    action: "https://run.mocky.io/v3/47d903b5-36e6-49ab-af80-ed864af71c16",
+    
     onChange(info) {
       if (info.file.status !== "uploading") {
         console.log(info.file, info.fileList);
@@ -78,15 +77,14 @@ function Overview() {
       >
         <div className="container-fluid">
           <h4 style={{ color: "#334756", fontSize: "1.2rem", margin: "3% 0" }}>
-            List of Scholars elligible for Comprehensive Examination
+            List of Scholars elligible for Pre Submission Seminar
           </h4>
           <p>
             *Download{" "}
-            <a href="https://www.iitism.ac.in/~academics/assets/acad_forms/ph4.pdf">
-              <b>PH4</b>
+            <a href="https://www.iitism.ac.in/~academics/assets/acad_forms/ph5.pdf">
+              <b>PH7</b>
             </a>{" "}
-            form and fill it to upload the result of Comprehensive
-            Examination
+            form and fill it to upload the result of Research Proposal Seminar
           </p>
           <MaterialTable
             title="Thesis"
