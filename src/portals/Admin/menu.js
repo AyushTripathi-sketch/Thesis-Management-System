@@ -59,27 +59,11 @@ const menu =[
         children:null
     },
     {
-        key:"/ad/create-new",
-        path:"/ad/create-new",
+        key:"/ad/add_new",
+        path:"/ad/add_new",
         icon:<PlusCircleOutlined />,
         name:"Add New",
-        children:[
-            {
-                key:"/ad/add_new/scholar",
-                path:"/ad/add_new/scholar",
-                name:"Add Scholar",
-            },
-            {
-                key:"/ad/add_new/supervisor",
-                path:"/ad/add_new/supervisor",
-                name:"Add Supervisor",
-            },
-            {
-                key:"/ad/add_new/examiner",
-                path:"/ad/add_new/examiner",
-                name:"Add Examiner",
-            }
-        ]
+        children:null
     }
 ]
 
