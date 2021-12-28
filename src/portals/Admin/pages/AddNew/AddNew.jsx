@@ -24,7 +24,7 @@ function CreateNew() {
     }
   >
     <Meta
-      title="Scholar"
+      description="Scholar"
     />
   </Card>
   </Link>
@@ -44,7 +44,7 @@ function CreateNew() {
     }
   >
     <Meta
-      title="Supervisor"
+      description="Supervisor"
     />
   </Card>
   </Link>
@@ -64,7 +64,7 @@ function CreateNew() {
     }
   >
     <Meta
-      title="Examiner"
+      description="Examiner"
     />
   </Card>
   </Link>
