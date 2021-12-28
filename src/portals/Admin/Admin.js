@@ -23,7 +23,9 @@ import {
   Tasks,
   CE,
   PSS,
-  RPS
+  RPS,
+  UploadForm,
+  RTE
 } from "./components";
 import { Routes, Route } from "react-router-dom";
 import menu from "./menu";
@@ -59,6 +61,8 @@ function Admin() {
             <Route path="/tasks/ce" element={<CE />} />
             <Route path="/tasks/pss" element={<PSS />} />
             <Route path="/tasks/rps" element={<RPS />} />
+            <Route path="/tasks/upload_form" element={<UploadForm />} />
+            <Route path="/tasks/request_thesis_evaluation" element={<RTE />} />
           </Routes>
           <Footerr />
         </Layout>
