@@ -24,7 +24,7 @@ function Details() {
     }
   >
     <Meta
-      title="Scholar"
+      description="Scholar"
     />
   </Card>
   </Link>
@@ -44,7 +44,7 @@ function Details() {
     }
   >
     <Meta
-      title="Supervisor"
+      description="Supervisor"
     />
   </Card>
   </Link>
@@ -64,7 +64,7 @@ function Details() {
     }
   >
     <Meta
-      title="Examiner"
+      description="Examiner"
     />
   </Card>
   </Link>
@@ -84,7 +84,7 @@ function Details() {
     }
   >
     <Meta
-      title="DSC"
+      description="DSC"
     />
   </Card>
   </Link>
@@ -104,7 +104,7 @@ function Details() {
     }
   >
     <Meta
-      title="Thesis"
+      description="Thesis"
     />
   </Card>
   </Link>
@@ -123,7 +123,7 @@ function Details() {
     }
   >
     <Meta
-      title="Forms"
+      description="Forms"
     />
   </Card>
   </Link>
