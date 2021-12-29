@@ -20,6 +20,7 @@ function SideBar(props) {
 
   function handleClick(event){
     setSelectedKey(event.key);
+    localStorage.setItem("showSession","true");
   }
 
   props.menu.forEach((item) => {

@@ -6,7 +6,6 @@ const { Content } = Layout;
 function Details() {
 
   const { Meta } = Card;
-  
   return (
     <Content style={{ margin: "25px 25px" }}>
     <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>

@@ -6,7 +6,14 @@ import MaterialTable from "material-table";
 const { Content } = Layout;
 
 function Overview() {
-  const [showSession,setShowSession]=useState(true);
+  const flag = localStorage.getItem("showSession");
+  const [showSession,setShowSession]=useState(flag);
+  console.log(localStorage.getItem("showSession"));
+  console.log(showSession)
+  function handleClick(props){
+    setShowSession("false");
+    localStorage.setItem("showSession","false");
+  }
   const columns=[
     {title:"Admission No.",field:"id"},
     {title:"Name",field:"name"},
@@ -21,17 +28,14 @@ function Overview() {
     {id:"19JE0215",name:"Aditya Mishra",department:"Electrical",url:"/sp/mygroupoverview/Adm_No"},
     {id:"19JE0215",name:"Pattewar Darshan",department:"Mathematics & Computing",url:"/sp/mygroupoverview/Adm_No"}
   ]
-  function handleClick(props){
-    setShowSession(false);
-  }
   return (
         <Content style={{ margin: "25px 25px" }}>
           <div
             className="site-layout-background"
             style={{ padding: 24, minHeight: 400 }}
           >
-            <Session onClick={handleClick} style={{display:showSession?"inherit":"none",marginTop:"5%"}}/>
-            <div className="container-fluid" style={{display:showSession?"none":"inherit"}} >
+            <Session onClick={handleClick} style={{display:showSession==="true"?"inherit":"none",marginTop:"5%"}}/>
+            <div className="container-fluid" style={{display:showSession==="true"?"none":"inherit"}} >
             <MaterialTable title="Scholars" columns={columns} data={data}
               icons={tableIcons}
               options={{

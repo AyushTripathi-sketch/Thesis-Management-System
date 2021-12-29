@@ -53,7 +53,8 @@ function MyProjectNav() {
 
     <MaterialTable title="" columns={columns} data={data}
                     options={{
-                        toolbar:false , paging:false
+                        toolbar:false , paging:false,
+                        sorting:false, draggable:false
                         }}
                 />
       </div>

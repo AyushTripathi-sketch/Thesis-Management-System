@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { Layout } from "antd";
 import { tableIcons,Session } from "../../../../../CommonComponents";
 import "../../../AdminApp.css";
@@ -7,7 +7,15 @@ import { useNavigate } from "react-router-dom";
 const { Content } = Layout;
 
 function Scholar() {
-  const [showSession,setShowSession]=useState(true);
+  const flag = localStorage.getItem("showSession");
+  const [showSession,setShowSession]=useState(flag);
+  console.log(localStorage.getItem("showSession"));
+  console.log(showSession)
+  function handleClick(props){
+    setShowSession("false");
+    localStorage.setItem("showSession","false");
+  }
+
   const navigate = useNavigate();
   const columns=[
     {title:"Admission No.",field:"id"},
@@ -23,16 +31,13 @@ function Scholar() {
     {id:"19JE0215",name:"Aditya Mishra",department:"Electrical",url:"/ad/details/scholar/Adm_No"},
     {id:"19JE0215",name:"Pattewar Darshan",department:"Mathematics & Computing",url:"/ad/details/scholar/Adm_No"}
   ]
-  function handleClick(props){
-    setShowSession(false);
-  }
   return (
         <Content style={{ margin: "10px 25px" }}>
           <div
             className="site-layout-background"
             style={{ padding:"24px",minHeight: 400 }}
           >
-            <Session onClick={handleClick} style={{display:showSession?"block":"none",marginTop:"5%"}}/>
+            <Session onClick={handleClick} style={{display:showSession==="true"?"block":"none",marginTop:"5%"}}/>
             <MaterialTable
                   title="Scholars"
                   data={data}
@@ -71,7 +76,7 @@ function Scholar() {
                     actionsColumnIndex: -1, 
                     addRowPosition: "first"
                   }}
-                  style={{display:showSession?"none":"block"}} 
+                  style={{display:showSession==="true"?"none":"block"}} 
                 />
             </div>
         </Content>
