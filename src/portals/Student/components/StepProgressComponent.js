@@ -17,8 +17,8 @@ function StepProgressComponent(props) {
     </li>
   ));
   return (
-    <div class="container">
-      <ul class="progressBar">{listItems}</ul>
+    <div className="container">
+      <ul className="progressBar">{listItems}</ul>
     </div>
   );
 }
