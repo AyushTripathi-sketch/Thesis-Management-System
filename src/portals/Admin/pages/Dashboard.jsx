@@ -6,6 +6,7 @@ const { Content } = Layout;
 const titleStyle = {backgroundColor:"#1A374D",color:"white"};
 const innertitleStyle = {backgroundColor:"#2D4263",color:"white"};
 function Dashboard() {
+  
   return (
     <Content style={{ margin: "0 25px" }}>
       <div className="container">
@@ -103,22 +104,33 @@ function Dashboard() {
           </Row>
       </div>
       <div className="container">
-          <Row gutter={[24, 24]}>
-            <Col xs={24} sm={24} md={12} lg={12}>
-              <Card
-                title="Thesis under evalution"
-                style={{ minHeight: 507 }}
-                headStyle={titleStyle}
-              >
-                Inner Card content
-              </Card>
-            </Col>
-            <Col xs={24} sm={24} md={12} lg={12}>
-              <Card title="Evaluated Thesises" style={{ minHeight: 200 }} headStyle={titleStyle}>
-               <PieGraph/>
-              </Card>
-            </Col>
-            </Row>
+        <Row gutter={[24, 24]}>
+          <Col xs={24} sm={24} md={12} lg={12}>
+            <Card
+            className="outer-shadow"
+              title="Theses under evalution"
+              style={{ minHeight: 507 }}
+              headStyle={titleStyle}
+            >
+              <ul>
+                <li>Translational Data Analytics and Decision Science</li>
+                <li>Resilient, Sustainable and Global Food Security for Health</li>
+                <li>Prevention and Treatment of Chronic Brain Injury</li>
+                <li>Personalized Food and Nutritional Metabolic Profiling to Improve Health.</li>
+              </ul>
+            </Card>
+          </Col>
+          <Col xs={24} sm={24} md={12} lg={12}>
+            <Card
+            className="outer-shadow"
+              title="Evaluated Theses"
+              style={{ minHeight: 200 }}
+              headStyle={titleStyle}
+            >
+              <PieGraph />
+            </Card>
+          </Col>
+        </Row>
       </div>
     </Content>
   );

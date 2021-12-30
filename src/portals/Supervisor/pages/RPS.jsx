@@ -79,7 +79,13 @@ function Overview() {
           <h4 style={{ color: "#334756", fontSize: "1.2rem", margin: "3% 0" }}>
             List of Scholars elligible for Research Proposal Seminar
           </h4>
-
+          <p>
+            *Download{" "}
+            <a href="https://www.iitism.ac.in/~academics/assets/acad_forms/ph5.pdf">
+              <b>PH5</b>
+            </a>{" "}
+            form and fill it to upload the result of Research Proposal Seminar
+          </p>
           <MaterialTable
             title="Thesis"
             columns={columns}
@@ -87,7 +93,7 @@ function Overview() {
             icons={tableIcons}
             options={{
               toolbar: false,
-              paging: false,
+              paging: true,
               draggable: false,
               sorting: false,
               headerStyle: {
@@ -98,15 +104,6 @@ function Overview() {
               },
             }}
           />
-          <br />
-          <br />
-          <p>
-            *Download{" "}
-            <a href="https://www.iitism.ac.in/~academics/assets/acad_forms/ph5.pdf">
-              <b>PH5</b>
-            </a>{" "}
-            form and fill it to upload the result of Research Proposal Seminar
-          </p>
           <div className="container text-center">
             <Button type="primary">Submit</Button>
           </div>

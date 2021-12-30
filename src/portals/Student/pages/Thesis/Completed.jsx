@@ -1,9 +1,10 @@
 import React from "react";
+import StepProgressComponent from "../../components/StepProgressComponent";
 import { Divider, Layout, Button } from "antd";
 import scholar from "../../images/scholar.png";
 const { Content } = Layout;
 
-function Confirmation() {
+function Completed() {
   return (
     <Content style={{ margin: "25px 25px" }}>
       <div
@@ -11,9 +12,17 @@ function Confirmation() {
         style={{ padding: "10px", height: "100%" }}
       >
       <div className="text-center">
-      <h2>Thesis Review and Submission</h2>
+      <h2>Thesis Submission Review</h2>
       </div>
         <Divider />
+        <StepProgressComponent
+              steps={[
+                "Draft Saved",
+                "Thesis Submitted",
+                "Evaluated",
+              ]}
+              accomplished={1}
+            />
         <div className="student-profile py-4">
             <div className="container">
               <div className="row">
@@ -70,6 +79,11 @@ function Confirmation() {
                             <td width="2%">:</td>
                             <td><Button>Click to View</Button></td>
                           </tr>
+                          <tr>
+                            <th width="30%">Evaluation Report</th>
+                            <td width="2%">:</td>
+                            <td><Button>Click to View</Button></td>
+                          </tr>
                         </tbody>
                       </table>
                     </div>
@@ -78,12 +92,9 @@ function Confirmation() {
               </div>
             </div>
           </div>
-          <div className="container text-center">
-            <Button type="primary">Submit</Button>
-          </div>
       </div>
     </Content>
   );
 }
 
-export default Confirmation;
+export default Completed;

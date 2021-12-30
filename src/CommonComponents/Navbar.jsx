@@ -16,24 +16,26 @@ const openNotification = (placement) => {
 };
 function Navbar(props) {
   const [visible, setVisible] = useState(false);
+  function handleClick(event) {
+    localStorage.setItem("showSession","true");
+    setVisible(false);
+  }
   const menuItems = [];
   let childrens;
   props.menu.forEach((item) => {
-    if (item.children === null) {
+    if (item.children === null && item.display!=="hidden") {
       menuItems.push(
         <Menu.Item key={item.key} icon={item.icon}>
           <Link to={item.path}>{item.name}</Link>
         </Menu.Item>
       );
-    } else {
-      childrens = [];
+    } else if(item.display!=="hidden") {
+      childrens=[];
       item.children.forEach((child) => {
-        childrens.push(
-          <Menu.Item key={child.key}>
-            <Link to={child.path}>{child.name}</Link>
-          </Menu.Item>
-        );
-      });
+        childrens.push(<Menu.Item key={child.key}>
+          <Link to={child.path}>{child.name}</Link>
+        </Menu.Item>);
+      })
       menuItems.push(
         <SubMenu key={item.key} icon={item.icon} title={item.name}>
           {childrens}
@@ -51,11 +53,10 @@ function Navbar(props) {
       <Drawer
         title="TMS"
         placement="left"
-        onClick={() => setVisible(false)}
         onClose={() => setVisible(false)}
         visible={visible}
       >
-        <Menu theme="dark" defaultSelectedKeys={["/st/home"]} mode="inline">
+        <Menu theme="dark" defaultSelectedKeys={["/st/home"]} mode="inline" onClick={handleClick}>
           {menuItems}
         </Menu>
       </Drawer>

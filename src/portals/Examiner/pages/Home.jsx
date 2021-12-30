@@ -1,20 +1,54 @@
 import React from "react";
 import { Divider, Layout, Button } from "antd";
-import scholar from "../../images/scholar.png";
+import scholar from "../../../images/scholar.png";
+
 const { Content } = Layout;
 
-function Confirmation() {
+function Home() {
+  
   return (
     <Content style={{ margin: "25px 25px" }}>
-      <div
+     <div
         className="site-layout-background"
-        style={{ padding: "10px", height: "100%" }}
+        style={{ padding: 24, minHeight: 400 }}
       >
-      <div className="text-center">
-      <h2>Thesis Review and Submission</h2>
-      </div>
-        <Divider />
-        <div className="student-profile py-4">
+        <div className="container">
+          <div style={{ width: "100%", height: "auto", padding: "1%" }}>
+            <div>
+              <img
+                style={{
+                  margin: "0 5% 2% 0",
+                  float: "left",
+                  width: "170px",
+                  height: "150 px",
+                }}
+                src={scholar}
+                alt="Scholar"
+              />
+            </div>
+            <div style={{ margin: "0 auto" }}>
+              <p>
+                <strong>Name :</strong>19DRXXXX
+              </p>
+              <p>
+                <strong>Designation :</strong>XYZ ABC
+              </p>
+              <p>
+                <strong>Address :</strong>LOREM IPSUM
+              </p>
+              <p>
+                <strong>Contact No :</strong>ASTRONOMY
+              </p>
+              <p>
+                <strong>Email :</strong>19DRXXXX.astro@iitism.ac.in
+              </p>
+            </div>
+          </div>
+		 </div>
+         <Divider />
+         <p>PROGRESS BAR</p>
+
+         <div className="student-profile py-4">
             <div className="container">
               <div className="row">
                 <div className="col-lg-4">
@@ -61,6 +95,11 @@ function Confirmation() {
                             <td>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</td>
                           </tr>
                           <tr>
+                            <th width="30%">Date of Submission</th>
+                            <td width="2%">:</td>
+                            <td>XX-XX-XXXX</td>
+                          </tr>
+                          <tr>
                             <th width="30%">Synopsis</th>
                             <td width="2%">:</td>
                             <td><Button>Click to View</Button></td>
@@ -70,6 +109,16 @@ function Confirmation() {
                             <td width="2%">:</td>
                             <td><Button>Click to View</Button></td>
                           </tr>
+                          <tr>
+                            <th width="30%">Evaluate</th>
+                            <td width="2%">:</td>
+                            <td><Button>Form</Button></td>
+                          </tr>
+                          <tr>
+                            <th width="30%">Honorarium</th>
+                            <td width="2%">:</td>
+                            <td><Button>Form</Button></td>
+                          </tr>
                         </tbody>
                       </table>
                     </div>
@@ -78,12 +127,10 @@ function Confirmation() {
               </div>
             </div>
           </div>
-          <div className="container text-center">
-            <Button type="primary">Submit</Button>
-          </div>
-      </div>
+
+	</div>
     </Content>
   );
 }
 
-export default Confirmation;
+export default Home;

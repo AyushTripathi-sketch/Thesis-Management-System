@@ -1,7 +1,7 @@
 import React from "react";
 import { Layout } from "antd";
 import { Navbar, Headerr, SideBar, Footerr } from "../../CommonComponents";
-import { Home, Profile, Overview, Thesis, RPS, CE, ScholarDetails, ThesisDetails, MyProject, MyProjectOverview, MyProjectActivityPlan, MyProjectFinal, MyProjectForums, MyProjectForumsDetails } from "./components";
+import { Home, Profile, Overview, Thesis, RPS, CE,PSS,Forms, ScholarDetails, ThesisDetails,ThesisResults, MyProject, MyProjectOverview, MyProjectActivityPlan, MyProjectFinal, MyProjectForums, MyProjectForumsDetails } from "./components";
 import { Routes, Route } from "react-router-dom";
 import menu from "./menu";
 
@@ -18,9 +18,12 @@ function Supervisor() {
             <Route path="/profile" element={<Profile />} />
             <Route path="/mygroupoverview" element={<Overview />} />
             <Route path="/thesis" element={<Thesis />} />
-            <Route path="//thesis/Adm_No" element={<ThesisDetails />} />
+            <Route path="/thesis/Adm_No" element={<ThesisDetails />} />
+            <Route path="/thesis/results/Adm_No" element={<ThesisResults />} />
             <Route path="/rps" element={<RPS />} />
             <Route path="/ce" element={<CE />} />
+            <Route path="/pss" element={<PSS />} />
+            <Route path="/forms" element={<Forms />} />
             <Route path="/myproject" element={<MyProject />} />
             <Route path="/myproject/project_id" element={<MyProjectOverview />} />
             <Route path="/myproject/project_id/forums" element={<MyProjectForums />} />

@@ -1,4 +1,4 @@
-import React, { useState }  from "react";
+import React from "react";
 import { Divider, Layout, Button, Upload, message  } from "antd";
 import scholar from "../../images/scholar.png";
 import MaterialTable from "material-table";
@@ -8,7 +8,6 @@ const { Content } = Layout;
 
 
 function ThesisDetails() {
-    const [isUploaded, setIsUploaded] = useState(false);
     const props = {
       name: "file",
       action: "https://www.mocky.io/v2/5cc8019d300000980a055e76",
@@ -17,7 +16,6 @@ function ThesisDetails() {
       },
       onChange(info) {
         if (info.file.status !== "uploading") {
-          setIsUploaded(true);
           console.log(info.file, info.fileList);
         }
         if (info.file.status === "done") {
@@ -104,7 +102,7 @@ function ThesisDetails() {
       </div>
         <Divider />
         <div className="student-profile py-4">
-            <div className="container">
+            <div className="container" style={{marginTop:"0"}}>
               <div className="row">
                 <div className="col-lg-4">
                   <div
@@ -158,6 +156,11 @@ function ThesisDetails() {
                             <th width="30%">Thesis</th>
                             <td width="2%">:</td>
                             <td><Button>Click to View</Button></td>
+                          </tr>
+                          <tr>
+                            <th width="30%">Reports</th>
+                            <td width="2%">:</td>
+                            <td><Button href="/sp/thesis/results/Adm_No">Click to View</Button></td>
                           </tr>
                         </tbody>
                       </table>

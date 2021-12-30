@@ -58,6 +58,16 @@ const menu =[
                 path:"/sp/rps",
                 name:"Research Proposal Seminar",
             },
+            {
+                key:"/sp/pss",
+                path:"/sp/pss",
+                name:"Pre Submission Seminar",
+            },
+            {
+                key:"/sp/forms",
+                path:"/sp/forms",
+                name:"Forms"
+            }
         ]
     }
 ]

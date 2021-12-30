@@ -115,11 +115,7 @@ function Submission() {
           </Form.Item>
           <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 8 }}>
             <Button type="primary" htmlType="submit">
-              Save
-            </Button>
-            <span style={{ paddingRight: "20px" }} />
-            <Button type="primary" htmlType="submit">
-              <a href="/st/thesis-sub-confirmation">Save & Submit</a>
+              <a href="/st/thesis/confirmation">Save & Submit</a>
             </Button>
           </Form.Item>
         </Form>

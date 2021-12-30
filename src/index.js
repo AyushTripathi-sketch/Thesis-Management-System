@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom';
-import {Login, Student,Supervisor} from './portals';
+import {Login, Student,Supervisor,Admin,Examiner} from './portals';
 import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import reportWebVitals from './reportWebVitals';
 import PrivateRoute from './CommonComponents/PrivateRoute';
@@ -30,6 +30,8 @@ function App() {
                         <Router>
                           <LoadUser/>
                             <Routes>
+                              <Route path='ad/*' element={<Admin />} />
+                              <Route path='ex/*' element={<Examiner />} />
                               <Route path='st/*' exact element={<PrivateRoute component={Student} />} />
                               <Route path='sp/*' element={<PrivateRoute component={Supervisor} />} />
                               <Route path='/' element={<Login/>} />

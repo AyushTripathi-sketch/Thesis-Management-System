@@ -13,3 +13,5 @@ export { default as ActivityPlan } from "../pages/MyProject/ActivityPlan";
 export { default as Final } from "../pages/MyProject/Final";
 export { default as Submission } from "../pages/Thesis/Submission";
 export { default as Confirmation } from "../pages/Thesis/Confirmation";
+export { default as Draft } from "../pages/Thesis/Draft";
+export { default as Completed } from "../pages/Thesis/Completed";

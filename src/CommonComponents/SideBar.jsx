@@ -20,16 +20,17 @@ function SideBar(props) {
 
   function handleClick(event){
     setSelectedKey(event.key);
+    localStorage.setItem("showSession","true");
   }
 
   props.menu.forEach((item) => {
-    if (item.children === null) {
+    if (item.children === null && item.display!=="hidden") {
       menuItems.push(
         <Menu.Item key={item.key} icon={item.icon}>
           <Link to={item.path}>{item.name}</Link>
         </Menu.Item>
       );
-    } else {
+    } else if(item.display!=="hidden") {
       childrens=[];
       item.children.forEach((child) => {
         childrens.push(<Menu.Item key={child.key}>

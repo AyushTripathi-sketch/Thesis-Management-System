@@ -45,13 +45,12 @@ if (isAuthenticated){
   }
 }
   return (
-    <Layout style={{ minHeight: "100vh" }}>
+    <Layout style={{ minHeight: "100vh"}}>
       <Layout className="site-layout">
-        <section style={{ backgroundColor: "#002140" }}>
-          <div className="container-fluid">
+          <div className="container-fluid" style={{minHeight:"100vh",backgroundColor:"#001529",display:"flex",alignItems:"center",justifyContent: "center"}}>
             <div
               className="card"
-              style={{ margin: "10% 10%", borderRadius: "1rem" }}
+              style={{ margin: "5% 10%", borderRadius: "1rem" }}
             >
               <div className="card-body">
                 <div className="row">
@@ -81,7 +80,7 @@ if (isAuthenticated){
                       <div className="card-body">
                       <Alert/>
                         <form>
-                          <div className="form-group" style={{ margin: "10%" }}>
+                          <div class="form-group" style={{ margin: "8%" }}>
                             <input
                               name="id"
                               onChange={onChange}
@@ -89,7 +88,7 @@ if (isAuthenticated){
                               placeholder="Enter Admission Number"
                             />
                           </div>
-                          <div className="form-group" style={{ margin: "10%" }}>
+                          <div class="form-group" style={{ margin: "8%" }}>
                             <input
                               type="password"
                               name="password"
@@ -98,7 +97,7 @@ if (isAuthenticated){
                               placeholder="Password"
                             />
                           </div>
-                          {/* <div className="form-group" style={{ margin: "10%" }}>
+                          {/* <div class="form-group" style={{ margin: "8%" }}>
                             <div
                               className="g-recaptcha"
                               data-sitekey="6LfTVI0dAAAAABKWPpH9gvbfMcPhMsnnPPlTlmJK"
@@ -106,8 +105,8 @@ if (isAuthenticated){
                           </div> */}
                             <button
                               type="submit"
-                              style={{ width: "100%", marginTop: "5%" }}
-                              className="btn btn-primary"
+                              style={{ width: "80%", marginTop: "3%" }}
+                              class="btn btn-primary"
                               onClick={onSubmit}
                             >
                               Login
@@ -120,7 +119,6 @@ if (isAuthenticated){
               </div>
             </div>
           </div>
-        </section>
       </Layout>
     </Layout>
   );
