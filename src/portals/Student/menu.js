@@ -59,8 +59,8 @@ const menu =[
                 name:"Submission",
             },
             {
-                key:"#",
-                path:"#",
+                key:"/st/thesis/completed",
+                path:"/st/thesis/completed",
                 name:"Completed",
             }
         ]

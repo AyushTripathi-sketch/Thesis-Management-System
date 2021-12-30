@@ -17,6 +17,7 @@ import {
   Confirmation,
   ForumsDetails,
   Draft,
+  Completed,
 } from "./components";
 import { Routes, Route } from "react-router-dom";
 import menu from "./menu";
@@ -46,6 +47,7 @@ function Student() {
             <Route path="/thesis/submission" element={<Submission />} />
             <Route path="/thesis/confirmation" element={<Confirmation />} />
             <Route path="/thesis/draft" element={<Draft />} />
+            <Route path="/thesis/completed" element={<Completed />} />
           </Routes>
           <Footerr />
         </Layout>
