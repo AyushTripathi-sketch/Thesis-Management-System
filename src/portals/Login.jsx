@@ -19,12 +19,12 @@ export default function Login() {
   }
 
   return (
-    <Layout style={{ minHeight: "80vh"}}>
+    <Layout style={{ minHeight: "100vh"}}>
       <Layout className="site-layout">
-          <div className="container-fluid" style={{backgroundColor:"#001529"}}>
+          <div className="container-fluid" style={{minHeight:"100vh",backgroundColor:"#001529",display:"flex",alignItems:"center",justifyContent: "center"}}>
             <div
               className="card"
-              style={{ margin: "5% 10%", borderRadius: "1rem" }}
+              style={{ margin: "7% 10%", borderRadius: "1rem" }}
             >
               <div className="card-body">
                 <div class="row">
