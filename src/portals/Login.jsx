@@ -1,39 +1,63 @@
-import React, { useState } from "react";
+import React, { useState,useEffect,useContext } from "react";
 import { Layout } from "antd";
-import { Headerr } from "../CommonComponents";
-export default function Login() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-
-  function handleChange(event) {
-    if (event.target.name === "AdmNo") {
-      setEmail(event.target.value);
+import {Navigate} from "react-router-dom";
+import Alert from "../CommonComponents/Alert";
+import AlertContext from "../context/alert/alertContext";
+import AuthContext from "../context/auth/authContext";
+import Spinner from "../CommonComponents/Spinner";
+export default function Login(props) {
+  const [user,setUser] = useState({
+    id:"",
+    password:""
+});
+const {id,password} = user;
+const alertContext = useContext(AlertContext);
+const authContext = useContext(AuthContext);
+const {setAlert} = alertContext;
+const {login,error,isAuthenticated,clearError,loadUser} = authContext;
+useEffect(()=>{
+    if(error==="Invalid Credentials"){
+        setAlert(error);
+        clearError();
     }
-    if (event.target.name === "password") {
-      setPassword(event.target.value);
+    // eslint-disable-next-line
+},[error]);
+const onChange = e =>{setUser({...user,[e.target.name]:e.target.value})};
+const onSubmit = async e =>{
+    e.preventDefault();
+    if(id===""||password===""){
+        setAlert("Please enter all the fields");
     }
+    else{
+        await login(user);
+    }
+}
+if (isAuthenticated){ 
+  if(authContext.user===null){
+    <Spinner/>
   }
-  function handleSubmit(event) {
-    console.log(email);
-    console.log(password);
-    event.preventDefault();
+  else{ 
+    const designation = authContext.user.designation;
+    if(designation==="scholar")return <Navigate to='/st/home' />
+    if(designation==="professor")return <Navigate to='/sp/home' />
+    if(designation==="admin")return <Navigate to='/ad/home' />
+    if(designation==="examiner")return <Navigate to='/ex/home' />
   }
-
+}
   return (
     <Layout style={{ minHeight: "100vh" }}>
       <Layout className="site-layout">
-      <Headerr/>
-        <section style={{ backgroundColor: "#177ddc" }}>
+        <section style={{ backgroundColor: "#002140" }}>
           <div className="container-fluid">
             <div
               className="card"
               style={{ margin: "10% 10%", borderRadius: "1rem" }}
             >
               <div className="card-body">
-                <div class="row">
-                  <div class="col-xs-12 col-md-6 col-lg-6 text-center">
+                <div className="row">
+                  <div className="col-xs-12 col-md-6 col-lg-6 text-center">
                     <img
-                      class="img-fluid"
+                      className="img-fluid"
                       src="https://parent.iitism.ac.in//assets/img/iit.png"
                       alt=""
                       style={{ width: "50%", marginTop: "10%" }}
@@ -45,43 +69,46 @@ export default function Login() {
                       </p>
                     </a>
                   </div>
-                  <div class="col-xs-12 col-md-6 col-lg-6 text-center">
-                    <div class="card">
+                  <div className="col-xs-12 col-md-6 col-lg-6 text-center">
+                    <div className="card">
                       <div
-                        class="card-header h6"
+                        className="card-header h6"
                         style={{ fontWeight: "bold", fontFamily: "Open Sans" }}
                       >
                         Thesis Management System
                       </div>
-                      <div class="card-body">
+
+                      <div className="card-body">
+                      <Alert/>
                         <form>
-                          <div class="form-group" style={{ margin: "10%" }}>
+                          <div className="form-group" style={{ margin: "10%" }}>
                             <input
-                              name="AdmNo"
-                              onChange={handleChange}
-                              class="form-control"
+                              name="id"
+                              onChange={onChange}
+                              className="form-control"
                               placeholder="Enter Admission Number"
                             />
                           </div>
-                          <div class="form-group" style={{ margin: "10%" }}>
+                          <div className="form-group" style={{ margin: "10%" }}>
                             <input
                               type="password"
                               name="password"
-                              class="form-control"
+                              onChange={onChange}
+                              className="form-control"
                               placeholder="Password"
                             />
                           </div>
-                          <div class="form-group" style={{ margin: "10%" }}>
+                          {/* <div className="form-group" style={{ margin: "10%" }}>
                             <div
-                              class="g-recaptcha"
+                              className="g-recaptcha"
                               data-sitekey="6LfTVI0dAAAAABKWPpH9gvbfMcPhMsnnPPlTlmJK"
                             ></div>
-                          </div>
+                          </div> */}
                             <button
                               type="submit"
                               style={{ width: "100%", marginTop: "5%" }}
-                              class="btn btn-primary"
-                              onClick={handleSubmit}
+                              className="btn btn-primary"
+                              onClick={onSubmit}
                             >
                               Login
                             </button>

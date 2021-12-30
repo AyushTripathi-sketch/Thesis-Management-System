@@ -109,25 +109,6 @@ function Details() {
   </Card>
   </Link>
   </Col>
-  <Col span={6}>
-  <Link to={'/ad/details/forms'}>
-  <Card
-      hoverable
-      className="rounded"
-    style={{ maxWidth: 200, textAlign: 'center', margin:"10px" }}
-    cover={
-      <img
-        alt="example"
-        src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
-      />
-    }
-  >
-    <Meta
-      title="Forms"
-    />
-  </Card>
-  </Link>
-  </Col>
     </Row>
     </Content>
   );

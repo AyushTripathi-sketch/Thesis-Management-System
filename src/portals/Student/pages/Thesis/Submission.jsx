@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Divider, Layout, Form, Input, Button, Upload, message } from "antd";
 import "../../StudentApp.css";
 import { UploadOutlined } from "@ant-design/icons";
@@ -18,25 +18,21 @@ const validateMessages = {
   required: "${label} is required!",
 };
 
-const props = {
-  name: "file",
-  action: "https://www.mocky.io/v2/5cc8019d300000980a055e76",
-  headers: {
-    authorization: "authorization-text",
-  },
-  onChange(info) {
-    if (info.file.status !== "uploading") {
-      console.log(info.file, info.fileList);
-    }
-    if (info.file.status === "done") {
-      message.success(`${info.file.name} file uploaded successfully`);
-    } else if (info.file.status === "error") {
-      message.error(`${info.file.name} file upload failed.`);
-    }
-  },
-};
-
 function Submission() {
+
+  const [thesisFL, setthesisFL] = useState([]);
+  const [synopsisFL, setsynopsisFL] = useState([]);
+
+  const handleThesisChange = ({ file, fileList }) => {
+    fileList = fileList.slice(-1);
+    setthesisFL(fileList)
+  };
+
+  const handleSynopsisChange = ({ file, fileList }) => {
+    fileList = fileList.slice(-1);
+    setsynopsisFL(fileList);
+  }
+
   return (
     <Content style={{ margin: "25px 25px" }}>
       <div className="site-layout-background" style={{ padding: "10px" }}>
@@ -77,10 +73,20 @@ function Submission() {
             rules={[
               {
                 required: true,
+                message: 'You must choose a Synopsis file!',
               },
+              ({}) => ({
+                validator(_, value) {
+                  console.log(value);
+                  if (!value || synopsisFL.length) {
+                    return Promise.resolve()
+                  }
+                  return Promise.reject('You must choose a Synopsis file!');
+                }
+              })
             ]}
           >
-            <Upload {...props}>
+            <Upload fileList={synopsisFL} onChange={handleSynopsisChange} beforeUpload={() => false} multiple={false}>
               <Button icon={<UploadOutlined />}>Click to Upload</Button>
             </Upload>
           </Form.Item>
@@ -91,10 +97,19 @@ function Submission() {
             rules={[
               {
                 required: true,
+                message: 'You must choose a Thesis file!'
               },
+              ({}) => ({
+                validator(_, value) {
+                  if (!value || thesisFL.length) {
+                    return Promise.resolve()
+                  }
+                  return Promise.reject('You must choose a Thesis file!');
+                }
+              })
             ]}
           >
-            <Upload {...props}>
+            <Upload fileList={thesisFL} onChange={handleThesisChange} beforeUpload={() => false}>
               <Button icon={<UploadOutlined />}>Click to Upload</Button>
             </Upload>
           </Form.Item>

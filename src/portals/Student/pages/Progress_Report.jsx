@@ -1,24 +1,53 @@
-import React, { Component,useState } from "react";
+import React, {useEffect,useContext,useState } from "react";
 import StepProgressComponent from "../components/StepProgressComponent";
 import TableComp from "../components/TableComp";
 import { Button, Layout, Modal } from "antd";
 import bytesToSize from "../../../utils/Utility_Conversions";
 import "../StudentApp.css";
+import "antd/dist/antd.css";
+import AuthContext from "../../../context/auth/authContext";
+import Spinner from "../../../CommonComponents/Spinner";
+import ProgressReportContext from "../../../context/progressReport/progressReportContext";
+import axios from "axios";
 const { Content } = Layout;
 
 function ProgressReport(){
+  
+const authContext = useContext(AuthContext);
+const progressReportContext = useContext(ProgressReportContext);
+const {user} = authContext;
+const {admn} = user.dataValues;
+const {  
+  ceRep,
+  rpsRep,
+  pssRep,
+  thesisEvaluationRep,
+  vivaVoiceRep,
+  progressReport,getReports,getProgressDetails} = progressReportContext;
   const [applyPSSEnabled] = useState(true);
   const [fileInputButton] = useState(React.createRef());
-  const [state,setState] = useState(
-                      {
-                        
-                          isModalVisible: false,
-                          file: null,
-                      }
-  );
-
+  const [state,setState] = useState({ isModalVisible: false,file: null});
+useEffect(()=>{
+    getReports(admn,"ceRep");
+    getReports(admn,"rpsRep");
+    getReports(admn,"pssRep");
+    getReports(admn,"thesisEvaluation");
+    getReports(admn,"vivaVoiceRep");
+    getProgressDetails(admn);
+    //eslint-disable-next-line
+  },[]);
+  if(progressReport===null) return <Spinner/>
+  const{comprehensive_exam_status,rps_status,fellowship_status,pss_status,phd_degree,viva_voice_status,thesis_submission_status,thesis_evaluation_status}=progressReport;
+  let status = [comprehensive_exam_status,rps_status,fellowship_status,pss_status,thesis_submission_status,thesis_evaluation_status,viva_voice_status,phd_degree];
+  let n=0,i;
+  for(i=0;i<status.length-1;i++){
+    if(status[i]==="S"||status[i]==="SRF"||status[i]==="submitted"||status[i]==="awarded"||status[i]==="evaluated"){
+      n++;
+    }
+  }
+  console.log(progressReport);
     function onFileSelect(e){
-      setState({ file: e.target.files[0] });
+      setState({...state, file: e.target.files[0] });
     }
 
     function onBrowseClick(){
@@ -27,18 +56,37 @@ function ProgressReport(){
     
     function showUploadDialog(){
       setState({
+        ...state,
         isModalVisible: true,
       });
     }
 
     function handleOk() {
-      setState({
-        isModalVisible: false,
-      });
+      try {
+        const formData = new FormData();
+        formData.append('scholarId', admn);
+        formData.append('supervisor', user.dataValues.supervisorId);
+        formData.append('file', state.file);
+        const config = {
+          headers: {
+            'content-type': 'multipart/form-data'
+          }
+        };
+        axios.post('http://localhost:3000/api/pssRequest/add', formData, config).then((res) => {
+          setState({
+            ...state,
+            file: null,
+            isModalVisible: false,
+          });
+        })
+      } catch (error) {
+        console.error(error);
+      }
     }
 
     function handleCancel() {
       setState({
+        ...state,
         isModalVisible: false,
       });
     }
@@ -66,9 +114,10 @@ function ProgressReport(){
                 "PSS",
                 "Thesis Submission",
                 "Thesis Evaluation",
-                "Viva Voce",
+                "Viva Voice",
+                "PhD Degree"
               ]}
-              accomplished={3}
+              accomplished={n}
             />
             <br />
             <br />
@@ -78,26 +127,50 @@ function ProgressReport(){
                 {
                   serial: "1.",
                   type: "CE",
-                  status: "S",
-                  date: "21/09/2021",
+                  status:comprehensive_exam_status,
+                  date: (comprehensive_exam_status==="S"?"hi":"-"),
+                  file: 'files/course_waiver_requests/19DR001.pdf',
                 },
                 {
                   serial: "2.",
                   type: "RPS",
-                  status: "S",
-                  date: "26/12/2021",
+                  status:rps_status,
+                  date: (rps_status==="S"?"hi":"-"),
+                  file: 'files/course_waiver_requests/19DR001.pdf'
                 },
+                // {
+                //   serial: "3.",
+                //   type: "Fellowship Status",
+                //   status: fellowshipStatus,
+                //   date: (fellowshipStatus="SRF"?fellowshipRep.date:"-"),
+                // },
                 {
                   serial: "3.",
-                  type: "Fellowship Status",
-                  status: "SRF",
-                  date: "31/01/2022",
+                  type: "PSS",
+                  status:pss_status,
+                  date: (pss_status==="S"?pssRep.date:"-"),
                 },
+
                 {
                   serial: "4.",
-                  type: "PSS",
-                  status: "Pending",
+                  type: "Thesis Evaluation",
+                  status:thesis_evaluation_status,
+                  date: (thesis_evaluation_status==="evaluated"?thesisEvaluationRep.date:"-"),
+                  file: 'files/course_waiver_requests/19DR001.pdf'
                 },
+                {
+                  serial: "5.",
+                  type: "Viva Voice",
+                  status:viva_voice_status,
+                  date: (viva_voice_status==="S"?vivaVoiceRep.date:"-"),
+                  file: 'files/course_waiver_requests/19DR001.pdf'
+                },
+                // {
+                //   serial: "5.",
+                //   type: "PhD Degree",
+                //   status: phdStatus,
+                //   date: "31/01/2022",
+                // },
               ]}
             />
             <br />

@@ -85,7 +85,7 @@ const columns = [
     title: "Download",
     field: "url",
     render: (rowData) => (
-      <a href={rowData.url}>
+      <a href={rowData.url} target={'_blank'}>
         <img
           alt=""
           class="icon"

@@ -10,6 +10,7 @@ function Session(props) {
   function onFinish(values) {
     if (values) {
       console.log("Success:", values);
+      props.onClick(values);
     }
   }
 
@@ -85,7 +86,7 @@ function Session(props) {
           />
         </Form.Item>
         <Form.Item style={{textAlign:"center"}}>
-          <Button type="primary" htmlType="submit" onClick={handleClick}>
+          <Button type="primary" htmlType="submit">
             Show
           </Button>
         </Form.Item>

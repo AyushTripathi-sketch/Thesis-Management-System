@@ -1,9 +1,11 @@
-import React, { Component } from "react";
-import { Button, Layout } from "antd";
-import bytesToSize from "../../../utils/Utility_Conversions";
+import React, { useState, useContext } from "react";
+import { Layout } from "antd";
+import AuthContext from "../../../context/auth/authContext";
+import CoursesContext from "../../../context/courses/coursesContext";
 import "../StudentApp.css";
-import { UploadOutlined } from "@ant-design/icons";
+import { Session } from "../../../CommonComponents";
 import MaterialTable from "material-table";
+import Spinner from "../../../CommonComponents/Spinner";
 const { Content } = Layout;
 
 const data = [
@@ -12,131 +14,64 @@ const data = [
 ];
 const columns = [
   { title: "S No.", field: "sno" },
-  { title: "Course Type", field: "type" },
-  { title: "Course Code", field: "code" },
-  { title: "Course Name", field: "name" },
+  { title: "Course Code", field: "course_code" },
+  { title: "Course Name", field: "course_name" },
+  { title: "Department", field: "department" },
 ];
 
-export class Courses extends Component {
-  constructor(props) {
-    super(props);
+function Courses(){
+  const [showSession,setShowSession]=useState(true);
 
-    this.fileInputButton = React.createRef();
+  const authContext = useContext(AuthContext);
+  const coursesContext = useContext(CoursesContext);
+  const {
+    courses,
+    loading,
+    error,
+    loadCourses,
+  } = coursesContext;
+  const admn = authContext.user.dataValues.admn;
 
-    this.state = {
-      file: null,
-      isSubmitted: false,
-    };
+  function handleClick(props){
+    console.log(props);
+    setShowSession(false);
+    loadCourses(admn, props.Semester.value, props.Year.value);
   }
 
-  onFileSelect(event) {
-    this.setState({ file: event.target.files[0] });
+  if (loading && !showSession) {
+    return <Spinner/>
   }
 
-  onBrowseClick() {
-    this.fileInputButton.current.click();
-  }
-
-  onSubmitClick() {
-    this.setState({
-      isSubmitted: true,
-    });
-  }
-  render() {
     return (
       <Content style={{ margin: "25px 25px" }}>
         <div
           className="site-layout-background"
-          style={{ padding: 24, minHeight: 400 }}
+          style={{ padding: 24 }}
         >
-          <div
-            class="container-fluid"
-            style={{ display: this.state.isSubmitted ? "none" : "inherit" }}
-          >
-            <p>
-              <b>Courses proposed in the current semester:</b>
-            </p>
+          <Session onClick={handleClick} style={{display:showSession?"inherit":"none",marginTop:"5%"}}/>
+            <div className="container-fluid" style={{display:showSession?"none":"inherit"}} >
             <MaterialTable
-              title=""
-              columns={columns}
-              data={data}
-              options={{
-                toolbar: false,
-                paging: false,
-                draggable: false,
-                sorting: false,
-                headerStyle: {
-                  backgroundColor: "#002140",
-                  color: "#FFFFFF",
-                  fontWeight: "bold",
-                  fontFamily: "Open Sans",
-                },
-              }}
-            />
-            <br />
-            <br />
-            <h6
-              style={{
-                color: "#334756",
-                fontSize: "1.3rem",
-                textAlign: "left",
-              }}
-            >
-              Important note:
-            </h6>
-            <p>
-              To avail course waiver you have to submit{" "}
-              <a href="https://www.iitism.ac.in/~academics/assets/acad_forms/ph6.pdf">
-                <b>PH1</b>
-              </a>{" "}
-              form within the prescribed deadline.
-            </p>
-            <p>
-              <b>Deadline:</b>
-            </p>
-            <Button
-              type="primary"
-              onClick={() => this.onBrowseClick()}
-              icon={<UploadOutlined />}
-            >
-              FORM
-            </Button>
-            <input
-              type="file"
-              name="file"
-              onChange={(event) => this.onFileSelect(event)}
-              style={{ display: "none" }}
-              ref={this.fileInputButton}
-            />
-            <p style={{ paddingTop: "4px" }}>
-              {this.state.file
-                ? `${this.state.file.name} (${bytesToSize(
-                    this.state.file.size
-                  )})`
-                : `No file chosen!`}
-            </p>
-            <Button
-              type="primary"
-              disabled={this.state.file ? false : true}
-              onClick={() => this.onSubmitClick()}
-            >
-              Submit
-            </Button>
-          </div>
-          <div
-            className="container-fluid"
-            style={{
-              marginTop: "15%",
-              textAlign: "center",
-              display: this.state.isSubmitted ? "inherit" : "none",
+            title=""
+            columns={columns}
+            data={courses}
+            options={{
+              toolbar: false,
+              paging: false,
+              draggable: false,
+              sorting: false,
+              headerStyle: {
+                backgroundColor: "#002140",
+                color: "#FFFFFF",
+                fontWeight: "bold",
+                fontFamily: "Open Sans",
+              },
             }}
-          >
-            <h3>File Submitted!</h3>
-          </div>
+          />
+            </div>
+          
         </div>
       </Content>
     );
   }
-}
 
 export default Courses;

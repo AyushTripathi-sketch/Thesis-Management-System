@@ -3,8 +3,17 @@ import {
   DownloadOutlined
 } from '@ant-design/icons';
 import React from "react";
+import axios from "axios";
+import download from "downloadjs";
 
 function TableComp(props) {
+
+  const onDownloadClick = async (event, rowData) => {
+    const res = await axios.get(`/api/getFile/${rowData.file}`, { responseType: 'blob' });
+    const file = new Blob([res.data], {type: res.data.type});
+    download(file, `${rowData.type}.${res.data.type}`)
+  }
+
   return (
     <div className="table" style={{marginTop:"4%"}}>
       <MaterialTable
@@ -26,9 +35,8 @@ function TableComp(props) {
           (rowData) => ({
             icon: DownloadOutlined,
             tooltip: "Download Report",
-            onClick: (event, rowData) =>
-              alert(`${rowData.type} Report Downloaded`),
-            disabled: rowData.status !== "S" && rowData.status !== "SRF",
+            onClick: onDownloadClick,
+            disabled: !rowData.file,
           }),
         ]}
         columns={[

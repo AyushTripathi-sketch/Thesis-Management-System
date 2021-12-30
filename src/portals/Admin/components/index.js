@@ -1,10 +1,4 @@
 export { default as Dashboard} from "../pages/Dashboard";
-export {default as MailSidebar} from "./MailSidebar"
-export {default as Events} from "../pages/Events";
-export {default as Files} from "../pages/Files";
-export {default as Inbox} from "../pages/Mail/Inbox";
-export {default as Email} from "../pages/Mail/Email";
-export {default as Compose} from "../pages/Mail/Compose";
 export { default as AddScholar} from "../pages/AddNew/AddScholar";
 export { default as AddSupervisor} from "../pages/AddNew/AddSupervisor";
 export { default as AddExaminer} from "../pages/AddNew/AddExaminer";
@@ -14,7 +8,6 @@ export { default as Scholar} from "../pages/Details/Scholar";
 export { default as Supervisor} from "../pages/Details/Supervisor";
 export { default as Examiner} from "../pages/Details/Examiner";
 export { default as Thesis} from "../pages/Details/Thesis/Thesis";
-export { default as Forms} from "../pages/Details/Forms";
 export { default as ThesisDetails} from "../pages/Details/Thesis/ThesisDetails";
 export { default as ColumnGraph} from "./ColumnGraph";
 export { default as PieGraph} from "./PieGraph";

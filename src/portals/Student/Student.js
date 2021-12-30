@@ -40,7 +40,7 @@ function Student() {
             <Route path="/myprojectActivityPlan" element={<ActivityPlan />} />
             <Route path="/myprojectForums" element={<Forums />} />
             <Route path="/myprojectForums" element={<Forums />} />
-            <Route path="/myprojectForums/thread_title_id" element={<ForumsDetails />} />
+            <Route path="/myprojectForums/:thread_title_id" element={<ForumsDetails />} />
             <Route path="/myprojectFinal" element={<Final />} />
             <Route path="/thesis-submission" element={<Submission />} />
             <Route path="/thesis-sub-confirmation" element={<Confirmation />} />
