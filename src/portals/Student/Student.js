@@ -16,6 +16,7 @@ import {
   Submission,
   Confirmation,
   ForumsDetails,
+  Draft,
 } from "./components";
 import { Routes, Route } from "react-router-dom";
 import menu from "./menu";
@@ -42,8 +43,9 @@ function Student() {
             <Route path="/myprojectForums" element={<Forums />} />
             <Route path="/myprojectForums/thread_title_id" element={<ForumsDetails />} />
             <Route path="/myprojectFinal" element={<Final />} />
-            <Route path="/thesis-submission" element={<Submission />} />
-            <Route path="/thesis-sub-confirmation" element={<Confirmation />} />
+            <Route path="/thesis/submission" element={<Submission />} />
+            <Route path="/thesis/confirmation" element={<Confirmation />} />
+            <Route path="/thesis/draft" element={<Draft />} />
           </Routes>
           <Footerr />
         </Layout>

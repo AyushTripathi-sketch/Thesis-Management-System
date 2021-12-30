@@ -49,8 +49,13 @@ const menu =[
         name:"Thesis",
         children:[
             {
-                key:"/st/thesis-submission",
-                path:"/st/thesis-submission",
+                key:"/st/thesis/draft",
+                path:"/st/thesis/draft",
+                name:"Draft",
+            },
+            {
+                key:"/st/thesis/submission",
+                path:"/st/thesis/submission",
                 name:"Submission",
             },
             {

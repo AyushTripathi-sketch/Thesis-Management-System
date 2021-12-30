@@ -36,7 +36,7 @@ const props = {
   },
 };
 
-function Submission() {
+function Draft() {
   return (
     <Content style={{ margin: "25px 25px" }}>
       <div className="site-layout-background" style={{ padding: "10px" }}>
@@ -100,7 +100,7 @@ function Submission() {
           </Form.Item>
           <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 8 }}>
             <Button type="primary" htmlType="submit">
-              <a href="/st/thesis/confirmation">Save & Submit</a>
+              Save
             </Button>
           </Form.Item>
         </Form>
@@ -109,4 +109,4 @@ function Submission() {
   );
 }
 
-export default Submission;
+export default Draft;
