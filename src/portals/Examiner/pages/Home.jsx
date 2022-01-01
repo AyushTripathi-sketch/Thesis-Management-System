@@ -1,8 +1,10 @@
 import React from "react";
-import { Divider, Layout, Button } from "antd";
+import { Divider, Layout, Button,Progress } from "antd";
 import scholar from "../../../images/scholar.png";
 
 const { Content } = Layout;
+const day = 25;
+const totalDay = 45;
 
 function Home() {
   
@@ -12,7 +14,7 @@ function Home() {
         className="site-layout-background"
         style={{ padding: 24, minHeight: 400 }}
       >
-        <div className="container">
+        <div className="container-fluid">
           <div style={{ width: "100%", height: "auto", padding: "1%" }}>
             <div>
               <img
@@ -46,9 +48,9 @@ function Home() {
           </div>
 		 </div>
          <Divider />
-         <p>PROGRESS BAR</p>
-
-         <div className="student-profile py-4">
+         <Progress percent={(day*100.0)/totalDay} status='active' showInfo={false}/>
+         <p>Days Remaining to submit evaluation: {day}</p>
+         <div className="student-profile">
             <div className="container">
               <div className="row">
                 <div className="col-lg-4">
@@ -100,6 +102,11 @@ function Home() {
                             <td>XX-XX-XXXX</td>
                           </tr>
                           <tr>
+                            <th width="30%">Due Date of Evaluation</th>
+                            <td width="2%">:</td>
+                            <td>XX-XX-XXXX</td>
+                          </tr>
+                          {/* <tr>
                             <th width="30%">Synopsis</th>
                             <td width="2%">:</td>
                             <td><Button>Click to View</Button></td>
@@ -108,22 +115,23 @@ function Home() {
                             <th width="30%">Thesis</th>
                             <td width="2%">:</td>
                             <td><Button>Click to View</Button></td>
-                          </tr>
+                          </tr> */}
                           <tr>
                             <th width="30%">Evaluate</th>
                             <td width="2%">:</td>
-                            <td><Button>Form</Button></td>
+                            <td><a href='/ex/eval'><Button>Form</Button></a><div style={{margin:'5px 0 5px 0'}}>Status: <strong>Saved</strong></div></td>
                           </tr>
                           <tr>
                             <th width="30%">Honorarium</th>
                             <td width="2%">:</td>
-                            <td><Button>Form</Button></td>
+                            <td><a href='/ex/hon'><Button>Form</Button></a><div style={{margin:'5px 0 5px 0'}}>Status: <strong>Saved</strong></div></td>
                           </tr>
                         </tbody>
                       </table>
                     </div>
                   </div>
                 </div>
+                <div style={{textAlign:'center',margin:'20px 0'}}><Button type="primary">Submit</Button></div>
               </div>
             </div>
           </div>
