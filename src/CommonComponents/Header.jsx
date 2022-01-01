@@ -54,7 +54,7 @@ function Headerr() {
           </h3>
         </span>
         <div style={{float:"right"}}>
-      <Button spin="true" onClick={openNotification} style={{marginRight:"10px"}}>
+            <Button spin="true" onClick={()=> openNotification('topRight')} style={{marginRight:"10px"}}>
         <BellTwoTone />
       </Button>
       <span>
