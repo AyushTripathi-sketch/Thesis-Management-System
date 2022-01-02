@@ -10,7 +10,7 @@ const { Option } = Select;
 const { TextArea } = Input;
 
 function EvaluationForm() {
-    const [state,setState]= useState(0);
+    const [value,setValue]= useState(1);
     const columns=[
         {title:"File Name",field:"name"},
         {title:"Designation",field:"des"},
@@ -33,9 +33,7 @@ function EvaluationForm() {
 
   function onChange(e){
     console.log('radio checked', e.target.value);
-    setState({
-      value: e.target.value,
-    });
+    setValue(e.target.value);
   };
 
   const props = {
@@ -210,7 +208,7 @@ adequate with respect to the thesis objectives? "
       <Form.Item
         label="6. Specific Recommendations"
       >
-        <Radio.Group  onChange={onChange} value={'1'}>
+        <Radio.Group  onChange={onChange} value={value}>
         <Space direction="vertical">
           <Radio value={1}>The thesis is satisfactory and recommended for the award of the Ph.D. Degree.</Radio>
           <Radio value={2}>The thesis is recommended for award of Ph.D. Degree subject to answering the queries 
