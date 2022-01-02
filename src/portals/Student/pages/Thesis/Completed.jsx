@@ -1,10 +1,79 @@
-import React from "react";
+import React, { useEffect, useContext, useState } from "react";
 import StepProgressComponent from "../../components/StepProgressComponent";
+import AssignedThesisContext from "../../../../context/assignedThesis/assignedThesisContext";
+import AuthContext from "../../../../context/auth/authContext";
+import Spinner from "../../../../CommonComponents/Spinner";
 import { Divider, Layout, Button } from "antd";
 import scholar from "../../images/scholar.png";
+import axios from "axios";
 const { Content } = Layout;
 
 function Completed() {
+
+  const authContext = useContext(AuthContext);
+  const assignedThesisContext = useContext(AssignedThesisContext);
+  const { admn, name, department, branch, photo } = authContext.user.dataValues;
+  const { assignedThesis, loading, getAssignedThesisDetails } = assignedThesisContext;
+  const [downloading, setdownloading] = useState(false);
+  let accomplishedSteps = 0;
+  if (assignedThesis) {
+    console.log(assignedThesis.completed);
+    if (assignedThesis.draftId) {
+      accomplishedSteps = 1;
+    }
+    if (assignedThesis.completed) {
+      accomplishedSteps = 2;
+    }
+    if( assignedThesis.evaluation ) {
+      accomplishedSteps = 3;
+    }
+    console.log(accomplishedSteps);
+  }
+
+  const onSynopsisDownloadClick = async () => {
+    setdownloading(true);
+    try {
+      let synopsis = await axios.get(`/api/draft/downloadFile/${assignedThesis.draft.synopsis}`, {responseType: 'blob'});
+      console.log(synopsis);
+      synopsis = URL.createObjectURL(new Blob([synopsis.data], {type:synopsis.data.type}));
+      let tempLink = document.createElement('a');
+      tempLink.href = synopsis;
+      tempLink.setAttribute('download', `${admn}-Synopsis`);
+      tempLink.click();
+    } catch (error) {
+      console.log(error);
+      alert('Some error occurred!')
+    } finally {
+      setdownloading(false);
+    }
+  }
+
+  const onThesisDownloadClick = async () => {
+    try {
+      let thesis = await axios.get(`/api/draft/downloadFile/${assignedThesis.draft.file}`, {responseType: 'blob'});
+      console.log(thesis);
+      thesis = URL.createObjectURL(new Blob([thesis.data], {type:thesis.data.type}));
+      let tempLink = document.createElement('a');
+      tempLink.href = thesis;
+      tempLink.setAttribute('download', `${admn}-Thesis`);
+      tempLink.click();
+    } catch (error) {
+      console.log(error);
+      alert('Some error occurred!');
+    } finally {
+      setdownloading(false);
+    }
+  }
+
+  const onEvaluationDownloadClick = async () => {}
+
+  useEffect(() => {
+    getAssignedThesisDetails(admn);
+  }, [])
+
+  if (loading || downloading) {
+    return <Spinner />
+  } else {
   return (
     <Content style={{ margin: "25px 25px" }}>
       <div
@@ -21,7 +90,7 @@ function Completed() {
                 "Thesis Submitted",
                 "Evaluated",
               ]}
-              accomplished={1}
+              accomplished={accomplishedSteps}
             />
         <div className="student-profile py-4">
             <div className="container">
@@ -34,20 +103,20 @@ function Completed() {
                     <div className="card-header bg-transparent text-center">
                       <img
                         className="profile_img"
-                        src={scholar}
+                        src={photo ? photo : scholar}
                         alt="student dp"
                       />
-                      <h3>Name</h3>
+                      <h3>{name}</h3>
                     </div>
                     <div className="card-body">
                       <p className="mb-0">
-                        <strong className="pr-1">Scholar ID : </strong>19DRXXXX
+                        <strong className="pr-1">Scholar ID : </strong>{admn}
                       </p>
                       <p className="mb-0">
-                        <strong className="pr-1">Department : </strong>XYZ
+                        <strong className="pr-1">Department : </strong>{department}
                       </p>
                       <p className="mb-0">
-                        <strong className="pr-1">Branch : </strong>XYZ
+                        <strong className="pr-1">Branch : </strong>{branch}
                       </p>
                     </div>
                   </div>
@@ -62,27 +131,27 @@ function Completed() {
                           <tr>
                             <th width="30%">Title</th>
                             <td width="2%">:</td>
-                            <td>Lorem Ipsum</td>
+                            <td>{assignedThesis.draft ? assignedThesis.draft.title : '-'}</td>
                           </tr>
                           <tr>
                             <th width="30%">Abstract</th>
                             <td width="2%">:</td>
-                            <td>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</td>
+                            <td>{assignedThesis.draft ? assignedThesis.draft.abstract : '-'}</td>
                           </tr>
                           <tr>
                             <th width="30%">Synopsis</th>
                             <td width="2%">:</td>
-                            <td><Button>Click to View</Button></td>
+                            <td><Button disabled={!assignedThesis.draft} onClick={onSynopsisDownloadClick}>Click to View</Button></td>
                           </tr>
                           <tr>
                             <th width="30%">Thesis</th>
                             <td width="2%">:</td>
-                            <td><Button>Click to View</Button></td>
+                            <td><Button disabled={!assignedThesis.draft} onClick={onThesisDownloadClick}>Click to View</Button></td>
                           </tr>
-                          <tr>
+                          <tr hidden={!assignedThesis.evaluation}>
                             <th width="30%">Evaluation Report</th>
                             <td width="2%">:</td>
-                            <td><Button>Click to View</Button></td>
+                            <td><Button onClick={onEvaluationDownloadClick}>Click to View</Button></td>
                           </tr>
                         </tbody>
                       </table>
@@ -95,6 +164,7 @@ function Completed() {
       </div>
     </Content>
   );
+  }
 }
 
 export default Completed;

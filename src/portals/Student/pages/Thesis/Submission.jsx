@@ -1,7 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import { useNavigate } from "react-router-dom";
+import AssignedThesisContext from "../../../../context/assignedThesis/assignedThesisContext";
+import AuthContext from "../../../../context/auth/authContext";
 import { Divider, Layout, Form, Input, Button, Upload, message } from "antd";
 import "../../StudentApp.css";
 import { UploadOutlined } from "@ant-design/icons";
+import Spinner from "../../../../CommonComponents/Spinner";
 const { Content } = Layout;
 
 const layout = {
@@ -20,6 +24,13 @@ const validateMessages = {
 
 function Submission() {
 
+  const authContext = useContext(AuthContext);
+  const assignedThesisContext = useContext(AssignedThesisContext);
+  const { admn } = authContext.user.dataValues;
+  const { assignedThesis, loading, getAssignedThesisDetails } = assignedThesisContext;
+
+  const navigate = useNavigate();
+
   const [thesisFL, setthesisFL] = useState([]);
   const [synopsisFL, setsynopsisFL] = useState([]);
 
@@ -33,6 +44,41 @@ function Submission() {
     setsynopsisFL(fileList);
   }
 
+  const onSubmitDraft = (values) => {
+    const title = values.user.title;
+    const abstract = values.user.abstract;
+    const thesis = thesisFL[0].originFileObj;
+    const synopsis = synopsisFL[0].originFileObj;
+    navigate('/st/thesis/confirmation', { state: { title, abstract, thesis, synopsis } });
+  }
+
+  useEffect(() => {
+    getAssignedThesisDetails(admn);
+  }, [])
+
+  if (loading) {
+    return <Spinner />
+  }
+  else if (assignedThesis.completed) {
+    return (
+      <div
+        className="site-layout-background"
+        style={{ padding: 24, margin: "25px 25px" }}
+      >
+        <div
+          className="container-fluid"
+          style={{
+            marginTop: "40px",
+            marginBottom: "40px",
+            textAlign: "center",
+          }}
+        >
+          <h3>You have already submitted your thesis!</h3>
+        </div>
+      </div>
+    );
+  }
+  else {
   return (
     <Content style={{ margin: "25px 25px" }}>
       <div className="site-layout-background" style={{ padding: "10px" }}>
@@ -42,6 +88,7 @@ function Submission() {
           {...layout}
           name="nest-messages"
           validateMessages={validateMessages}
+          onFinish={onSubmitDraft}
         >
           <Form.Item
             name={["user", "title"]}
@@ -115,13 +162,14 @@ function Submission() {
           </Form.Item>
           <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 8 }}>
             <Button type="primary" htmlType="submit">
-              <a href="/st/thesis/confirmation">Save & Submit</a>
+              Save & Submit
             </Button>
           </Form.Item>
         </Form>
       </div>
     </Content>
   );
+  }
 }
 
 export default Submission;

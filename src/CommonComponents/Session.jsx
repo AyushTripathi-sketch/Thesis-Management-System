@@ -9,6 +9,12 @@ function Session(props) {
 
   function onFinish(values) {
     if (values) {
+      if (!values.Semester.value) {
+        values.Semester = { value: values.Semester };
+      }
+      if (!values.Year.value) {
+        values.Year = { value: values.Year };
+      }
       console.log("Success:", values);
       props.onClick(values);
     }

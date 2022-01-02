@@ -43,7 +43,7 @@ const SupervisorAllocationState = (props)=>{
             const res = await axios.get(`/api/supervisorAllocation/${admn}`);
             dispatch({type:GET_SA_SUCCESS,payload:res.data});
         } catch (error) {
-            dispatch({type:AUTH_ERROR,payload:error.response.data.msg});
+            dispatch({type:AUTH_ERROR,payload:error});
         }
          
     }

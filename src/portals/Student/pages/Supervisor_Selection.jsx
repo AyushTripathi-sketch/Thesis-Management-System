@@ -94,7 +94,7 @@ function Supervisor(){
       {title:"Priority Order", field:"key"},
       {title:"Supervisor",
       render: (rowData)=>(
-        <Selector id={rowData.key} list={names} onChange={handleChange}></Selector>
+        <Selector id={rowData.key} list={names} onChange={handleChange} placeholder={[]}></Selector>
       )}
     ]
     if(checked===false) return <Spinner/>

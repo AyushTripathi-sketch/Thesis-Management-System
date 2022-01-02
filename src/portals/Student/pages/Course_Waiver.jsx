@@ -92,6 +92,7 @@ function CourseWaiver() {
       </div>
     );
   }
+  else {
   return (
     <Content style={{ margin: "25px 25px" }}>
       <div
@@ -222,6 +223,7 @@ function CourseWaiver() {
       </div>
     </Content>
   );
+  }
 }
 
 export default CourseWaiver;
