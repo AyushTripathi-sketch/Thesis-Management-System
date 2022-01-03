@@ -1,21 +1,29 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Button, Layout, notification } from "antd";
 import "../index.css";
 import { BellTwoTone } from "@ant-design/icons";
+import AuthContext from '../context/auth/authContext';
 
 const { Header } = Layout;
 
-const openNotification = (placement) => {
-  notification.info({
-    message: `Notification ${placement}`,
-    description:
-      "This is the content of the notification. This is the content of the notification. This is the content of the notification.",
-    placement,
-  });
-};
-
 function Headerr() {
   const [size, setSize] = useState(window.innerWidth);
+  const authContext = useContext(AuthContext);
+  const {logout, notifications, unreadNotifications} = authContext;
+
+  const openNotification = (placement) => {
+    notifications.forEach(element => {
+      notification.info({
+        message: `${element.title}`,
+        description: `${element.content}`,
+        placement,
+      });
+    });
+  };
+  
+  const onLogout = ()=>{
+      logout();
+  }
   React.useEffect(() => {
     function handleResize() {
       setSize(window.innerWidth);
@@ -54,11 +62,11 @@ function Headerr() {
           </h3>
         </span>
         <div style={{float:"right"}}>
-            <Button spin="true" onClick={()=> openNotification('topRight')} style={{marginRight:"10px"}}>
+            <Button className="notif" data-count={unreadNotifications ? unreadNotifications : 0} spin="true" onClick={()=> openNotification('topRight')} style={{marginRight:"10px"}}>
         <BellTwoTone />
       </Button>
       <span>
-        <Button type="primary" danger style={{marginRight:"10px"}}>
+        <Button type="primary" danger style={{marginRight:"10px"}} onClick={onLogout}>
           <a href="/">Log Out</a>
         </Button>
       </span>

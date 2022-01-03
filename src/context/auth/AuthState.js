@@ -16,11 +16,13 @@ const AuthState = props =>{
         isAuthenticated:null, // obviously it cant be true , suppose if we keep it as false first its gonna redirect me to login page it is ok at the starting but after logging in(where we set its value as true and we also get the token which gets stored in the localstorage) and getting the home page suppose i refresh the page the application starts again and its value will be false and it redirects to login page but we are authenticated and we have the token in the localstorage after every refresh we have to login which is not feasible so its initial value will be null 
         loading:true, 
         user:null,
+        notifications: [],
+        unreadNotifications: 0,
         error:null
     }
 
     const [state,dispatch] = useReducer(authReducer,initialState);
-    const {token,isAuthenticated,loading,user,error} = state;
+    const {token,isAuthenticated, notifications, unreadNotifications ,loading,user,error} = state;
 
     // Methods
     const loadUser = async () =>{
@@ -67,6 +69,8 @@ const AuthState = props =>{
         value={{
             token,
             isAuthenticated,
+            notifications,
+            unreadNotifications,
             loading,
             user,
             error,

@@ -17,27 +17,15 @@ const authContext = useContext(AuthContext);
 const progressReportContext = useContext(ProgressReportContext);
 const {user} = authContext;
 const {admn} = user.dataValues;
-const {  
-  ceRep,
-  rpsRep,
-  pssRep,
-  thesisEvaluationRep,
-  vivaVoiceRep,
-  progressReport,getReports,getProgressDetails} = progressReportContext;
+const {progressReport,getProgressDetails} = progressReportContext;
   const [applyPSSEnabled] = useState(true);
   const [fileInputButton] = useState(React.createRef());
   const [state,setState] = useState({ isModalVisible: false,file: null});
 useEffect(()=>{
-    getReports(admn,"ceRep");
-    getReports(admn,"rpsRep");
-    getReports(admn,"pssRep");
-    getReports(admn,"thesisEvaluation");
-    getReports(admn,"vivaVoiceRep");
     getProgressDetails(admn);
-    //eslint-disable-next-line
   },[]);
   if(progressReport===null) return <Spinner/>
-  const{comprehensive_exam_status,rps_status,fellowship_status,pss_status,phd_degree,viva_voice_status,thesis_submission_status,thesis_evaluation_status}=progressReport;
+  const{comprehensive_exam_status,rps_status,fellowship_status,pss_status,phd_degree,viva_voice_status,thesis_submission_status,thesis_evaluation_status, ce_rep, rps_rep, pss_rep, overall_thesis_eval, vv_rep}=progressReport;
   let status = [comprehensive_exam_status,rps_status,fellowship_status,pss_status,thesis_submission_status,thesis_evaluation_status,viva_voice_status,phd_degree];
   let n=0,i;
   for(i=0;i<status.length-1;i++){
@@ -127,16 +115,16 @@ useEffect(()=>{
                 {
                   serial: "1.",
                   type: "CE",
-                  status:comprehensive_exam_status,
-                  date: (comprehensive_exam_status==="S"?"hi":"-"),
-                  file: 'files/course_waiver_requests/19DR001.pdf',
+                  status: comprehensive_exam_status || "-",
+                  date: ce_rep ? ce_rep.date2 || ce_rep.date1 : "-",
+                  file: ce_rep ? ce_rep.rep2_url || ce_rep.rep1_url : null,
                 },
                 {
                   serial: "2.",
                   type: "RPS",
-                  status:rps_status,
-                  date: (rps_status==="S"?"hi":"-"),
-                  file: 'files/course_waiver_requests/19DR001.pdf'
+                  status: rps_status || "-",
+                  date: rps_rep ? rps_rep.date2 || rps_rep.date1 : "-",
+                  file: rps_rep ? rps_rep.rep2_url || rps_rep.rep1_url : null,
                 },
                 // {
                 //   serial: "3.",
@@ -147,23 +135,24 @@ useEffect(()=>{
                 {
                   serial: "3.",
                   type: "PSS",
-                  status:pss_status,
-                  date: (pss_status==="S"?pssRep.date:"-"),
+                  status: pss_status || "-",
+                  date: pss_rep ? pss_rep.date : "-",
+                  file: pss_rep ? pss_rep.rep_url : null,
                 },
 
                 {
                   serial: "4.",
                   type: "Thesis Evaluation",
-                  status:thesis_evaluation_status,
-                  date: (thesis_evaluation_status==="evaluated"?thesisEvaluationRep.date:"-"),
-                  file: 'files/course_waiver_requests/19DR001.pdf'
+                  status: thesis_evaluation_status || "-",
+                  date: (overall_thesis_eval ? overall_thesis_eval.date : "-"),
+                  file: overall_thesis_eval ? overall_thesis_eval.file : null,
                 },
                 {
                   serial: "5.",
                   type: "Viva Voice",
-                  status:viva_voice_status,
-                  date: (viva_voice_status==="S"?vivaVoiceRep.date:"-"),
-                  file: 'files/course_waiver_requests/19DR001.pdf'
+                  status: viva_voice_status || "-",
+                  date: vv_rep ? vv_rep.date : "-",
+                  file: vv_rep ? vv_rep.rep_url : null,
                 },
                 // {
                 //   serial: "5.",

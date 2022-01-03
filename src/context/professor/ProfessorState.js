@@ -24,7 +24,7 @@ const ProfessorState = (props)=>{
        if(localStorage.token){
         setAuthToken(localStorage.token);}
         try {
-            const res = await axios.get(`api/professor/${id}`);
+            const res = await axios.get(`/api/professor/${id}`);
             console.log(id);
             dispatch({type:GET_PROF_DETAILS_SUCCESS,payload:{response:res.data,designation}});
         } catch (error) {

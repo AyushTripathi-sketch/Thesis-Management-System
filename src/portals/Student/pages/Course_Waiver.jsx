@@ -184,7 +184,7 @@ function CourseWaiver() {
             </h6>
             <p>
               To avail course waiver you have to submit{" "}
-              <a href="https://www.iitism.ac.in/~academics/assets/acad_forms/ph6.pdf">
+              <a href="https://www.iitism.ac.in/~academics/assets/acad_forms/ph1.pdf" target={'_blank'}>
                 <b>PH1</b>
               </a>{" "}
               form within the prescribed deadline.

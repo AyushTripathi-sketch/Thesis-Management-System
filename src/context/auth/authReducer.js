@@ -34,6 +34,8 @@ const reducerfunc = (state,action) => {
             return{
                 ...state,
                 user:action.payload,
+                notifications: action.payload.notifications,
+                unreadNotifications: action.payload.unreadNotifications,
                 isAuthenticated:true,
                 loading:false
             }

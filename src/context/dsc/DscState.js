@@ -22,7 +22,7 @@ const DscState = (props)=>{
        if(localStorage.token){
         setAuthToken(localStorage.token);}
         try {
-            const res = await axios.get(`api/dsc/${id}`); //st/api/dsc/id 
+            const res = await axios.get(`/api/dsc/${id}`);
             dispatch({type:GET_DSC_DETAILS_SUCCESS,payload:res.data});
         } catch (error) {
             dispatch({type:AUTH_ERROR,payload:error.response.data.msg});
