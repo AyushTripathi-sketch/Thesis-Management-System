@@ -53,16 +53,20 @@ function Headerr() {
             Indian Institute of Technology (ISM), Dhanbad
           </h3>
         </span>
-        <div style={{float:"right"}}>
-            <Button spin="true" onClick={()=> openNotification('topRight')} style={{marginRight:"10px"}}>
-        <BellTwoTone />
-      </Button>
-      <span>
-        <Button type="primary" danger style={{marginRight:"10px"}}>
-          <a href="/">Log Out</a>
-        </Button>
-      </span>
-      </div>
+        <div style={{ float: "right" }}>
+          <Button
+            spin="true"
+            onClick={() => openNotification("topRight")}
+            style={{ marginRight: "10px" }}
+          >
+            <BellTwoTone />
+          </Button>
+          <span>
+            <Button type="primary" danger style={{ marginRight: "10px" }}>
+              <a href="/">Log Out</a>
+            </Button>
+          </span>
+        </div>
       </Header>
     );
   }

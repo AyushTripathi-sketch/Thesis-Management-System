@@ -48,7 +48,8 @@ function Selector(props) {
       <FormControl >
         <Select
           displayEmpty
-          value={value}
+          defaultValue={props.placeholder}
+          //value={//value}
           onChange={handleChange}
           input={<OutlinedInput />}
           style={style}

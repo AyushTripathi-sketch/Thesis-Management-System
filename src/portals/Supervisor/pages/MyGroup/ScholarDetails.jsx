@@ -190,9 +190,6 @@ function ScholarDetails() {
                       name="PH2form"
                       label="Upload Form"
                       max={1}
-                      fieldProps={{
-                        name: "file",
-                      }}
                       action="/upload.do"
                     >
                       <Upload>
