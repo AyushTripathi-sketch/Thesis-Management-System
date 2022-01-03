@@ -1,13 +1,24 @@
-import React from "react";
-import { Divider, Layout, Button, Upload, message  } from "antd";
+import React, { useState,useContext,useEffect }  from "react";
+import { useParams } from 'react-router-dom';
+import { Divider, Layout, Button, Upload, message, Spin  } from "antd";
 import scholar from "../../images/scholar.png";
 import MaterialTable from "material-table";
+import AssignedThesisContext from "../../../../context/assignedThesis/assignedThesisContext";
+import Spinner from "../../../../CommonComponents/Spinner";
 import { tableIcons } from "../../../../CommonComponents";
 const { Content } = Layout;
 
 
 
 function ThesisDetails() {
+  const{Adm_No,id} = useParams();
+  const assignedThesisContext = useContext(AssignedThesisContext);
+  const{assignedThesis,getAssignedThesisDetailsById,checked} = assignedThesisContext;
+  const [isUploaded, setIsUploaded] = useState(false);
+  useEffect(()=>{
+    getAssignedThesisDetailsById(id);
+  },[]);
+  if(assignedThesis===null) return <Spinner/>
     const props = {
       name: "file",
       action: "https://www.mocky.io/v2/5cc8019d300000980a055e76",
@@ -16,6 +27,7 @@ function ThesisDetails() {
       },
       onChange(info) {
         if (info.file.status !== "uploading") {
+          setIsUploaded(true);
           console.log(info.file, info.fileList);
         }
         if (info.file.status === "done") {
@@ -33,7 +45,7 @@ function ThesisDetails() {
           title: "Download",
           field: "url",
           render: (rowData) => (
-            <a href={rowData.url}>
+            <a href={rowData.url} target={'_blank'}>
               <img
                 alt=""
                 class="icon"
@@ -102,7 +114,7 @@ function ThesisDetails() {
       </div>
         <Divider />
         <div className="student-profile py-4">
-            <div className="container" style={{marginTop:"0"}}>
+            <div className="container">
               <div className="row">
                 <div className="col-lg-4">
                   <div

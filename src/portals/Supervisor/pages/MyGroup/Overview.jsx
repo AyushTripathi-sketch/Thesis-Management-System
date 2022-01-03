@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useContext,useState } from "react";
+import SupervisorGroupContext from "../../../../context/supervisorGroups/supervisorGroupContext";
 import { Layout } from "antd";
 import { tableIcons,Session } from "../../../../CommonComponents";
 import "../../SupervisorApp.css";
@@ -6,36 +7,39 @@ import MaterialTable from "material-table";
 const { Content } = Layout;
 
 function Overview() {
-  const flag = localStorage.getItem("showSession");
-  const [showSession,setShowSession]=useState(flag);
-  console.log(localStorage.getItem("showSession"));
-  console.log(showSession)
-  function handleClick(props){
-    setShowSession("false");
-    localStorage.setItem("showSession","false");
-  }
+  // const flag = localStorage.getItem("showSession");
+  // const [showSession,setShowSession]=useState(flag);
+  // console.log(localStorage.getItem("showSession"));
+  // console.log(showSession)
+  // function handleClick(props){
+  //   setShowSession("false");
+  //   localStorage.setItem("showSession","false");
+  // }
+
+  const [showSession,setShowSession]=useState(true);
+  const supervisorGroupContext = useContext(SupervisorGroupContext);
+  const{scholars,group} = supervisorGroupContext;
   const columns=[
     {title:"Admission No.",field:"id"},
     {title:"Name",field:"name"},
-    {title:"Department",field:"department"},
+    {title:"Status",field:"status"},
     {title:"Details",filed:"url",render:(rowData)=>(
       <a href={rowData.url}>View</a>
     )},
   ];
-  const data=[
-    {id:"19JE0215",name:"Ayush Tripathi",department:"Mathematics & Computing",url:"/sp/mygroupoverview/Adm_No"},
-    {id:"19JE0215",name:"Mrinal Pathak",department:"Applied Physics",url:"/sp/mygroupoverview/Adm_No"},
-    {id:"19JE0215",name:"Aditya Mishra",department:"Electrical",url:"/sp/mygroupoverview/Adm_No"},
-    {id:"19JE0215",name:"Pattewar Darshan",department:"Mathematics & Computing",url:"/sp/mygroupoverview/Adm_No"}
-  ]
+  const data=scholars===""?[]:scholars.map(scholar=>{return {id:scholar.admn,name:scholar.name,status:scholar.status,url:`/sp/mygroupoverview/${scholar.admn}`}});
+  function handleClick(props){
+      setShowSession(false);
+  }
+
   return (
         <Content style={{ margin: "25px 25px" }}>
           <div
             className="site-layout-background"
             style={{ padding: 24, minHeight: 400 }}
           >
-            <Session onClick={handleClick} style={{display:showSession==="true"?"inherit":"none",marginTop:"5%"}}/>
-            <div className="container-fluid" style={{display:showSession==="true"?"none":"inherit"}} >
+            <Session onClick={handleClick} style={{display:showSession?"inherit":"none",marginTop:"5%"}} group={group}/>
+            <div className="container-fluid" style={{display:showSession?"none":"inherit"}} >
             <MaterialTable title="Scholars" columns={columns} data={data}
               icons={tableIcons}
               options={{

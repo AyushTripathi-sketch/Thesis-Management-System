@@ -1,10 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Layout, Divider } from "antd";
 import "../SupervisorApp.css";
 import scholar from "../images/scholar.png";
+import AuthContext from "../../../context/auth/authContext";
 const { Content } = Layout;
 
 function Profile() {
+  const authContext = useContext(AuthContext);
+  const {user} = authContext;
+  const {profId,name, department, branch, email, photo} = user.dataValues;
   return (
     <Content style={{ margin: "25px 25px" }}>
       <div
@@ -21,25 +25,22 @@ function Profile() {
                   width: "170px",
                   height: "150 px",
                 }}
-                src={scholar}
+                src={ photo ? photo : scholar }
                 alt="Scholar"
               />
             </div>
             <div style={{ margin: "0 auto" }}>
               <p>
-                <strong>Admission No :</strong>19DRXXXX
+                <strong>Professor ID :</strong>{profId}
               </p>
               <p>
-                <strong>Name :</strong>XYZ ABC
+                <strong>Name :</strong>{name}
               </p>
               <p>
-                <strong>Department :</strong>LOREM IPSUM
+                <strong>Department :</strong>{department}
               </p>
               <p>
-                <strong>Branch :</strong>ASTRONOMY
-              </p>
-              <p>
-                <strong>Email :</strong>19DRXXXX.astro@iitism.ac.in
+                <strong>Email :</strong>{email}
               </p>
             </div>
           </div>

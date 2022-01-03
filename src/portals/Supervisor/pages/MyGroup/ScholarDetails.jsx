@@ -1,20 +1,54 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
+import { useParams } from 'react-router-dom';
 import { Layout, Button, Form, Upload } from "antd";
 import "../../SupervisorApp.css";
 import scholar from "../../images/scholar.png";
-import { LineGraph } from "../../../../CommonComponents";
 import { UploadOutlined } from "@ant-design/icons";
+import ScholarContext from "../../../../context/scholar/scholarContext";
+import DscContext from "../../../../context/dsc/dscContext";
+import ProfessorContext from "../../../../context/professor/professorContext";
+import Spinner from "../../../../CommonComponents/Spinner";
+
 const { Content } = Layout;
 
 function ScholarDetails() {
+  const { Adm_No } = useParams();
+  const scholarContext = useContext(ScholarContext);
+  const dscContext = useContext(DscContext);
+  const professorContext = useContext(ProfessorContext);
+  const {dscDetails,chairman,members,getDscDetails} = dscContext;
+  const {supervisorDetails,chairmanDetails,membersDetails,co_supervisorDetails,getProfDetails} = professorContext;
+  const {getScholarDetails,scholarDetails,dsc,supervisor,co_supervisor} = scholarContext;
   const [form] = Form.useForm();
-
   function onFinish(fileList) {
     console.log(fileList);
   }
   function onFinishFailed(errorInfo) {
     console.log(errorInfo);
   }
+  useEffect(()=>{
+    getScholarDetails(Adm_No);
+  },[]);
+  useEffect(()=>{
+    if(dsc!==null)getDscDetails(dsc);
+    if(supervisor!==null)getProfDetails(supervisor,"supervisorDetails");
+    if(co_supervisor!==null)getProfDetails(co_supervisor,"co_supervisorDetails");
+  },[dsc,supervisor,co_supervisor]);
+  useEffect(()=>{
+    if(chairman!==null) getProfDetails(chairman,"chairmanDetails");
+    if(members.length!==0) members.forEach(member=>{if(member!==null)getProfDetails(member,"membersDetails")});
+},[chairman,members]);
+  
+  if(scholarDetails===null) return <Spinner/>
+  if(supervisorDetails===null||co_supervisorDetails===null) return <Spinner/>
+  if(dsc!==null){
+  if(dscDetails===null||chairmanDetails===null||members.length===0)return <Spinner/>
+  }
+  const {admn,name,department,email,branch,contact,fellowship_status,qualification_degree,status,registration_date,address, photo} = scholarDetails;
+  
+
+
+
   return (
     <Content style={{ margin: "25px 25px" }}>
       <div className="student-profile py-4">
@@ -23,18 +57,18 @@ function ScholarDetails() {
             <div className="col-lg-4">
               <div className="card shadow-sm" style={{ marginBottom: "20px" }}>
                 <div className="card-header bg-transparent text-center">
-                  <img className="profile_img" src={scholar} alt="student dp" />
-                  <h3>Name</h3>
+                  <img className="profile_img" src={photo ? photo : scholar} alt="student dp" />
+                  <h3>{name}</h3>
                 </div>
                 <div className="card-body">
                   <p className="mb-0">
-                    <strong className="pr-1">Scholar ID : </strong>19DRXXXX
+                    <strong className="pr-1">Scholar ID : </strong>{admn}
                   </p>
                   <p className="mb-0">
-                    <strong className="pr-1">Department : </strong>XYZ
+                    <strong className="pr-1">Department : </strong>{department}
                   </p>
                   <p className="mb-0">
-                    <strong className="pr-1">Branch : </strong>XYZ
+                    <strong className="pr-1">Branch : </strong>{branch}
                   </p>
                 </div>
               </div>
@@ -52,27 +86,27 @@ function ScholarDetails() {
                       <tr>
                         <th width="30%">Email</th>
                         <td width="2%">:</td>
-                        <td>XYZ</td>
+                        <td>{email}</td>
                       </tr>
                       <tr>
                         <th width="30%">Contact</th>
                         <td width="2%">:</td>
-                        <td>98745XXXXX</td>
+                        <td>{contact}</td>
                       </tr>
                       <tr>
                         <th width="30%">Registration Status</th>
                         <td width="2%">:</td>
-                        <td>XYZ</td>
+                        <td>{status}</td>
                       </tr>
                       <tr>
                         <th width="30%">Qualify Degree</th>
                         <td width="2%">:</td>
-                        <td>XYZ</td>
+                        <td>{qualification_degree}</td>
                       </tr>
                       <tr>
-                        <th width="30%">XYZ</th>
+                        <th width="30%">Fellowship_Status</th>
                         <td width="2%">:</td>
-                        <td>XYZ</td>
+                        <td>{fellowship_status}</td>
                       </tr>
                     </tbody>
                   </table>
@@ -91,89 +125,35 @@ function ScholarDetails() {
                       <tr>
                         <th width="30%">Supervisor</th>
                         <td width="2%">:</td>
-                        <td>XYZ</td>
-                      </tr>
-                      <tr>
-                        <th width="30%">Date of Joining</th>
-                        <td width="2%">:</td>
-                        <td>dd-mm-yyyy</td>
-                      </tr>
-                      <tr>
-                        <th width="30%">XYZ</th>
-                        <td width="2%">:</td>
-                        <td>XYZ</td>
-                      </tr>
-                      <tr>
-                        <th width="30%">XYZ</th>
-                        <td width="2%">:</td>
-                        <td>XYZ</td>
-                      </tr>
-                      <tr>
-                        <th width="30%">XYZ</th>
-                        <td width="2%">:</td>
-                        <td>XYZ</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-              <div style={{ height: "26px" }}></div>
-              <div className="card shadow-sm">
-                <div className="card-header bg-transparent border-0">
-                  <h3 className="mb-0">
-                    <i className="far fa-clone pr-1"></i>Project Details
-                  </h3>
-                </div>
-                <div className="card-body pt-0">
-                  <table className="table table-bordered">
-                    <tbody>
-                      <tr>
-                        <th width="30%">Title</th>
-                        <td width="2%">:</td>
-                        <td>XYZ</td>
-                      </tr>
-                      <tr>
-                        <th width="30%">Start Date</th>
-                        <td width="2%">:</td>
-                        <td>98745XXXXX</td>
-                      </tr>
-                      <tr>
-                        <th width="30%">Group Members</th>
-                        <td width="2%">:</td>
-                        <td>XYZ</td>
-                      </tr>
-                      <tr>
-                        <th width="30%">DSC Chairman</th>
-                        <td width="2%">:</td>
-                        <td>XYZ</td>
+                        <td>{supervisorDetails.name}</td>
                       </tr>
                       <tr>
                         <th width="30%">Co-Supervisor</th>
                         <td width="2%">:</td>
-                        <td>XYZ</td>
+                        <td>{co_supervisorDetails.name}</td>
                       </tr>
                       <tr>
-                        <th width="30%">Examination</th>
+                        <th width="30%">Date of Joining</th>
                         <td width="2%">:</td>
-                        <td>XYZ</td>
+                        <td>{registration_date}</td>
+                      </tr>
+                      <tr>
+                        <th width="30%">Address</th>
+                        <td width="2%">:</td>
+                        <td>{address}</td>
                       </tr>
                     </tbody>
                   </table>
-                  <h5>
-                    <u>Progress</u>
-                  </h5>
-                  <LineGraph />
                 </div>
               </div>
-
-              <div style={{ height: "26px" }}></div>
-              <div className="card shadow-sm">
+              {dsc===null &&<div style={{ height: "26px" }}></div>}
+              {dsc===null &&<div className="card shadow-sm">
                 <div className="card-header bg-transparent border-0">
                   <h3 className="mb-0">
                     <i className="far fa-clone pr-1"></i>DSC Proposal
                   </h3>
                 </div>
-                <div className="card-body pt-0">
+               <div className="card-body pt-0">
                   <p>
                     <a href="https://www.iitism.ac.in/~academics/assets/acad_forms/ph2.pdf">
                       <b>PH2</b>
@@ -190,6 +170,9 @@ function ScholarDetails() {
                       name="PH2form"
                       label="Upload Form"
                       max={1}
+                      fieldprops={{
+                        name: "file",
+                      }}
                       action="/upload.do"
                     >
                       <Upload>
@@ -205,7 +188,7 @@ function ScholarDetails() {
                     </Form.Item>
                   </Form>
                 </div>
-              </div>
+              </div>}
 
               <div style={{ height: "26px" }}></div>
               <div className="card shadow-sm">
@@ -261,46 +244,38 @@ function ScholarDetails() {
                 <div className="card-body pt-0">
                   <table className="table table-bordered">
                     <tbody>
-                      <tr>
-                        <th width="30%">Name (Chairman)</th>
-                        <td width="2%">:</td>
-                        <td>XYZ</td>
-                      </tr>
-                      <tr>
-                        <th width="30%">Designation (Chairman)</th>
-                        <td width="2%">:</td>
-                        <td>98745XXXXX</td>
-                      </tr>
-                      <tr>
-                        <th width="30%">Area of Specialization (Chairmain)</th>
-                        <td width="2%">:</td>
-                        <td>XYZ</td>
-                      </tr>
-                      <tr>
-                        <th width="30%">Member Department</th>
-                        <td width="2%">:</td>
-                        <td>XYZ</td>
-                      </tr>
-                      <tr>
-                        <th width="30%">Sister Department</th>
-                        <td width="2%">:</td>
-                        <td>XYZ</td>
-                      </tr>
-                      <tr>
-                        <th width="30%">Supervisor</th>
-                        <td width="2%">:</td>
-                        <td>XYZ</td>
-                      </tr>
-                      <tr>
-                        <th width="30%">Co-Supervisor (Internal)</th>
-                        <td width="2%">:</td>
-                        <td>XYZ</td>
-                      </tr>
-                      <tr>
-                        <th width="30%">Co-Supervisor (External)</th>
-                        <td width="2%">:</td>
-                        <td>XYZ</td>
-                      </tr>
+                    <tr>
+                            <th width="30%">Name (Chairman)</th>
+                            <td width="2%">:</td>
+                            <td>{dsc!==null?chairmanDetails.name:"NA"}</td>
+                          </tr>
+                          <tr>
+                            <th width="30%">Designation (Chairman)</th>
+                            <td width="2%">:</td>
+                            <td>{dsc!==null?dscDetails.designation:"NA"}</td>
+                          </tr>
+                          <tr>
+                            <th width="30%">
+                              Area of Specialization (Chairmain)
+                            </th>
+                            <td width="2%">:</td>
+                            <td>{dsc!==null?dscDetails.areaofspecialization:"NA"}</td>
+                          </tr>
+                          <tr>
+                            <th width="30%">Member Department</th>
+                            <td width="2%">:</td>
+                            <td>{dsc!==null?dscDetails.memberdepartment:"NA"}</td>
+                          </tr>
+                          <tr>
+                            <th width="30%">Sister Department</th>
+                            <td width="2%">:</td>
+                            <td>{dsc!==null?dscDetails.sisterdepartment:"NA"}</td>
+                          </tr>
+                          <tr>
+                            <th width="30%">Members</th>
+                            <td width="2%">:</td>
+                            <td>{dsc!==null?membersDetails.map(member=>{return(member.name+",")}):"NA"}</td>
+                          </tr>
                     </tbody>
                   </table>
                 </div>

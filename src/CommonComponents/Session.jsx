@@ -2,10 +2,14 @@ import React from "react";
 import Selector from "./Selector";
 import { Typography } from "@material-ui/core";
 import { Button, Form } from "antd";
+import AuthContext from "../context/auth/authContext";
 
 function Session(props) {
   const Session = ["2021-2022", "2020-2021", "2019-2020"];
   const Semester = ["Monsoon", "Winter"];
+  const authContext = React.useContext(AuthContext);
+  const {user} = authContext;
+  const {profId} = user.dataValues;
 
   function onFinish(values) {
     if (values) {
@@ -16,6 +20,9 @@ function Session(props) {
         values.Year = { value: values.Year };
       }
       console.log("Success:", values);
+      if (props.group != null) {
+        props.group(profId, values.Year.value, values.Semester.value);
+      }
       props.onClick(values);
     }
   }

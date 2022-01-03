@@ -93,7 +93,7 @@ function Overview() {
             icons={tableIcons}
             options={{
               toolbar: false,
-              paging: true,
+              paging: false,
               draggable: false,
               sorting: false,
               headerStyle: {

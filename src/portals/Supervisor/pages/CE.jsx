@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Button, Layout, Upload, message } from "antd";
 import "../SupervisorApp.css";
 import { tableIcons } from "../../../CommonComponents";
@@ -6,6 +6,7 @@ import MaterialTable from "material-table";
 const { Content } = Layout;
 
 function Overview() {
+  const [isUploaded, setIsUploaded] = useState(false);
   const props = {
     name: "file",
     action: "https://www.mocky.io/v2/5cc8019d300000980a055e76",
@@ -14,6 +15,7 @@ function Overview() {
     },
     onChange(info) {
       if (info.file.status !== "uploading") {
+        setIsUploaded(true);
         console.log(info.file, info.fileList);
       }
       if (info.file.status === "done") {
@@ -95,7 +97,7 @@ function Overview() {
             icons={tableIcons}
             options={{
               toolbar: false,
-              paging: true,
+              paging: false,
               draggable: false,
               sorting: false,
               headerStyle: {

@@ -18,21 +18,19 @@ function Supervisor() {
             <Route path="/profile" element={<Profile />} />
             <Route path="/mygroupoverview" element={<Overview />} />
             <Route path="/thesis" element={<Thesis />} />
-            <Route path="/thesis/Adm_No" element={<ThesisDetails />} />
-            <Route path="/thesis/results/Adm_No" element={<ThesisResults />} />
+            <Route path="/thesis/:Adm_No/:id" element={<ThesisDetails />} />
+            <Route path="/thesis/results/:Adm_No/:id" element={<ThesisResults />} />
             <Route path="/rps" element={<RPS />} />
             <Route path="/ce" element={<CE />} />
             <Route path="/pss" element={<PSS />} />
             <Route path="/forms" element={<Forms />} />
-            <Route path="/vivareport" element={<VivaReport />} />
             <Route path="/myproject" element={<MyProject />} />
-            <Route path="/myproject/project_id" element={<MyProjectOverview />} />
-            <Route path="/myproject/project_id/forums" element={<MyProjectForums />} />
-            <Route path="/myproject/project_id/forums/thread_title_id" element={<MyProjectForumsDetails />} />
-            <Route path="/myproject/project_id/activityplan" element={<MyProjectActivityPlan />} />
-            <Route path="/myproject/project_id/final" element={<MyProjectFinal />} />
-            <Route path="/mygroupoverview/Adm_No" element={<ScholarDetails />} />
-            <Route path="/mygroupoverview/Adm_No" element={<ScholarDetails />} />
+            <Route path="/myproject/:scholar/:project_id" element={<MyProjectOverview />} />
+            <Route path="/myproject/:project_id/forums" element={<MyProjectForums />} />
+            <Route path="/myproject/:project_id/forums/thread_title_id" element={<MyProjectForumsDetails />} />
+            <Route path="/myproject/:scholar/:project_id/activityplan" element={<MyProjectActivityPlan />} />
+            <Route path="/myproject/:scholar/:project_id/final" element={<MyProjectFinal />} />
+            <Route path="/mygroupoverview/:Adm_No" element={<ScholarDetails />} />
           </Routes>
           <Footerr />
         </Layout>

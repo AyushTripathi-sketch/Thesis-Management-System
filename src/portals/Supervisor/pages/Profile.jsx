@@ -1,10 +1,14 @@
-import React from "react";
+import React,{useContext} from "react";
 import { Layout } from "antd";
 import "../SupervisorApp.css";
 import scholar from "../images/scholar.png";
+import AuthContext from "../../../context/auth/authContext";
 const { Content } = Layout;
 
 function Profile() {
+  const authContext = useContext(AuthContext);
+  const {user} = authContext;
+  const {profId,name,department,email,branch,contact,address, photo} = user.dataValues;
   return (
         <Content style={{ margin: "25px 25px" }}>
           <div className="student-profile py-4">
@@ -18,21 +22,21 @@ function Profile() {
                     <div className="card-header bg-transparent text-center">
                       <img
                         className="profile_img"
-                        src={scholar}
+                        src={ photo ? photo : scholar }
                         alt="student dp"
                       />
-                      <h3>Name</h3>
+                      <h3>{name}</h3>
                     </div>
                     <div className="card-body">
                       <p className="mb-0">
-                        <strong className="pr-1">ID : </strong>XYZ
+                        <strong className="pr-1">ID : </strong>{profId}
                       </p>
                       <p className="mb-0">
-                        <strong className="pr-1">Department : </strong>XYZ
+                        <strong className="pr-1">Department : </strong>{department}
                       </p>
-                      <p className="mb-0">
+                      {/* <p className="mb-0">
                         <strong className="pr-1">Branch : </strong>XYZ
-                      </p>
+                      </p> */}
                     </div>
                   </div>
                 </div>
@@ -49,25 +53,30 @@ function Profile() {
                           <tr>
                             <th width="30%">Email</th>
                             <td width="2%">:</td>
-                            <td>XYZ</td>
+                            <td>{email}</td>
                           </tr>
                           <tr>
                             <th width="30%">Contact</th>
                             <td width="2%">:</td>
-                            <td>98745XXXXX</td>
+                            <td>{contact}</td>
                           </tr>
                           <tr>
-                            <th width="30%">Address</th>
+                            <th width="30%">Present Address</th>
+                            <td width="2%">:</td>
+                            <td>{address}</td>
+                          </tr>
+                          <tr>
+                            <th width="30%">Alternate Email</th>
                             <td width="2%">:</td>
                             <td>XYZ</td>
                           </tr>
                           <tr>
-                            <th width="30%">XYZ</th>
+                            <th width="30%">Alternate Contact</th>
                             <td width="2%">:</td>
                             <td>XYZ</td>
                           </tr>
                           <tr>
-                            <th width="30%">XYZ</th>
+                            <th width="30%">Permanent Address</th>
                             <td width="2%">:</td>
                             <td>XYZ</td>
                           </tr>
