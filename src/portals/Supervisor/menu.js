@@ -44,6 +44,13 @@ const menu =[
         children:null
     },
     {
+        key:"/sp/forms",
+        path:"/sp/forms",
+        icon:<FileOutlined/>,
+        name:"Forms",
+        children:null
+    },
+    {
         key:"sub1",
         icon:<AppstoreOutlined/>,
         name:"More",
@@ -64,9 +71,9 @@ const menu =[
                 name:"Pre Submission Seminar",
             },
             {
-                key:"/sp/forms",
-                path:"/sp/forms",
-                name:"Forms"
+                key:"/sp/vivareport",
+                path:"/sp/vivareport",
+                name:"Viva Report"
             }
         ]
     }

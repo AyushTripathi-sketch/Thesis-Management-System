@@ -11,6 +11,7 @@ function StepProgressComponent(props) {
       className={
         props.accomplished >= index + 1 ? "accomplished" : "unaccomplished"
       }
+      key={index}
       style={{ width: `${100 / props.steps.length}%` }}
     >
       {step}

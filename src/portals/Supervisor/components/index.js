@@ -15,4 +15,5 @@ export {default as MyProjectFinal} from "../pages/MyProject/MyProjectFinal";
 export {default as RPS} from "../pages/RPS";
 export {default as CE} from "../pages/CE";
 export {default as PSS} from "../pages/PSS";
+export {default as VivaReport} from "../pages/VivaReport"
 export {default as Forms} from "../pages/Forms";

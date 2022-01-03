@@ -1,11 +1,22 @@
 import React from "react";
-import { Divider, Layout, Button } from "antd";
+import { Divider, Layout, Button,Form,Upload } from "antd";
+import UploadOutlined from "@ant-design/icons/UploadOutlined";
 import scholar from "../../images/scholar.png";
 const { Content } = Layout;
 
 
 
 function ThesisResults() {
+
+  const [form] = Form.useForm();
+
+  function onFinish(fileList) {
+    console.log(fileList);
+  }
+  function onFinishFailed(errorInfo) {
+    console.log(errorInfo);
+  }
+
   return (
     <Content style={{ margin: "25px 25px" }}>
       <div
@@ -154,6 +165,26 @@ function ThesisResults() {
                     </div>
                   </div>
                 </div>
+              </div>
+              <div className="row" style={{marginLeft:"30px",marginTop:"50px"}}>
+              <p style={{marginLeft:"-40px",fontSize:"1.1rem"}}>*Submit the statement of corrections, if any, as per Form No. <a href="https://www.iitism.ac.in/~academics/assets/acad_forms/ph14.pdf"><b>PH14</b></a></p>
+                <Form
+                  form={form}
+                    onFinish={onFinish}
+                    onFinishFailed={onFinishFailed}>
+                  <Form.Item 
+                  name="PH14form"
+                      label="Upload Form"
+                      max={1}
+                      action="/upload.do">
+                    <Upload>
+                      <Button icon={<UploadOutlined/>}>Click to Upload</Button>
+                    </Upload>
+                  </Form.Item>
+                  <Form.Item>
+                    <Button htmlType="submit" type="primary">Submit</Button>
+                  </Form.Item>
+                </Form>
               </div>
             </div>
           </div>
