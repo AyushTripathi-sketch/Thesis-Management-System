@@ -25,7 +25,8 @@ import {
   PSS,
   RPS,
   UploadForm,
-  RTE
+  RTE,
+  RTC
 } from "./components";
 import { Routes, Route } from "react-router-dom";
 import menu from "./menu";
@@ -62,6 +63,7 @@ function Admin() {
             <Route path="/tasks/pss" element={<PSS />} />
             <Route path="/tasks/rps" element={<RPS />} />
             <Route path="/tasks/upload_form" element={<UploadForm />} />
+            <Route path="/tasks/request_thesis_consent" element={<RTC />} />
             <Route path="/tasks/request_thesis_evaluation" element={<RTE />} />
           </Routes>
           <Footerr />

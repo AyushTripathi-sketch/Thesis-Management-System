@@ -1,11 +1,13 @@
 import React from "react";
 import { Button, Layout, Upload, message } from "antd";
 import "../SupervisorApp.css";
-import { tableIcons } from "../../../CommonComponents";
+import { Selector, tableIcons } from "../../../CommonComponents";
 import MaterialTable from "material-table";
 const { Content } = Layout;
 
 function Overview() {
+  const options =["Satisfactory","Unsatisfactory"];
+
   const props = {
     name: "file",
     action: "https://www.mocky.io/v2/5cc8019d300000980a055e76",
@@ -32,6 +34,18 @@ function Overview() {
       field: "url",
       render: (rowData) => <a href={rowData.url}>View</a>,
     },
+    { title: "Status",field:"status",
+    render: (rowData) => (
+      rowData.status==="Unsatisfactory"?
+      <Selector
+        id={rowData.id}
+        list={options}
+        placeholder="Unsatisfactory"
+        style={{ width: "150px", height: "40px" }}
+        // onChange={handleChange}
+      ></Selector>:<p>Satisfactory</p>
+    )
+  },
     {
       title: "Upload Result",
       filed: "url",
@@ -50,24 +64,28 @@ function Overview() {
       name: "Ayush Tripathi",
       department: "Mathematics & Computing",
       url: "/st/profile",
+      status: "Unsatisfactory",
     },
     {
       id: "19JE0215",
       name: "Mrinal Pathak",
       department: "Applied Physics",
       url: "/st/profile",
+      status: "Unsatisfactory",
     },
     {
       id: "19JE0215",
       name: "Aditya Mishra",
       department: "Electrical",
       url: "/st/profile",
+      status: "Unsatisfactory",
     },
     {
       id: "19JE0215",
       name: "Pattewar Darshan",
       department: "Mathematics & Computing",
       url: "/st/profile",
+      status: "Unsatisfactory",
     },
   ];
   return (
