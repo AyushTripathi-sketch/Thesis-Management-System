@@ -3,6 +3,7 @@ import { Button, Layout, Upload, message } from "antd";
 import "../SupervisorApp.css";
 import { tableIcons } from "../../../CommonComponents";
 import AuthContext from "../../../context/auth/authContext";
+import { Selector, tableIcons } from "../../../CommonComponents";
 import MaterialTable from "material-table";
 import Spinner from "../../../CommonComponents/Spinner";
 import axios from "axios";
@@ -34,6 +35,7 @@ function Overview() {
   useEffect(() => {
     loadData()
   }, []);
+  const options =["Satisfactory","Unsatisfactory"];
 
   const props = {
     name: "file",
@@ -62,6 +64,18 @@ function Overview() {
       field: "url",
       render: (rowData) => <a href={rowData.url}>View</a>,
     },
+    { title: "Status",field:"status",
+    render: (rowData) => (
+      rowData.status==="Unsatisfactory"?
+      <Selector
+        id={rowData.id}
+        list={options}
+        placeholder="Unsatisfactory"
+        style={{ width: "150px", height: "40px" }}
+        // onChange={handleChange}
+      ></Selector>:<p>Satisfactory</p>
+    )
+  },
     {
       title: "Upload Result",
       filed: "url",
@@ -79,7 +93,7 @@ function Overview() {
       id: element.scholar.admn,
       name: element.scholar.name,
       department: element.scholar.department,
-      url: `/sp/mygroupoverview/${element.scholar.admn}`
+      url: `/sp/mygroupoverview/${element.scholar.admn}`,
     };
   });
   

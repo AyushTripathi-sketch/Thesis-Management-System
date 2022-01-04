@@ -4,6 +4,7 @@ import "../SupervisorApp.css";
 import "antd/dist/antd.css";
 import { tableIcons } from "../../../CommonComponents";
 import AuthContext from "../../../context/auth/authContext";
+import { tableIcons,Selector } from "../../../CommonComponents";
 import MaterialTable from "material-table";
 import Spinner from "../../../CommonComponents/Spinner";
 import axios from "axios";
@@ -35,6 +36,7 @@ function Overview() {
   useEffect(() => {
     loadData()
   }, []);
+  const options =["Satisfactory","Unsatisfactory"];
 
   const props = {
     name: "file",
@@ -60,6 +62,18 @@ function Overview() {
       field: "url",
       render: (rowData) => <a href={rowData.url}>View</a>,
     },
+    { title: "Status",field:"status",
+    render: (rowData) => (
+      rowData.status==="Unsatisfactory"?
+      <Selector
+        id={rowData.id}
+        list={options}
+        placeholder="Unsatisfactory"
+        style={{ width: "150px", height: "40px" }}
+        // onChange={handleChange}
+      ></Selector>:<p>Satisfactory</p>
+    )
+  },
     {
       title: "Upload Result",
       filed: "url",

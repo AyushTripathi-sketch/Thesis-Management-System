@@ -22,6 +22,7 @@ export { default as CE} from "../pages/Tasks/CE";
 export { default as PSS} from "../pages/Tasks/PSS";
 export { default as RPS} from "../pages/Tasks/RPS";
 export { default as UploadForm} from "../pages/Tasks/UploadForm";
+export { default as RTC} from "../pages/Tasks/RTC";
 export { default as RTE} from "../pages/Tasks/RTE";
 export { default as ColumnGraph} from "./ColumnGraph";
 export { default as PieGraph} from "./PieGraph";
