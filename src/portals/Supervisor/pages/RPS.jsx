@@ -1,12 +1,41 @@
-import React from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { Button, Layout, Upload, message } from "antd";
 import "../SupervisorApp.css";
 import "antd/dist/antd.css";
 import { tableIcons } from "../../../CommonComponents";
+import AuthContext from "../../../context/auth/authContext";
 import MaterialTable from "material-table";
+import Spinner from "../../../CommonComponents/Spinner";
+import axios from "axios";
 const { Content } = Layout;
 
 function Overview() {
+  const authContext = useContext(AuthContext);
+  const {user} = authContext;
+  const {profId} = user.dataValues;
+
+  const [isUploaded, setIsUploaded] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const [scholars, setScholars] = useState([]);
+  const [rpsDetails, setRpsDetails] = useState([]);
+
+  const loadData = async () => {
+    setLoading(true);
+    try {
+      const res = await axios.get(`/api/professor/rpsEligible/${profId}`);
+      setScholars(res.data.scholars);
+      setRpsDetails(res.data.rpsDetails);
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  useEffect(() => {
+    loadData()
+  }, []);
+
   const props = {
     name: "file",
     action: "https://run.mocky.io/v3/47d903b5-36e6-49ab-af80-ed864af71c16",
@@ -43,32 +72,18 @@ function Overview() {
       ),
     },
   ];
-  const data = [
-    {
-      id: "19JE0215",
-      name: "Ayush Tripathi",
-      department: "Mathematics & Computing",
-      url: "/st/profile",
-    },
-    {
-      id: "19JE0215",
-      name: "Mrinal Pathak",
-      department: "Applied Physics",
-      url: "/st/profile",
-    },
-    {
-      id: "19JE0215",
-      name: "Aditya Mishra",
-      department: "Electrical",
-      url: "/st/profile",
-    },
-    {
-      id: "19JE0215",
-      name: "Pattewar Darshan",
-      department: "Mathematics & Computing",
-      url: "/st/profile",
-    },
-  ];
+  let data = scholars.map( (element, index) => {
+    return {
+      id: element.scholar.admn,
+      name: element.scholar.name,
+      department: element.scholar.department,
+      url: `/sp/mygroupoverview/${element.scholar.admn}`
+    };
+  });
+  
+  if (loading) {
+    return <Spinner />
+  } else {
   return (
     <Content style={{ margin: "25px 25px" }}>
       <div
@@ -111,6 +126,7 @@ function Overview() {
       </div>
     </Content>
   );
+  }
 }
 
 export default Overview;

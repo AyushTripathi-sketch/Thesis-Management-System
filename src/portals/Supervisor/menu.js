@@ -69,11 +69,11 @@ const menu =[
                 key:"/sp/pss",
                 path:"/sp/pss",
                 name:"Pre Submission Seminar",
-            },
-            {
-                key:"/sp/vivareport",
-                path:"/sp/vivareport",
-                name:"Viva Report"
+            // },
+            // {
+            //     key:"/sp/vivareport",
+            //     path:"/sp/vivareport",
+            //     name:"Viva Report"
             }
         ]
     }
