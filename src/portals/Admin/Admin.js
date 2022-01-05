@@ -40,6 +40,7 @@ function Admin() {
         <Layout className="site-layout">
           <Headerr />
           <Routes>
+            <Route path="/" element={<Dashboard />} />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/details" element={<Details />} />
             <Route path="/events" element={<Events />} />
