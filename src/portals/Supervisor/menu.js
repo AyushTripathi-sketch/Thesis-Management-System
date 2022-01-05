@@ -4,7 +4,8 @@ import {
     AppstoreOutlined,
     HomeOutlined,
     UserOutlined,
-    DesktopOutlined
+    DesktopOutlined,
+    InfoCircleOutlined
   } from '@ant-design/icons';
 
 const menu =[
@@ -39,8 +40,8 @@ const menu =[
     {
         key:"/sp/forums",
         path:"/sp/forums",
-        icon:<FileOutlined/>,
-        name:"Submitted Thesis",
+        icon:<InfoCircleOutlined/>,
+        name:"Forums",
         children:null
     },
     {
@@ -74,11 +75,11 @@ const menu =[
                 key:"/sp/forms",
                 path:"/sp/forms",
                 name:"Forms"
-            },
-            {
-                key:"/sp/vivareport",
-                path:"/sp/vivareport",
-                name:"Viva Report"
+            // },
+            // {
+            //     key:"/sp/vivareport",
+            //     path:"/sp/vivareport",
+            //     name:"Viva Report"
             }
         ]
     }

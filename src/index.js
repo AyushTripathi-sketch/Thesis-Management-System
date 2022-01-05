@@ -17,6 +17,7 @@ import ForumState from "./context/forum/ForumState";
 import SupervisorGroupState from "./context/supervisorGroups/SupervisorGroupState";
 import ScholarState from "./context/scholar/ScholarState";
 import ActivityPlanState from "./context/activityPlan/ActivityPlanState";
+import ExaminerState from './context/examiner/ExaminerState';
 
 function App() {
   return (
@@ -32,7 +33,8 @@ function App() {
                       <SupervisorGroupState>
                         <ScholarState>
                           <ActivityPlanState>
-                            <Router>
+                          <ExaminerState>
+                              <Router>
                               <LoadUser />
                               <Routes>
                                 <Route path="ad/*" element={<Admin />} />
@@ -52,6 +54,7 @@ function App() {
                                 <Route path="/" element={<Login />} />
                               </Routes>
                             </Router>
+                            </ExaminerState>
                           </ActivityPlanState>
                         </ScholarState>
                       </SupervisorGroupState>
