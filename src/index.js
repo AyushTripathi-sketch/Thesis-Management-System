@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { Login, Student, Supervisor, Admin, Examiner } from "./portals";
+import { Login, Student, Supervisor, Admin, Examiner, Consent } from "./portals";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import reportWebVitals from "./reportWebVitals";
 import PrivateRoute from "./CommonComponents/PrivateRoute";
@@ -37,6 +37,7 @@ function App() {
                               <Routes>
                                 <Route path="ad/*" element={<Admin />} />
                                 <Route path="ex/*" element={<Examiner />} />
+                                <Route path='co/*' element={<Consent />} />
                                 <Route
                                   path="st/*"
                                   exact
