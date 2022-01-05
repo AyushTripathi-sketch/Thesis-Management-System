@@ -13,14 +13,72 @@ import {
 import UploadOutlined from "@ant-design/icons/UploadOutlined"
 import "../../AdminApp.css";
 import "antd/dist/antd.css";
+import axios from "axios";
 
 const { Content } = Layout;
 const { TextArea } = Input;
 const { Option } = Select;
 
 function AddScholar() {
+  const [loading, setLoading] = React.useState(false);
   const [form] = Form.useForm();
-  function onFinish(values) {
+  const onFinish = async (values) => {
+    setLoading(true);
+    try {
+      const {
+        admn,
+        name,
+        password,
+        department,
+        email,
+        contact,
+        address,
+        registration_type,
+        qualification_degree,
+        status,
+        fellowship_status,
+        registration_date,
+        upload
+      } = values;
+      const formData = new FormData();
+      formData.append("admn", admn);
+      formData.append("name", name);
+      formData.append("password", "123456");
+      formData.append("department", department);
+      formData.append("branch", department);
+      formData.append("email", email);
+      formData.append("contact", "7081702030");
+      formData.append("address", address);
+      formData.append("registration_type", registration_type);
+      formData.append("qualification_degree", qualification_degree);
+      formData.append("status", status);
+      formData.append("fellowship_status", fellowship_status);
+      formData.append("registration_date", registration_date);
+      formData.append("current_session", "2021-2022");
+      formData.append("current_semester", "Winter");
+      formData.append("photo", upload.file);
+      const config = {
+        headers: {
+          "content-type": "multipart/form-data",
+        },
+      };
+      const res = await axios.post(
+        "/api/scholar/addScholar",
+        formData,
+        config
+      );
+      console.log(res);
+      if (res.status === 200) {
+        alert('Scholar added!');
+        form.resetFields();        
+      }
+    } catch (error) {
+      console.log(error);
+      alert('Some error occurred!');
+    }
+    finally {
+      setLoading(false);
+    }
     console.log("Success:", values);
   }
 
@@ -89,7 +147,7 @@ function AddScholar() {
                     <Form.Item
                       name="contact"
                       label="Contact"
-                      rules={[{ required: true }]}
+                      rules={[{ required: false }]}
                     >
                       <Input.Group>
                         <Row gutter={8}>
@@ -166,7 +224,7 @@ function AddScholar() {
                       }}
                       action="/upload.do"
                     >
-                      <Upload>
+                      <Upload beforeUpload={() => false} multiple={false}>
                         <Button icon={<UploadOutlined />}>Click to Upload!</Button>
                       </Upload>
                     </Form.Item>

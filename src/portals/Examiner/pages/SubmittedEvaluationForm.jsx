@@ -1,20 +1,57 @@
-import React, {useState} from "react";
+import React,{useContext,useEffect} from "react";
 import { message,Radio,Space,Divider, Layout, Tabs,Form, Input, Button,Select } from "antd";
-
+import ExaminerContext from "../../../context/examiner/examinerContext";
+import AuthContext from "../../../context/auth/authContext";
+import Spinner from "../../../CommonComponents/Spinner";
 
 const { Content } = Layout;
 const { Option } = Select;
 const { TextArea } = Input;
 
 function SubmittedEvaluationForm() {
-    const [value,setState]= useState(1);
-   
+  const authContext = useContext(AuthContext);
+  const{examinerId} = authContext.user.dataValues;
+  const examinerContext = useContext(ExaminerContext);
+  const{getEval,evaluation,checkedEval} = examinerContext;
   const [form] = Form.useForm();
-
-  function handleChange(value) {
-    console.log(`selected ${value}`);
+  useEffect(()=>{
+    getEval(examinerId);
+  },[]);
+  if(checkedEval===false) return <Spinner/>
+  if(evaluation===null){
+    return(
+      <Content style={{ margin: "25px 25px" }}>
+            <div
+              className="site-layout-background text-center"
+              style={{ padding: 24, minHeight: 400 }}
+            >
+            <div
+              className="container-fluid"
+              style={{
+                marginTop: "15%",
+                textAlign: "center",
+                display: "inherit",
+              }}
+            >
+              <h3>Evaluation Form Not Yet Submitted!</h3>
+                  </div>
+            </div>
+              </Content>
+    )
   }
-
+  const{
+    aboutPresentation,
+    advanceOnResultsOfPreviousInvestigations,
+    carriedOutIndependentlyByScholar,
+    eval_type,
+    eval_type_url,//mrinal
+    generalFeaturesOne, // mrinal
+    generalFeaturesTwo,//mrinal
+    giveNewInterpretationToFactsAlreadyKnown,
+    nameOfScholar,
+    openToNewFieldOfResearch,
+    title
+  } = evaluation;
   const props = {
     name: 'file',
     action: 'https://www.mocky.io/v2/5cc8019d300000980a055e76',
@@ -48,48 +85,48 @@ function SubmittedEvaluationForm() {
       
     >
       <Form.Item label="1. Full Name of the Candidate">
-        <Input placeholder="" disabled value={"XYZ"}/>
+        <Input placeholder="" disabled value={nameOfScholar}/>
       </Form.Item>
 
       <Form.Item label="2. Title of the Thesis">
-        <Input placeholder="" disabled value={"XYZ"}/>
+        <Input placeholder="" disabled value={title}/>
       </Form.Item>
 
-      <Form.Item label="3. Originality and Novelty of the Thesis">
+      <Form.Item label="3. Originality and Novelty of the Thesis"></Form.Item>
       <div style={{marginLeft:'10px'}}>
       <Form.Item label="a. Does it open a new field of research?">
-        <Select style={{ width: 120 }} onChange={handleChange} disabled value={"true"}>
-        <Option value="true">Yes</Option>
-        <Option value="false">No</Option>
+        <Select style={{ width: 120 }}  disabled value={openToNewFieldOfResearch}>
+        <Option value="yes">Yes</Option>
+        <Option value="no">No</Option>
         </Select>
       </Form.Item>
       <Form.Item label="b. Does it give a new interpretation to facts already known? ">
-        <Select style={{ width: 120 }} onChange={handleChange} disabled value={"true"}>
-        <Option value="true">Yes</Option>
-        <Option value="false">No</Option>
+        <Select style={{ width: 120 }}  disabled value={giveNewInterpretationToFactsAlreadyKnown}>
+        <Option value="yes">Yes</Option>
+        <Option value="no">No</Option>
         </Select>
       </Form.Item>
       <Form.Item label="c. Does it make a marked advance on the results of previous investigations? ">
-      <Select style={{ width: 120 }} onChange={handleChange} disabled value={"true"}>
-        <Option value="true">Yes</Option>
-        <Option value="false">No</Option>
+      <Select style={{ width: 120 }}  disabled value={advanceOnResultsOfPreviousInvestigations}>
+        <Option value="yes">Yes</Option>
+        <Option value="no">No</Option>
         </Select>
       </Form.Item>
       <Form.Item label="d. Does the thesis show evidence of being a scholarly work of merit carried out independently
 by the candidate? ">
-        <Select style={{ width: 120 }} onChange={handleChange} disabled value={"true"}>
-        <Option value="true">Yes</Option>
-        <Option value="false">No</Option>
+        <Select style={{ width: 120 }}  disabled value={carriedOutIndependentlyByScholar}>
+        <Option value="yes">Yes</Option>
+        <Option value="no">No</Option>
         </Select>
       </Form.Item>
       </div>
-      </Form.Item>
+      
 
-      <Form.Item label="4. General Features of Thesis (Use separate Sheet)">
+      <Form.Item label="4. General Features of Thesis (Use separate Sheet)"></Form.Item>
       <div style={{marginLeft:'10px'}}>
       <p>a. Is the thesis logically organized?
       </p>
-      <p>b. Technical content of the Thesis:
+      <div>b. Technical content of the Thesis:
         <div style={{marginLeft:'10px'}}>
         <p>i. Do the introduction and literature survey logically lead to the thesis objectives?
         </p>
@@ -106,9 +143,10 @@ adequate with respect to the thesis objectives? "
 
         </p>
         <p style={{marginTop:'10px'}}><b>Upload separate file if required</b></p>
-        <Button type='primary'>View</Button>
+        {/* mrinal */}
+        <Form.Item><Button type='primary'>View</Button></Form.Item>
         </div>
-      </p>
+      </div>
       <p>c. Strong Point of the Thesis:
       
       </p>
@@ -116,62 +154,36 @@ adequate with respect to the thesis objectives? "
      
       </p>
       </div>
-      <Button type='primary'>View</Button>
-      </Form.Item>
+      {/* mrinal */}
+      <Form.Item><Button type='primary'>View</Button></Form.Item>
+      
       
       <Form.Item label="5. Presentation of the Thesis in terms of Language, Grammar, Captions of Tables & Figures, 
  Use of Symbols etc.">
-        <TextArea rows={4} disabled value={"XYZ"}/>
-        <p style={{marginTop:'10px'}}><b>Upload file if needed</b></p>
-        <Button type='primary'>View</Button>
+        <TextArea rows={4} disabled value={aboutPresentation}/>
       </Form.Item>
 
       <Form.Item
         label="6. Specific Recommendations"
       >
-        <Radio.Group value={value} disabled >
+        <Radio.Group value={eval_type} disabled >
         <Space direction="vertical">
-          <Radio value={1}>The thesis is satisfactory and recommended for the award of the Ph.D. Degree.</Radio>
-          <Radio value={2}>The thesis is recommended for award of Ph.D. Degree subject to answering the queries 
+          <Radio value={"i"}>The thesis is satisfactory and recommended for the award of the Ph.D. Degree.</Radio>
+          <Radio value={"ii"}>The thesis is recommended for award of Ph.D. Degree subject to answering the queries 
 specifically mentioned in the report at the time of Viva-Voce by the candidate.</Radio>
-          <Radio value={3}>The thesis is recommended for award of Ph.D. Degree subject to revision of thesis as per 
+          <Radio value={"iii"}>The thesis is recommended for award of Ph.D. Degree subject to revision of thesis as per 
 suggestion made in the report to the satisfaction of guide and Viva-voce Board.
 </Radio>
-          <Radio value={4}>The candidate is required to revise the thesis as per suggestions made and the revised thesis 
+          <Radio value={"iv"}>The candidate is required to revise the thesis as per suggestions made and the revised thesis 
 be sent to me for re-evaluation along with statement of corrections incorporated in the thesis.</Radio>
-          <Radio value={5}>The thesis is not acceptable for award of Ph.D. Degree due to reasons mentioned below</Radio>
+          <Radio value={"v"}>The thesis is not acceptable for award of Ph.D. Degree due to reasons mentioned below</Radio>
         </Space>
       </Radio.Group>
+      </Form.Item>
       <p style={{marginTop:'10px'}}><b>Upload file for details</b></p>
-      <Button type='primary'>View</Button>
-      </Form.Item>
-      <Divider />
-      <div style={{textAlign:'center'}}><strong>Examiner Details</strong></div>
-      <Form.Item
-        label="Name"
-      >
-        <Input placeholder="input placeholder" disabled value={"XYZ"}/>
-      </Form.Item>
-      <Form.Item
-        label="Designation"
-      >
-        <Input placeholder="input placeholder" disabled value={"XYZ"}/>
-      </Form.Item>
-      <Form.Item
-        label="Full Address"
-      >
-        <Input placeholder="input placeholder" disabled value={"XYZ"}/>
-      </Form.Item>
-      <Form.Item
-        label="Mobile No./Telephone No."
-      >
-        <Input placeholder="input placeholder" disabled value={"XYZ"}/>
-      </Form.Item>
-
-      <Form.Item
-        label="Email Address"
-      >
-        <Input placeholder="input placeholder" disabled value={"XYZ"}/>
+      <Form.Item>
+      <Button type='primary'>View</Button> 
+      {/* mrinal */}
       </Form.Item>
     </Form>
             

@@ -1,7 +1,6 @@
 import React, { useContext, useState, useEffect } from "react";
 import { Button, Layout, Upload, message } from "antd";
 import "../SupervisorApp.css";
-import { tableIcons } from "../../../CommonComponents";
 import AuthContext from "../../../context/auth/authContext";
 import { Selector, tableIcons } from "../../../CommonComponents";
 import MaterialTable from "material-table";

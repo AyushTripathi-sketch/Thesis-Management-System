@@ -8,12 +8,12 @@ export {default as ThesisDetails} from "../pages/Thesis/ThesisDetails";
 export {default as ThesisResults} from "../pages/Thesis/ThesisResults";
 export {default as MyProject} from "../pages/MyProject/MyProject";
 export {default as MyProjectOverview} from "../pages/MyProject/MyProjectOverview";
-export {default as MyProjectForums} from "../pages/MyProject/MyProjectForums";
-export {default as MyProjectForumsDetails} from "../pages/MyProject/MyProjectForumsDetails";
+export {default as Forums} from "../pages/Forum/Forums";
+export {default as ForumsDetails} from "../pages/Forum/ForumsDetails";
 export {default as MyProjectActivityPlan} from "../pages/MyProject/MyProjectActivityPlan";
 export {default as MyProjectFinal} from "../pages/MyProject/MyProjectFinal";
 export {default as RPS} from "../pages/RPS";
 export {default as CE} from "../pages/CE";
 export {default as PSS} from "../pages/PSS";
-export {default as VivaReport} from "../pages/VivaReport"
+export {default as VivaReport} from "../pages/VivaReport";
 export {default as Forms} from "../pages/Forms";

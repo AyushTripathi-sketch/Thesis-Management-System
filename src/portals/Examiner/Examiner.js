@@ -1,7 +1,7 @@
 import React from "react";
 import { Layout } from "antd";
 import { Headerr, Footerr, Navbar, SideBar } from "../../CommonComponents";
-import { EvaluationForm, Home, HonorariumForm, SubmittedHonorariumForm, SubmittedEvaluationForm } from "./components";
+import { EvaluationForm, Home, HonorariumForm , SubmittedHonorariumForm, SubmittedEvaluationForm} from "./components";
 import { Routes, Route } from "react-router-dom";
 import menu from "./menu";
 
@@ -15,7 +15,7 @@ function Examiner() {
           <Headerr />
           <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/eval" element={<EvaluationForm />} />
+          <Route path="/eval/:admn" element={<EvaluationForm />} />
           <Route path="/hon" element={<HonorariumForm />} />
           <Route path="/sub-hon" element={<SubmittedHonorariumForm />} />
           <Route path="/sub-eval" element={<SubmittedEvaluationForm />} />

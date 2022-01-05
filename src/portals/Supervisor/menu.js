@@ -37,17 +37,17 @@ const menu =[
         children:null,
     },
     {
-        key:"/sp/thesis",
-        path:"/sp/thesis",
+        key:"/sp/forums",
+        path:"/sp/forums",
         icon:<FileOutlined/>,
         name:"Submitted Thesis",
         children:null
     },
     {
-        key:"/sp/forms",
-        path:"/sp/forms",
+        key:"/sp/thesis",
+        path:"/sp/thesis",
         icon:<FileOutlined/>,
-        name:"Forms",
+        name:"Submitted Thesis",
         children:null
     },
     {
@@ -69,11 +69,16 @@ const menu =[
                 key:"/sp/pss",
                 path:"/sp/pss",
                 name:"Pre Submission Seminar",
-            // },
-            // {
-            //     key:"/sp/vivareport",
-            //     path:"/sp/vivareport",
-            //     name:"Viva Report"
+            },
+            {
+                key:"/sp/forms",
+                path:"/sp/forms",
+                name:"Forms"
+            },
+            {
+                key:"/sp/vivareport",
+                path:"/sp/vivareport",
+                name:"Viva Report"
             }
         ]
     }
